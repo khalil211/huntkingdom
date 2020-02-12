@@ -1,7 +1,7 @@
 fos_user:
-    resource: "@UserBundle/Resources/config/routing.yml"
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     prefix:   /
-#/routing.yml or /all.xml
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Produit edit</h1>
+
+
+    <table>
+        {{ form_start(edit_form) }}
+        <tr><td>image :{{ form_widget(edit_form.imageProd) }}</td></tr>
+        <tr><td>nom : {{ form_widget(edit_form.nomProd) }}</td></tr>
+        <tr><td>prix :{{ form_widget(edit_form.prixProd) }}</td></tr>
+        <tr><td>desc :{{ form_widget(edit_form.descriptionProd) }}</td></tr>
+        <tr><td>quantite :{{ form_widget(edit_form.quantiteProd) }}</td></tr>
+        <tr><td>categorie :{{ form_widget(edit_form.categorie) }}</td></tr>
+        <button>Modifier</button>
+
+        {{ form_end(edit_form) }}
+    </table>
+
+
+
+    <ul>
+        <li>
+            <a href="{{ path('produit_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

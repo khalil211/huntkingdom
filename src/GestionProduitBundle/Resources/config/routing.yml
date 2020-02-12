@@ -1,3 +1,11 @@
+gestion_produit_categorieproduit:
+    resource: "@GestionProduitBundle/Resources/config/routing/categorieproduit.yml"
+    prefix:   /categorieproduit
+
+gestion_produit_produit:
+    resource: "@GestionProduitBundle/Resources/config/routing/produit.yml"
+    prefix:   /produit
+
 gestion_produit_homepage:
     path:     /
     defaults: { _controller: GestionProduitBundle:Default:index }

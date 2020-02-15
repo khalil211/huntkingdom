@@ -2,6 +2,10 @@ app:
     resource: '@AppBundle/Controller/'
     type: annotation
 
+commande:
+    resource: "@CommandeBundle/Resources/config/routing.yml"
+    prefix:   /
+
 gestion_produit:
     resource: "@GestionProduitBundle/Resources/config/routing.yml"
     prefix:   /

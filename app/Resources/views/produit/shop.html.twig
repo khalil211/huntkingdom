@@ -16,7 +16,7 @@
                                 <div class="results-number">
                                     <p>Showing <span>01 - 12</span> of 139 Results</p>
                                 </div>
-                                <!-- .results-number -->
+                       <!-- .results-number -->
                                 <div class="results-icon">
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs" role="tablist">
@@ -78,7 +78,7 @@
                                     <div class="shop-widget-content">
                                         <form action="#" method="POST" class="sidebar-form">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="searchId" name="search" placeholder="Search...">
+                                                <input type="text" class="form-control" id="search" name="search" placeholder="Search...">
                                                 <i class="fa fa-search" aria-hidden="true"></i>
                                             </div>
                                         </form>
@@ -96,13 +96,13 @@
 
                                             <!--panel-->
 
-                                            <div class="panel panel-default">{% for categories in categories %}
+                                            <div class="panel panel-default">{% for categorie in categories %}
                                                 <div class="panel-heading" role="tab" id="headingTwo">
                                                    <h4 class="panel-title">
 
 
-                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
-                                                            {{ categories.nomCat }}
+                                                        <a href="{{ path('produit_cat',{'id': categorie.id}) }}"class="collapsed">
+                                                            {{ categorie.nomCat }}
 
 
 
@@ -381,7 +381,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- End Pre-Loader -->
 

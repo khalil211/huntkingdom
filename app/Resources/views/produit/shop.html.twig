@@ -42,7 +42,7 @@
                                                                 <img src="{{ asset('image_shop/') }}{{ produit.imageProd }}" alt="collection-img-5">
                                                                 <ul class="collection-icon">
                                                                     <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></li>
+                                                                    <li><a href="#" id="addCart{{ produit.id }}"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></li>
                                                                     <li><a href="assets/images/shop/collection-img-5.jpg" data-rel="lightcase:myCollection"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                                                                 </ul>
                                                             </div>
@@ -386,4 +386,37 @@
 <!-- End Pre-Loader -->
 
 
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery-2.2.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.easing.1.3.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.waypoints.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.counterup.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/swiper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/plugins.isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/lightcase.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.nstSlider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.flexslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.map.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.js') }}"></script>
+    <script type="text/javascript">
+        {% for produit in produits %}
+            $(function(){
+                console.log('test jquery');
+                $('#addCart').click(function(){
+                    $.ajax({
+                        url: {{ path('add_to_cart', {'id': produit.id}) }},
+                        success: function(data){
+                            $('#miniCart').html(data);
+                        }
+                    });
+                });
+            });
+        {% endfor %}
+    </script>
 {% endblock %}

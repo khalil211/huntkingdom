@@ -10,4 +10,14 @@ namespace CommandeBundle\Repository;
  */
 class CommandeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function hasPanier($user)
+    {
+        $panier=$this->createQueryBuilder('c')
+            ->where('c.user = :user')
+            ->andWhere('c.etat = 0')
+            ->setParameter('user',$user)
+            ->getQuery()
+            ->getSingleResult();
+        return panier!=null;
+    }
 }

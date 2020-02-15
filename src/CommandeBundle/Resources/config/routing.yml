@@ -1,3 +1,12 @@
 view_cart:
     path:     /cart
     defaults: { _controller: CommandeBundle:Front:viewCart }
+
+view_mini_cart:
+    path:     /cart/mini
+    defaults: { _controller: CommandeBundle:Front:viewMiniCart }
+    methods:  GET
+
+add_to_cart:
+    path:     /cart/add/{id}
+    defaults: { _controller: CommandeBundle:Front:addToCart }

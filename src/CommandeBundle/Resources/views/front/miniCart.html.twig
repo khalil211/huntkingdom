@@ -1,0 +1,32 @@
+<div class="cart-icon">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    <div class="count-cart">{{ pcs|length }}</div>
+</div>
+<!-- .cart-icon -->
+<div class="cart-dropdown-menu"z>
+    <!-- produit -->
+    {% for pc in pcs %}
+        <div class="cart-items">
+            <div class="cart-img">
+                <a href="{{ path('produit_details',{'id':pc.produit.id}) }}"><img src="{{ asset('image_shop/') }}{{ pc.produit.imageProd }}" alt="cart-img-1"></a>
+            </div>
+            <div class="cart-content">
+                <h6><a href="{{ path('produit_details',{'id':pc.produit.id}) }}">{{ pc.produit.nomProd }}</a></h6>
+                <p>{{ pc.quantite }}*<span>{{ pc.produit.prixProd }}</span></p>
+            </div>
+            <div class="cart-btn">
+                <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
+            </div>
+            <div class="clr"></div>
+        </div>
+    {% endfor %}
+    <!-- produit -->
+    <div class="total-price">
+        <p><span>Total Price :</span>{{ total }}</p>
+    </div>
+    <!-- .total-prices -->
+    <div class="checkout-btn">
+        <a href="{{ path('view_cart') }}" class="btn btn-default">Consulter panier</a>
+    </div>
+</div>

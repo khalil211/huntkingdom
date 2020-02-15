@@ -10,10 +10,4 @@ namespace GestionProduitBundle\Repository;
  */
 class ProduitRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function affichageCatDQL(){
-        $qb=$this->getEntityManager()
-                 ->createQuery(
-                     "SELECT p from GestionProduitBundle:"
-                 )
-    }
 }

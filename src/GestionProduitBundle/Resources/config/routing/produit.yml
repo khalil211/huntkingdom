@@ -25,6 +25,11 @@ produit_delete:
 produit_shop:
     path:     /shop
     defaults: { _controller: "GestionProduitBundle:Produit:shop" }
+
+
+produit_cat:
+    path:     /{id}/shop
+    defaults: { _controller: "GestionProduitBundle:Produit:categories" }
     methods:  GET
 
 produit_details:

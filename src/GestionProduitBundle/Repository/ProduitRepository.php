@@ -10,10 +10,14 @@ namespace GestionProduitBundle\Repository;
  */
 class ProduitRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function affichageCatDQL(){
-        $qb=$this->getEntityManager()
-                 ->createQuery(
-                     "SELECT p from GestionProduitBundle:"
-                 )
-    }
+  /*  public function findEntitiesByString($str){
+      return  $this->getEntityManager()
+                    ->createQuery(
+                        'SELECT p 
+                               FROM GestionProduitBundle:Produit p
+                               WHERE p.nom LIKE:str'
+                    )
+          ->setParameter('str','%'.$str.'%')
+          ->getResult();
+    }*/
 }

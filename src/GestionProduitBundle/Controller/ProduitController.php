@@ -4,6 +4,7 @@ namespace GestionProduitBundle\Controller;
 
 use GestionProduitBundle\Entity\CategorieProduit;
 use GestionProduitBundle\Entity\Produit;
+use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -78,6 +79,7 @@ class ProduitController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $produit->UploadProfilePicture();
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('produit_edit', array('id' => $produit->getId()));
@@ -143,4 +145,37 @@ class ProduitController extends Controller
             'produit' => $produit,
             ));
     }
+    public function categoriesAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em2=$this->getDoctrine()->getManager();
+        $categories=$em2->getRepository('GestionProduitBundle:CategorieProduit')->findAll();
+        $produits = $em->getRepository('GestionProduitBundle:Produit')->findByCategorie( $em->getRepository(CategorieProduit::class)->find($id));
+
+        return $this->render('produit/shop.html.twig', array(
+            'produits' => $produits,
+            'categories'=>$categories,
+        ));
+    }
+
+  /*  public function searchProdAction(Request $request){
+        $em=$this->getDoctrine()->getManager();
+        $requestString = $request->get('q');
+        $produits=$em->getRepository('GestionProduitBundle:Produit')->findEntitiesByString($requestString);
+        if (!$produits){
+            $result['produits']['error']="Produit introuvable";
+        }
+        else{
+            $result['produits']=$this->getRealEntites($produits);
+
+        }
+        return new Response(json_encode($result));
+    }
+
+    public function getRealEntites($produits){
+        foreach ($produits as $produits){
+        $realEntities[$produits->getId()]=[$produits->getImageProd(),$produits->getNomProd()];
+    }
+    return $realEntities;
+}*/
 }

@@ -1,47 +1,64 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
-{% block body %}
-    <h1>Produits list</h1>
+{% block content %}
 
-    <table>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title"> Listes des produits </strong>
+                    </div>
+
+                    <div class="card-body">
+    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+        <a href="{{ path('produit_new') }}">Ajouter un nouveau produit</a>
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Imageprod</th>
-                <th>Nomprod</th>
-                <th>Prixprod</th>
-                <th>Descriptionprod</th>
-                <th>Quantiteprod</th>
+                <th>Image produit</th>
+                <th>Nom produit</th>
+                <th>Prix produit</th>
+                <th>Description produit</th>
+                <th>Quantite produit</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for produit in produits %}
             <tr>
-                <td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
-                <td>{{ produit.imageProd }}</td>
+                <td><a href="{{ path('produit_show', { 'id': produit.id }) }}" style="width:50px;height: 50px;">{{ produit.id }}</a></td>
+                <td> <img src="{{ asset('image_shop/') }}{{ produit.imageProd }} "></td>
                 <td>{{ produit.nomProd }}</td>
                 <td>{{ produit.prixProd }}</td>
                 <td>{{ produit.descriptionProd }}</td>
                 <td>{{ produit.quantiteProd }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('produit_show', { 'id': produit.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('produit_edit', { 'id': produit.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a href="{{ path('produit_show', { 'id': produit.id }) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                    <a href="{{ path('produit_edit', { 'id': produit.id }) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+
                 </td>
+
             </tr>
         {% endfor %}
         </tbody>
     </table>
+                    </div>
+                </div>
+            </div>
 
+
+        </div>
+    </div><!-- .animated -->
+</div><!-- .content -->
     <ul>
         <li>
-            <a href="{{ path('produit_new') }}">Create a new produit</a>
+
         </li>
     </ul>
+
+
+
 {% endblock %}

@@ -1,21 +1,62 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
-{% block body %}
-    <h1>Categorieproduit edit</h1>
+{% block content %}
 
+<div class="card-header">
+
+</div>
+<div class="card-header">
+    <strong> Editer une catégorie produit</strong> Détails
+</div>
+<div class="card-body card-block">
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+
+
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Nom catégorie  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(edit_form.nomCat) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Description catégorie  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(edit_form.descriptionCat) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm" >
+            <i class="fa fa-dot-circle-o"></i> Envoyer
+        </button>
+    </div>
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('categorieproduit_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+    <div class="card-footer">
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete" class="btn btn-danger btn-xs" >
+        {{ form_end(delete_form) }}
+    </div>
+    <a href="{{ path('categorieproduit_index') }}">Liste des catégories produit</a>
+
+
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

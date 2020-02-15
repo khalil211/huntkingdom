@@ -1,0 +1,389 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}Détails produit{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/font-awesome.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/fonts/flaticon.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/bootstrap.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/animate.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/swiper.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/lightcase.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/jquery.nstSlider.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/flexslider.css') }}" media="all" />
+
+    <!-- own style css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/style.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/rtl.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/responsive.css') }}" media="all" />
+{% endblock %}
+{% block content %}
+    <section class="bg-shop-section">
+        <div class="container">
+            <div class="row">
+                <div class="shop-option">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-6">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="single-product-slider">
+
+                                            <ul class="slides">
+                                                <li>
+                                                    <img src="{{ asset('image_shop/') }}{{ produit.imageProd }} ">
+                                                </li>
+
+                                            </ul>
+
+
+                                    </div>
+                                    <!-- .single-product -->
+
+                                </div>
+                                <!-- .col-md-5 -->
+                                <div class="col-md-7">
+                                    <div class="about-product-datails">
+                                        <h3>{{ produit.nomProd }}</h3>
+                                        <h4>{{ produit.prixProd }} DT</h4>
+                                        <p>{{ produit.descriptionProd }}.</p>
+                                        <div class="select-option">
+
+                                            <!-- .select-box -->
+
+                                            <!-- .select-box -->
+                                        </div>
+                                        <!-- .select-option -->
+
+                                        <div class="product-counter-option">
+                                            <div class="product-count">
+                                                <input type="submit" name="remove" value="-">
+                                                <input type="text" name="quantity" value="2">
+                                                <input type="submit" name="add" value="+">
+                                            </div>
+                                            <!-- .product-count -->
+                                        </div>
+                                        <!-- .product-counter-option -->
+                                        <a href="#" class="btn add-cart-btn">Add to Cart</a>
+                                    </div>
+                                    <!-- .about-product-datails -->
+                                </div>
+                                <!-- .col-md-7 -->
+                            </div>
+                            <!-- .row -->
+
+
+
+                            <div class="product-review">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
+                                    <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab">Reviews 4</a></li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="description">
+                                        <div class="product-description">
+                                            <h4 class="description-title">Description du produit</h4>
+                                            <div class="desc-content">
+                                                <p> {{ produit.descriptionProd }}</p>
+                                            </div>
+                                            <!-- .desc-content -->
+                                        </div>
+                                        <!-- .product-description -->
+                                    </div>
+                                    <!-- .description -->
+
+                                    <div role="tabpanel" class="tab-pane" id="review">
+                                        <div class="review-content">
+                                            <h4 class="description-title">Customer Reviews</h4>
+                                            <div class="costomer-review-items">
+                                                <div class="customer-img">
+                                                    <img src="assets/images/shop/customer-img-1.jpg" alt="customer-img-1" />
+                                                </div>
+                                                <!-- .customer-img -->
+                                                <div class="customer-content">
+                                                    <div class="customer-title">
+                                                        <div class="customer-name">
+                                                            <h4><a href="#">Robot Smith</a> <small>Posted on December 25, 2013 at 6:57 am</small></h4>
+                                                        </div>
+                                                        <!-- .customer-name -->
+                                                        <div class="rating">
+                                                            <ul class="star-icon">
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <!-- .customer-name -->
+                                                    </div>
+                                                    <!-- .customer-title -->
+                                                    <p>Objectively enable scalable leadership without cros media leadership theme awesome theme without flexible solutions awesome theme are interactive architectures.</p>
+                                                </div>
+                                                <!-- .review-img -->
+                                            </div>
+                                            <!-- .customer-review-items -->
+                                            <div class="costomer-review-items">
+                                                <div class="customer-img">
+                                                    <img src="assets/images/shop/customer-img-2.jpg" alt="customer-img-2" />
+                                                </div>
+                                                <!-- .customer-img -->
+                                                <div class="customer-content">
+                                                    <div class="customer-title">
+                                                        <div class="customer-name">
+                                                            <h4><a href="#">Janaton Doe</a> <small>Posted on December 25, 2013 at 6:57 am</small></h4>
+                                                        </div>
+                                                        <!-- .customer-name -->
+                                                        <div class="rating">
+                                                            <ul class="star-icon">
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <!-- .customer-name -->
+                                                    </div>
+                                                    <!-- .customer-title -->
+                                                    <p>Objectively enable scalable leadership without cros media leadership theme awesome theme without flexible solutions awesome theme are interactive architectures.</p>
+                                                </div>
+                                                <!-- .review-img -->
+                                            </div>
+                                            <!-- .customer-review-items -->
+                                            <div class="costomer-review-items">
+                                                <div class="customer-img">
+                                                    <img src="assets/images/shop/customer-img-3.jpg" alt="customer-img-3" />
+                                                </div>
+                                                <!-- .customer-img -->
+                                                <div class="customer-content">
+                                                    <div class="customer-title">
+                                                        <div class="customer-name">
+                                                            <h4><a href="#">Robot Jhonson</a> <small>Posted on December 25, 2013 at 6:57 am</small></h4>
+                                                        </div>
+                                                        <!-- .customer-name -->
+                                                        <div class="rating">
+                                                            <ul class="star-icon">
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <!-- .customer-name -->
+                                                    </div>
+                                                    <!-- .customer-title -->
+                                                    <p>Objectively enable scalable leadership without cros media leadership theme awesome theme without flexible solutions awesome theme are interactive architectures.</p>
+                                                </div>
+                                                <!-- .review-img -->
+                                            </div>
+                                            <!-- .customer-review-items -->
+                                            <div class="costomer-review-items">
+                                                <div class="customer-img">
+                                                    <img src="assets/images/shop/customer-img-4.jpg" alt="customer-img-4" />
+                                                </div>
+                                                <!-- .customer-img -->
+                                                <div class="customer-content">
+                                                    <div class="customer-title">
+                                                        <div class="customer-name">
+                                                            <h4><a href="#">Janaton Smith</a> <small>Posted on December 25, 2013 at 6:57 am</small></h4>
+                                                        </div>
+                                                        <!-- .customer-name -->
+                                                        <div class="rating">
+                                                            <ul class="star-icon">
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <!-- .customer-name -->
+                                                    </div>
+                                                    <!-- .customer-title -->
+                                                    <p>Objectively enable scalable leadership without cros media leadership theme awesome theme without flexible solutions awesome theme are interactive architectures.</p>
+                                                </div>
+                                                <!-- .review-img -->
+                                            </div>
+                                            <!-- .customer-review-items -->
+                                        </div>
+                                        <!-- .review-content -->
+                                        <div class="review-submit">
+                                            <h4 class="review-submit-title">Add A Review</h4>
+                                            <form action="#" method="POST">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control" name="name" id="nameId" placeholder="Full Name" />
+                                                        </div>
+                                                    </div>
+                                                    <!-- .col-md-4 -->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <input type="password" class="form-control" name="email" id="emailId" placeholder="Email Address">
+                                                        </div>
+                                                    </div>
+                                                    <!-- .col-md-4 -->
+                                                    <div class="col-md-4">
+                                                        <ul class="star-icon">
+                                                            <li>Your Rating:</li>
+                                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <!-- .col-md-4 -->
+                                                </div>
+                                                <!-- .row -->
+                                                <textarea class="form-control" placeholder="Type Here Message"></textarea>
+                                                <button type="submit" class="btn btn-default">Submit REVIEW</button>
+                                            </form>
+                                        </div>
+                                        <!-- .review-submit -->
+                                    </div>
+                                    <!-- .review -->
+                                </div>
+                                <!-- .Tab-content -->
+                            </div>
+                            <!-- .product-review -->
+                        </div>
+                        <!-- .col-md-9 -->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="shop-sidebar">
+                                <div class="shop-widget-content">
+                                    <h4 class="shop-widget-title">RATED PRODUCTS</h4>
+                                    <div class="small-product-items">
+                                        <div class="small-product-img">
+                                            <a href="#"><img src="assets/images/shop/small-product-img-5.jpg" alt="small-product-img-5" /></a>
+                                        </div>
+                                        <!-- .small-product-img -->
+                                        <div class="small-product-content">
+                                            <h5><a href="#">Product Text Here</a></h5>
+                                            <p>$ 250.00</p>
+                                            <ul class="star-icon">
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- .small-product-content -->
+                                    </div>
+                                    <!-- .small-product-items -->
+                                    <div class="small-product-items">
+                                        <div class="small-product-img">
+                                            <a href="#"><img src="assets/images/shop/small-product-img-6.jpg" alt="small-product-img-6" /></a>
+                                        </div>
+                                        <!-- .small-product-img -->
+                                        <div class="small-product-content">
+                                            <h5><a href="#">Product Text Here</a></h5>
+                                            <p>$ 250.00</p>
+                                            <ul class="star-icon">
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- .small-product-content -->
+                                    </div>
+                                    <!-- .small-product-items -->
+                                    <div class="small-product-items">
+                                        <div class="small-product-img">
+                                            <a href="#"><img src="assets/images/shop/small-product-img-7.jpg" alt="small-product-img-7" /></a>
+                                        </div>
+                                        <!-- .small-product-img -->
+                                        <div class="small-product-content">
+                                            <h5><a href="#">Product Text Here</a></h5>
+                                            <p>$ 250.00</p>
+                                            <ul class="star-icon">
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- .small-product-content -->
+                                    </div>
+                                    <!-- .small-product-items -->
+                                    <div class="small-product-items">
+                                        <div class="small-product-img">
+                                            <a href="#"><img src="assets/images/shop/small-product-img-8.jpg" alt="small-product-img-8" /></a>
+                                        </div>
+                                        <!-- .small-product-img -->
+                                        <div class="small-product-content">
+                                            <h5><a href="#">Product Text Here</a></h5>
+                                            <p>$ 250.00</p>
+                                            <ul class="star-icon">
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- .small-product-content -->
+                                    </div>
+                                    <!-- .small-product-items -->
+
+                                </div>
+                                                </div>
+                                            </div>
+                                            <!--.panel-->
+                                        </div>
+                                        <!--panel group-->
+
+
+                                    </div>
+                                    <!-- .widget-content -->
+                                </div>
+                                <!-- .widget -->
+
+                                <!-- .widget -->
+
+
+                                <!-- .widget -->
+
+
+
+
+                                    <!-- .widget-content -->
+                                </div>
+                                <!-- .widget -->
+
+                            </div>
+                            <!-- .sidebar -->
+                        </div>
+                        <!-- .col-md-3 -->
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!-- .shop-option -->
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .container -->
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery-2.2.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.easing.1.3.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.waypoints.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.counterup.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/swiper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/plugins.isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/lightcase.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.nstSlider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.flexslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.map.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.js') }}"></script>
+{% endblock %}

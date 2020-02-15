@@ -1,16 +1,54 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
-{% block body %}
-    <h1>Categorieproduit creation</h1>
+{% block content %}
 
+<div class="card-header">
+
+</div>
+<div class="card-header">
+    <strong> Ajouter un produit</strong> Détails
+</div>
+<div class="card-body card-block">
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('categorieproduit_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="row form-group">
+        <div class="col col-md-3"><label class=" form-control-label">Nom catégorie  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(form.nomCat) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Description catégorie  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(form.descriptionCat) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm" >
+            <i class="fa fa-dot-circle-o"></i> Envoyer
+        </button>
+        <button type="reset" class="btn btn-danger btn-sm">
+            <i class="fa fa-ban"></i> Reset
+        </button>
+    </div>
+    {{ form_end(form) }}
+</div>
+    <button class="btn btn-link" type="button"></button>
+    <a href="{{ path('categorieproduit_index') }}">Liste des Catégories produit</a>
+
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

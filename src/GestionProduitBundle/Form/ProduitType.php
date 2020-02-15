@@ -15,7 +15,7 @@ class ProduitType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('imageProd', FileType::class, array('label' => 'Image(JPG)', 'data_class'=>null))
+        $builder->add('file', FileType::class, array('label' => 'Image(JPG)', 'data_class'=>null))
             ->add('nomProd')
             ->add('prixProd')
             ->add('descriptionProd')

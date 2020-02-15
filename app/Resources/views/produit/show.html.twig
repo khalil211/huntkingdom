@@ -1,48 +1,46 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
-{% block body %}
-    <h1>Produit</h1>
+{% block content %}
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ produit.id }}</td>
-            </tr>
-            <tr>
-                <th>Imageprod</th>
-                <td>{{ produit.imageProd }}</td>
-            </tr>
-            <tr>
-                <th>Nomprod</th>
-                <td>{{ produit.nomProd }}</td>
-            </tr>
-            <tr>
-                <th>Prixprod</th>
-                <td>{{ produit.prixProd }}</td>
-            </tr>
-            <tr>
-                <th>Descriptionprod</th>
-                <td>{{ produit.descriptionProd }}</td>
-            </tr>
-            <tr>
-                <th>Quantiteprod</th>
-                <td>{{ produit.quantiteProd }}</td>
-            </tr>
-        </tbody>
-    </table>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title" style="font-size: 20px;"> Produit numéro {{ produit.id }} </strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="vue-lists">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul style="font-size: 16px;">
+                                        <li>
+                                            <strong> Nom du produit : </strong> {{ produit.nomProd }}
+                                        </li>
+                                        <li>  <strong> Prix du produit : </strong> {{ produit.prixProd }}</li>
+                                        <li>  <strong> Description du produit : </strong> {{ produit.descriptionProd }}</li>
+                                        <li>  <strong> Quantité du produit : </strong> {{ produit.quantiteProd }}
+                                        </li>
+                                        <li>  <strong> Catégorie du produit : </strong> {{ produit.categorie.nomCat }}</li>
+                                    </ul>
+                                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('produit_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('produit_edit', { 'id': produit.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                            </div>
+                        </div>
+
+<table>
+<tr>
+ <td>          <a href="{{ path('produit_edit', { 'id': produit.id }) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</a>
+ </td>
+<td>
+    {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-danger btn-xs">
+            {{ form_end(delete_form) }}</td>
+</tr>
+</table>
+                    </div></div></div></div></div></div>
+    <div>
+        <a href="{{ path('produit_index') }}">Liste des produits</a>
+    </div>
 {% endblock %}

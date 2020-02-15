@@ -1,16 +1,76 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
-{% block body %}
-    <h1>Produit creation</h1>
+{% block content %}
 
+<div class="card-header">
+
+</div>
+<div class="card-header">
+    <strong> Ajouter un produit</strong> Détails
+</div>
+<div class="card-body card-block">
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('produit_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
+        <div class="row form-group">
+
+            <div class="col col-md-3"><label class=" form-control-label">Image du produit  </label></div>
+            <div class="col-12 col-md-9">{{ form_widget(form.file) }}<small class="form-text text-muted"></small></div>
+            <div class="col-12 col-md-9">
+            </div>
+        </div>
+
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Nom du produit  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(form.nomProd) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Prix du produit  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(form.prixProd) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Description du produit  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(form.descriptionProd) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Quantite du produit  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(form.quantiteProd) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Catégorie du produit  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(form.categorie) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm" >
+            <i class="fa fa-dot-circle-o"></i> Envoyer
+        </button>
+        <button type="reset" class="btn btn-danger btn-sm">
+            <i class="fa fa-ban"></i> Reset
+        </button>
+    </div>
+    {{ form_end(form) }}
+</div>
+            <button class="btn btn-link" type="button"></button>
+            <a href="{{ path('produit_index') }}">Liste des produits</a>
+
 {% endblock %}

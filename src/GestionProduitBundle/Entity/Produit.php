@@ -1,7 +1,7 @@
 <?php
 
 namespace GestionProduitBundle\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -62,8 +62,13 @@ class Produit
     private $categorie;
 
     /**
+     * @Assert\File(maxSize="6000000")
+     */
+    private $file;
+    /**
      * @return mixed
      */
+
     public function getCategorie()
     {
         return $this->categorie;
@@ -205,6 +210,41 @@ class Produit
     public function getQuantiteProd()
     {
         return $this->quantiteProd;
+    }
+    public function getWebPath()
+    {
+        return null===$this->imageProd ? null : $this->getUploadDir().'/'.$this->imageProd;
+    }
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+    protected function getUploadDir()
+    {
+        return 'images';
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    public function UploadProfilePicture()
+    {
+        $this->file->move($this->getUploadRootDir(),$this->file->getClientOriginalName());
+        $this->imageProd=$this->file->getClientOriginalName();
+        $this->file=null;
     }
 }
 

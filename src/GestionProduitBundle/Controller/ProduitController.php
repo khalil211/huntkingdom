@@ -2,6 +2,7 @@
 
 namespace GestionProduitBundle\Controller;
 
+use GestionProduitBundle\Entity\CategorieProduit;
 use GestionProduitBundle\Entity\Produit;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,6 +40,7 @@ class ProduitController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $produit->UploadProfilePicture();
             $em->persist($produit);
             $em->flush();
 
@@ -120,5 +122,25 @@ class ProduitController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function shopAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em2=$this->getDoctrine()->getManager();
+        $categories=$em2->getRepository('GestionProduitBundle:CategorieProduit')->findAll();
+        $produits = $em->getRepository('GestionProduitBundle:Produit')->findAll();
+
+        return $this->render('produit/shop.html.twig', array(
+            'produits' => $produits,
+            'categories'=>$categories,
+        ));
+    }
+
+    public function detailsAction(Produit $produit){
+
+        return $this->render('produit/details.html.twig', array(
+            'produit' => $produit,
+            ));
     }
 }

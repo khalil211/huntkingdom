@@ -1,0 +1,3 @@
+view_cart:
+    path:     /cart
+    defaults: { _controller: CommandeBundle:Front:viewCart }

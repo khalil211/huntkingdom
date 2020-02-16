@@ -50,46 +50,59 @@
                         <table class="cart-products-table">
                             <thead>
                             <tr>
-                                <th class="cart-product">Product</th>
-                                <th class="cart-price">Price</th>
-                                <th class="cart-quantity">Quantity</th>
+                                <th class="cart-product">Produit</th>
+                                <th class="cart-price">Prix</th>
+                                <th class="cart-quantity">Quantite</th>
                                 <th class="cart-total">Total</th>
-                                <th class="cart-edit">Edit</th>
+                                <th class="cart-edit"></th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            <tr>
-                                <td class="cart-product">
-                                    <div class="product-cart-img">
-                                        <a href="#"><img src="assets/images/shop/product-cart-img-1.jpg" alt="product-cart-img-1" /></a>
-                                    </div>
-                                    <!-- .product-cart-img -->
-                                    <div class="product-cart-title">
-                                        <h4><a href="#">Product Title Here</a></h4>
-                                    </div>
-                                    <!-- .product-cart-title -->
-                                </td>
-                                <td class="cart-price">$250.00</td>
-                                <td class="cart-quantity">
-                                    <div class="product-counter-option">
-                                        <div class="product-count">
-                                            <input type="submit" name="remove" value="-">
-                                            <input type="text" name="quantity" value="2">
-                                            <input type="submit" name="add" value="+">
+                            {% for pc in pcs %}
+                                <tr id="pc{{ pc.id }}">
+                                    <td class="cart-product">
+                                        <div class="product-cart-img">
+                                            <a href="{{ path('produit_details',{'id':pc.produit.id}) }}"><img src="{{ asset('image_shop/') }}{{ pc.produit.imageProd }}" alt="product-cart-img-1" /></a>
                                         </div>
-                                        <!-- .product-count -->
-                                    </div>
-                                </td>
-                                <td class="cart-total">$500.00</td>
-                                <td class="cart-edit">
-                                    <a href="#"><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
+                                        <!-- .product-cart-img -->
+                                        <div class="product-cart-title">
+                                            <h4><a href="{{ path('produit_details',{'id':pc.produit.id}) }}">{{ pc.produit.nomProd }}</a></h4>
+                                        </div>
+                                        <!-- .product-cart-title -->
+                                    </td>
+                                    <td class="cart-price">{{ pc.produit.prixProd }}</td>
+                                    <td class="cart-quantity">
+                                        <div class="product-counter-option">
+                                            <div class="product-count">
+                                                <input id="removep{{ pc.id }}" type="submit" name="remove" value="-">
+                                                <input id="quantityp{{ pc.id }}" type="text" name="quantity" value="{{ pc.quantite }}">
+                                                <input id="addp{{ pc.id }}" type="submit" name="add" value="+">
+                                            </div>
+                                            <!-- .product-count -->
+                                        </div>
+                                    </td>
+                                    <td class="cart-total" id="totalProd{{ pc.id }}">{{ pc.produit.prixProd * pc.quantite }}</td>
+                                    <td class="cart-edit">
+                                        <a href="#" id="deletep{{ pc.id }}"><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
                     <!-- .table-box -->
+                    <br>
+                    <div class="chipping-box">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h4>Total</h4>
+                                <ul class="total-cart">
+                                    <li>Total Panier<span id="totalPanier">{{ total }}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="cart-checked-box">
                         <div class="cart-coupon-code">
@@ -98,61 +111,9 @@
                         </div>
                         <!-- .coupon-code -->
                         <div class="cart-update">
-                            <button type="submit">update cart</button>
-                            <button type="submit">proceed checkout</button>
+                            <a href="{{ path('passer_commande') }}"><button type="submit">Passer commande</button></a>
                         </div>
                         <!-- .coupon-code -->
-                    </div>
-                    <!-- .cart-checked-box -->
-
-                    <div class="chipping-box">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                <h4>Calculate Shipping</h4>
-                                <form action="#" method="POST" class="shipping-form">
-                                    <div class="country-select">
-                                        <select>
-                                            <option value="uk">United Kingdom (UK)</option>
-                                            <option value="bd">Bangladesh</option>
-                                            <option value="India">India</option>
-                                            <option value="pakistan">Pakistan</option>
-                                        </select>
-                                        <span class="select-icon"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
-                                    </div>
-                                    <!-- .country-select -->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="sr-only" for="country">State / Country</label>
-                                                <input type="text" class="form-control" name="countryName" id="country" placeholder="State / Country">
-                                            </div>
-                                        </div>
-                                        <!-- .col-md-6 -->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="sr-only" for="postcode">Postcode / ZIP</label>
-                                                <input type="text" class="form-control" name="postCode" id="postcode" placeholder="Postcode / ZIP">
-                                            </div>
-                                        </div>
-                                        <!-- .col-md-6 -->
-                                    </div>
-                                    <!-- .row -->
-                                    <button type="submit" class="btn btn-default">Update Total</button>
-                                </form>
-                            </div>
-                            <!-- .col-md-6 -->
-                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                <h4>Cart Totals</h4>
-                                <ul class="total-cart">
-                                    <li>Cart Subtotal <span>$ 0.00</span></li>
-                                    <li>Shipping and Handling <span>Free Shipping</span></li>
-                                    <li>Order Total <span>$ 2940.00</span></li>
-
-                                </ul>
-                            </div>
-                            <!-- .col-md-6 -->
-                        </div>
-                        <!-- .row -->
                     </div>
                     <!-- .chipping-box -->
                 </div>
@@ -179,4 +140,61 @@
     <script type="text/javascript" src="{{ asset('front/assets/js/custom.map.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('front/assets/js/custom.js') }}"></script>
+
+    <script type="text/javascript">
+        $(function(){
+            {% for pc in pcs %}
+                $('#deletep{{ pc.id }}').click(function(e){
+                    $.ajax({
+                        url: '{{ path('delete_from_cart', {'id': pc.id}) }}',
+                        success: function(data){
+                            $('#pc{{ pc.id }}').remove();
+                            $('#miniCart').html(data);
+                            $('#totalPanier').text(parseFloat($('#totalPanier').text())-({{ pc.quantite }}*{{ pc.produit.prixProd }}));
+                        },
+                        error: function(){
+                            alert('erreur delete from cart ajax');
+                        }
+                    });
+                    e.preventDefault();
+                });
+                $('#removep{{ pc.id }}').click(function(){
+                    let nb=parseInt($('#quantityp{{ pc.id }}').val());
+                    let total=parseFloat($('#totalPanier').text());
+                    if (nb>1)
+                    {
+                        nb--;
+                        $.ajax({
+                            url: '{{ path('edit_cart', {'id': pc.id,'nb': -1}) }}',
+                            success: function(data){
+                                $('#quantityp{{ pc.id }}').val(parseInt($('#quantityp{{ pc.id }}').val())-1);
+                                $('#totalPanier').text(total-{{ pc.produit.prixProd }});
+                                $('#totalProd{{ pc.id }}').text(parseFloat($('#totalProd{{ pc.id }}').text())-({{ pc.produit.prixProd }}));
+                                $('#miniCart').html(data);
+                            },
+                            error: function(){
+                                alert('erreur decrementation ajax');
+                            }
+                        });
+                    }
+                });
+            $('#addp{{ pc.id }}').click(function(){
+                let nb=parseInt($('#quantityp{{ pc.id }}').val());
+                let total=parseFloat($('#totalPanier').text());
+                $.ajax({
+                    url: '{{ path('edit_cart', {'id': pc.id,'nb': 1}) }}',
+                    success: function(data){
+                        $('#quantityp{{ pc.id }}').val(parseInt($('#quantityp{{ pc.id }}').val())+1);
+                        $('#totalPanier').text(total+{{ pc.produit.prixProd }});
+                        $('#totalProd{{ pc.id }}').text(parseFloat($('#totalProd{{ pc.id }}').text())+({{ pc.produit.prixProd }}));
+                        $('#miniCart').html(data);
+                    },
+                    error: function(){
+                        alert('erreur decrementation ajax');
+                    }
+                });
+            });
+            {% endfor %}
+        });
+    </script>
 {% endblock %}

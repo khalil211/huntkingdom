@@ -407,7 +407,7 @@
     <script type="text/javascript">
         $(function(){
             {% for produit in produits %}
-            $('#addCart{{ produit.id }}').click(function(){
+            $('#addCart{{ produit.id }}').click(function(e){
                 {% if app.user %}
                 $.ajax({
                     url: '{{ path('add_to_cart', {'id': produit.id}) }}',
@@ -421,6 +421,7 @@
                 {% else %}
                 window.location.replace('{{ path('fos_user_security_login') }}');
                 {% endif %}
+                e.preventDefault();
             });
             {% endfor %}
         });

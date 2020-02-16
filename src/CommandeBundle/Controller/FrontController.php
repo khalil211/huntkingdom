@@ -11,9 +11,19 @@ class FrontController extends Controller
 {
     public function viewCartAction()
     {
-        if ($this->getUser()==null)
+        $user=$this->getUser();
+        if ($user==null)
             return $this->redirect('login');
-        return $this->render('@Commande/Front/cart.html.twig');
+        $total=0;
+        $em=$this->getDoctrine()->getManager();
+        $panier=$em->getRepository(Commande::class)->findBy(array('user' => $user, 'etat' => 0));
+        $pcs=$em->getRepository(ProduitCommande::class)->findByCommande($panier);
+        foreach ($pcs as $pc)
+            $total+=$pc->getQuantite()*$pc->getProduit()->getPrixProd();
+        return $this->render('@Commande/Front/cart.html.twig', array(
+            'total'=>$total,
+            'pcs'=>$pcs
+        ));
     }
 
     public function viewMiniCartAction()
@@ -70,6 +80,42 @@ class FrontController extends Controller
         $pc->setProduit($produit);
         $em->persist($pc);
         $em->flush();
+        return $this->viewMiniCartAction();
+    }
+
+    public function deleteFromCartAction($id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($em->getRepository(ProduitCommande::class)->find($id));
+        $em->flush();
+        return $this->viewMiniCartAction();
+    }
+
+    public function passerCommandeAction()
+    {
+        $user=$this->getUser();
+        if ($user==null)
+            return $this->redirect('login');
+        $em=$this->getDoctrine()->getManager();
+        $commande=$em->getRepository(Commande::class)->findOneBy(array('user'=>$user, 'etat'=>0));
+        $commande->setEtat(1);
+        $commande->setDate(new \DateTime());
+        $panier=new Commande();
+        $panier->setEtat(0);
+        $panier->setUser($user);
+        $em->persist($panier);
+        $em->flush();
+        return $this->redirectToRoute('view_cart');
+    }
+
+    public function editCartAction($id,$nb)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $pc=$em->getRepository(ProduitCommande::class)->find($id);
+        if(($pc->getQuantite()+$nb)>=1)
+            $pc->setQuantite($pc->getQuantite()+$nb);
+            $em->flush();
+
         return $this->viewMiniCartAction();
     }
 }

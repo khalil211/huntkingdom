@@ -126,17 +126,24 @@ class ProduitController extends Controller
         ;
     }
 
-    public function shopAction()
+    public function shopAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $em2=$this->getDoctrine()->getManager();
         $categories=$em2->getRepository('GestionProduitBundle:CategorieProduit')->findAll();
-        $produits = $em->getRepository('GestionProduitBundle:Produit')->findAll();
-
+         $listeproduits = $em->getRepository('GestionProduitBundle:Produit')->findAll();
+         $produits  = $this->get('knp_paginator')->paginate(
+        $listeproduits,
+        $request->query->get('page', 1)/*le numéro de la page à afficher*/,
+        5/*nbre d'éléments par page*/
+    );
         return $this->render('produit/shop.html.twig', array(
             'produits' => $produits,
             'categories'=>$categories,
         ));
+
+
+
     }
 
     public function detailsAction(Produit $produit){

@@ -403,19 +403,26 @@
     <script type="text/javascript" src="{{ asset('front/assets/js/custom.map.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('front/assets/js/custom.js') }}"></script>
+
     <script type="text/javascript">
-        {% for produit in produits %}
-            $(function(){
-                console.log('test jquery');
-                $('#addCart').click(function(){
-                    $.ajax({
-                        url: {{ path('add_to_cart', {'id': produit.id}) }},
-                        success: function(data){
-                            $('#miniCart').html(data);
-                        }
-                    });
+        $(function(){
+            {% for produit in produits %}
+            $('#addCart{{ produit.id }}').click(function(){
+                {% if app.user %}
+                $.ajax({
+                    url: '{{ path('add_to_cart', {'id': produit.id}) }}',
+                    success: function(data){
+                        $('#miniCart').html(data);
+                    },
+                    error: function(){
+                        alert('erreur ajout produit panier');
+                    }
                 });
+                {% else %}
+                window.location.replace('{{ path('fos_user_security_login') }}');
+                {% endif %}
             });
-        {% endfor %}
+            {% endfor %}
+        });
     </script>
 {% endblock %}

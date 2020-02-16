@@ -1505,19 +1505,19 @@
     <script type="text/javascript" src="{{ asset('front/assets/js/custom.js') }}"></script>
 
 {% endblock %}
-    <script type="text/javascript">
-        $(function(){
-            $.ajax({
-                url: '{{ path('view_mini_cart') }}',
-                success: function(data){
-                    $('#miniCart').html(data);
-                },
-                error: function(){
-                    alert('erreur ajax');
-                }
-            });
-        });
-    </script>
+
+<script type="text/javascript">
+    $.ajax({
+        url: '{{ path('view_mini_cart') }}',
+        success: function(data){
+            $('#miniCart').html(data);
+        },
+        error: function(){
+            alert('erreur affichage mini cart');
+        }
+    });
+</script>
+
 </body>
 
 

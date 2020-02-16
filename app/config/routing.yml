@@ -1,23 +1,19 @@
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
-
-commande:
-    resource: "@CommandeBundle/Resources/config/routing.yml"
+blog:
+    resource: "@BlogBundle/Resources/config/routing.yml"
     prefix:   /
 
 gestion_produit:
     resource: "@GestionProduitBundle/Resources/config/routing.yml"
     prefix:   /
-
+commande:
+    resource: "@CommandeBundle/Resources/config/routing.yml"
+    prefix:   /
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     prefix:   /
-
-index:
-    path:     /
-    defaults: { _controller: AppBundle:Default:index }
-
 admin:
     path:     /admin
     defaults: { _controller: AppBundle:Default:indexAdmin }

@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new UserBundle\UserBundle(),
             new GestionProduitBundle\GestionProduitBundle(),
+            new BlogBundle\BlogBundle(),
             new CommandeBundle\CommandeBundle(),
         ];
 

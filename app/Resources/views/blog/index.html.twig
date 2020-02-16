@@ -1,0 +1,67 @@
+
+
+{% extends 'baseAdmin.html.twig' %}
+
+{% block content %}
+
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title"> Blog List </strong>
+                        </div>
+
+                        <div class="card-body">
+                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                <a href="{{ path('blog_new') }}">Ajouter un nouveau produit</a>
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Titre</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Attachment</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for blog in blogs %}
+                                    <tr>
+                                        <td><a href="{{ path('blog_show', { 'id': blog.id }) }}" style="width:50px;height: 50px;">{{ blog.id }}</a></td>
+                                        <td>{{ blog.titre }}</td>
+                                        <td>{{ blog.description }}</td>
+                                        <td>{% if blog.date %}{{ blog.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td>{{ blog.type }}</td>
+                                        <td> <img src="{{ asset('blog/') }}{{ blog.attachment }} "></td>
+                                        <td>
+                                            <a href="{{ path('blog_show', { 'id': blog.id }) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                            <a href="{{ path('blog_edit', { 'id': blog.id }) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a class="btn btn-danger"  role="button" href="{{ path('blog_delete',{'id':blog.id}) }}">Suppriner</a>
+                                        </td>
+
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div><!-- .animated -->
+    </div><!-- .content -->
+    <ul>
+        <li>
+
+        </li>
+    </ul>
+
+
+
+{% endblock %}
+

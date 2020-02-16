@@ -216,6 +216,35 @@
                                         </ul>
                                     </li>
                                     <li><a href="contact.html">contacts</a></li>
+
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <li>
+                                        <a>{{ app.user.username }}</a>
+                                    </li>
+                                    {% endif %}
+<li>
+
+                                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                            <a href="{{ path('fos_user_security_logout') }}">
+                                                {{ 'Se deconnecter'|trans({}, 'FOSUserBundle') }}
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ path('fos_user_security_login') }}">{{ 'Se connecter'|trans({}, 'FOSUserBundle') }}</a>
+                                        {% endif %}
+
+</li>
+
+                                    <li>
+                                    {% if app.request.hasPreviousSession %}
+                                        {% for type, messages in app.session.flashbag.all() %}
+                                            {% for message in messages %}
+                                                <div class="flash-{{ type }}">
+                                                    {{ message }}
+                                                </div>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    {% endif %}
+</li>
                                 </ul>
                                 <div class="menu-right-option pull-right">
                                     <div class="cart-option" id="miniCart">

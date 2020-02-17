@@ -33,3 +33,7 @@ edit_commande:
 delete_commande:
     path:     /commande/delete/{id}
     defaults: { _controller: CommandeBundle:Back:deleteCommande }
+
+stats_commande:
+    path:     /commande/stats
+    defaults: { _controller: CommandeBundle:Back:statsCommande }

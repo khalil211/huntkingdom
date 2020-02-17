@@ -27,47 +27,45 @@
             </tr>
             </thead>
             <tbody>
-            {% for commande in commandes %}
-                <tr>
-                    <td>{{ commande.id }}</td>
-                    <td>{{ commande.user.username }}</td>
-                    <td>
-                        {% set nb = 0 %}
-                        {% for pc in pcs[commande.id] %}
-                            {% set nb = nb+pc.quantite %}
-                        {% endfor %}
-                        {{ nb }}
-                    </td>
-                    <td>
-                        {% set total = 0 %}
-                        {% for pc in pcs[commande.id] %}
-                            {% set total = total+(pc.quantite*pc.produit.prixProd) %}
-                        {% endfor %}
-                        {{ total }}
-                    </td>
-                    <td>{{ commande.date|date() }}</td>
-                    <td>
-                        {% if commande.etat == 1 %}
-                            En attente
-                        {% elseif commande.etat == 2 %}
-                            Confirmée
-                        {% else %}
-                            Annulée
-                        {% endif %}
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCommande{{ commande.id }}">
-                            <i class="fa fa-eye"></i>
-                        </button>
-                        {% if commande.etat == 1 %}
-                            <a href="{{ path('edit_commande', {'id': commande.id,'etat': 2}) }}"><button type="button" class="btn btn-success"><i class="fa fa-check"></i></button></a>
-                            <a href="{{ path('edit_commande', {'id': commande.id,'etat': 3}) }}"><button type="button" class="btn btn-danger"><i class="fa fa-times"></i></button></a>
-                        {% endif %}
-                        <!-- TO DO: pdf -->
-                        <a href="{{ path('delete_commande', {'id': commande.id}) }}"><button type="button" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash-o"></i></button></a>
-                    </td>
-                </tr>
-            {% endfor %}
+                {% for commande in commandes %}
+                    <tr>
+                        <td>{{ commande.id }}</td>
+                        <td>{{ commande.user.username }}</td>
+                        <td>
+                            {% set nb = 0 %}
+                            {% for pc in pcs[commande.id] %}
+                                {% set nb = nb+pc.quantite %}
+                            {% endfor %}
+                            {{ nb }}
+                        </td>
+                        <td>
+                            {% set total = 0 %}
+                            {% for pc in pcs[commande.id] %}
+                                {% set total = total+(pc.quantite*pc.produit.prixProd) %}
+                            {% endfor %}
+                            {{ total }}
+                        </td>
+                        <td>{{ commande.date|date() }}</td>
+                        <td>
+                            {% if commande.etat == 1 %}
+                                En attente
+                            {% elseif commande.etat == 2 %}
+                                Confirmée
+                            {% else %}
+                                Annulée
+                            {% endif %}
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCommande{{ commande.id }}"><i class="fa fa-info-circle"></i></button>
+                            {% if commande.etat == 1 %}
+                                <a href="{{ path('edit_commande', {'id': commande.id,'etat': 2}) }}"><button type="button" class="btn btn-success"><i class="fa fa-check"></i></button></a>
+                                <a href="{{ path('edit_commande', {'id': commande.id,'etat': 3}) }}"><button type="button" class="btn btn-danger"><i class="fa fa-times"></i></button></a>
+                            {% endif %}
+                            <!-- TO DO: pdf -->
+                            <a href="{{ path('delete_commande', {'id': commande.id}) }}"><button type="button" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash-o"></i></button></a>
+                        </td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
@@ -113,7 +111,7 @@
                                 <tbody>
                                     {% for pc in pcs[commande.id] %}
                                         <tr>
-                                            <th scope="row">{{ pc.id }}</th>
+                                            <th scope="row">{{ pc.produit.id }}</th>
                                             <td><a target="_blank" href="{{ path('produit_show', {'id': pc.produit.id}) }}">{{ pc.produit.nomProd }}</a></td>
                                             <td>{{ pc.produit.prixProd }}</td>
                                             <td>{{ pc.quantite }}</td>

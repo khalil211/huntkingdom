@@ -53,4 +53,9 @@ class BackController extends Controller
         $em->flush();
         return $this->redirectToRoute('list_commande');
     }
+
+    public function statsCommandeAction()
+    {
+        return $this->render('@Commande/back/stats.html.twig');
+    }
 }

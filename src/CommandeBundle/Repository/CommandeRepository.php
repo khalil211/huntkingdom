@@ -20,4 +20,12 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
         return count($panier)!=0;
     }
+
+    public function getCommandes()
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.etat != 0')
+            ->getQuery()
+            ->getResult();
+    }
 }

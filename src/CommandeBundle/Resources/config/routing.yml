@@ -21,3 +21,15 @@ edit_cart:
 passer_commande:
     path:     /cart/order
     defaults: { _controller: CommandeBundle:Front:passerCommande }
+
+list_commande:
+    path:     /commande
+    defaults: { _controller: CommandeBundle:Back:listCommande }
+
+edit_commande:
+    path:     /commande/edit/{id}/{etat}
+    defaults: { _controller: CommandeBundle:Back:editCommande }
+
+delete_commande:
+    path:     /commande/delete/{id}
+    defaults: { _controller: CommandeBundle:Back:deleteCommande }

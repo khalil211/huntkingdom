@@ -76,7 +76,7 @@
                                         <div class="product-counter-option">
                                             <div class="product-count">
                                                 <input id="removep{{ pc.id }}" type="submit" name="remove" value="-">
-                                                <input id="quantityp{{ pc.id }}" type="text" name="quantity" value="{{ pc.quantite }}">
+                                                <input id="quantityp{{ pc.id }}" type="text" name="quantity" value="{{ pc.quantite }}" disabled>
                                                 <input id="addp{{ pc.id }}" type="submit" name="add" value="+">
                                             </div>
                                             <!-- .product-count -->
@@ -148,9 +148,10 @@
                     $.ajax({
                         url: '{{ path('delete_from_cart', {'id': pc.id}) }}',
                         success: function(data){
+                            $('#totalPanier').text(parseFloat($('#totalPanier').text())-(parseInt($('#quantityp{{ pc.id }}').val())*{{ pc.produit.prixProd }}));
                             $('#pc{{ pc.id }}').remove();
                             $('#miniCart').html(data);
-                            $('#totalPanier').text(parseFloat($('#totalPanier').text())-({{ pc.quantite }}*{{ pc.produit.prixProd }}));
+                            let total=parseFloat($('#totalPanier').text());
                         },
                         error: function(){
                             alert('erreur delete from cart ajax');

@@ -135,7 +135,7 @@ class BlogController extends Controller
 
         ));
     }
-    
+
     public function detailsAction(Request $request,Blog $blog){
 
         $user=$this->getUser();

@@ -17,12 +17,10 @@ class BlogType extends AbstractType
     {
         $builder->add('titre')
                 ->add('description')
-                ->add('date')
                 ->add('type',ChoiceType::class, array(
                 'choices' => array(
                     'Image' => 'Image',
                     'Video' => 'Video',
-                    'Audio' => 'Audio',
                 )))
             ->add('file', FileType::class, array('label' => 'Image(JPG)', 'data_class'=>null));
     }/**

@@ -36,7 +36,14 @@
                                         <td>{{ blog.description }}</td>
                                         <td>{% if blog.date %}{{ blog.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                                         <td>{{ blog.type }}</td>
-                                        <td> <img src="{{ asset('blog/') }}{{ blog.attachment }} "></td>
+                                        <td> {%if blog.type=="Image"  %}
+                                                <a href="#"><img src="{{ asset('blog/') }}{{ blog.attachment }}"  /></a>
+                                            {% endif %}
+                                            {%if blog.type=="Video"  %}
+                                                <video width="320" height="240" >
+                                                    <source src="{{ asset('blog/') }}{{ blog.attachment }}" type="video/mp4">
+                                                </video>
+                                            {% endif %} </td>
                                         <td>
                                             <a href="{{ path('blog_show', { 'id': blog.id }) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                                             <a href="{{ path('blog_edit', { 'id': blog.id }) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>

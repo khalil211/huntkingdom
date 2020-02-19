@@ -44,6 +44,7 @@ class BlogController extends Controller
         $blog = new Blog();
         $form = $this->createForm('BlogBundle\Form\BlogType', $blog);
         $form->handleRequest($request);
+        $blog->setDate( new \DateTime());
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -169,12 +170,59 @@ class BlogController extends Controller
         }
 
 
+        $reportForm = $this->createForm('BlogBundle\Form\CommentReportForm');
+        $reportForm->handleRequest($request);
+
         return $this->render('blog/details.html.twig', array(
             'form' => $form->createView(),
             'comment' => $add_comment,
             'blog' => $blog,
-            'comments'=>$comments,
+            'comments'=> $comments,
+            /*
+             * give the report form a different name in twig
+             */
+            'report_form' => $reportForm->createView(),
         ));
+
+
+    }
+    public function reportAction(Request $request, $id)
+    {
+        $reportForm = $this->createForm('BlogBundle\Form\CommentReportForm');
+        $reportForm->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $comment = $em->getRepository(CommentaireBlog::class)->find($id);
+        $blog=$comment->getBlog();
+        $email=$comment->getUser()->getUsername();
+
+        /**
+         * @var array|string[message, reason]
+         */
+        $reportData = $reportForm->getData();
+        /*
+        array( 'reason' => 'value', 'message' => 'value' )
+         */
+
+
+        dump($reportData);
+
+                $message = (new \Swift_Message('Comment Report'))
+                ->setFrom('noreplyhuntkingdom@gmail.com')
+                ->setTo($comment->getUser()->getEmail())
+                ->setBody(
+                    $this->renderView('blog/email.html.twig', array(
+                        'commande'=>$comment,
+                        'blog'=>$blog,
+                        'reportdata'=>$reportData,
+                        'email'=>$email,
+
+                    )),
+                    'text/html'
+                );
+
+            $this->get('mailer')->send($message);
+            return $this->redirectToRoute('blog_details', array('id' => $blog->getId()));
+
 
     }
 

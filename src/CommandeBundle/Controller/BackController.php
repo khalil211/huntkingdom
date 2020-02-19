@@ -5,6 +5,7 @@ namespace CommandeBundle\Controller;
 use CommandeBundle\Entity\Commande;
 use CommandeBundle\Entity\ProduitCommande;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class BackController extends Controller
 {
@@ -13,9 +14,7 @@ class BackController extends Controller
         $commandes=$this->getDoctrine()->getRepository(Commande::class)->getCommandes();
         $pcs=Array();
         foreach ($commandes as $commande)
-        {
             $pcs[$commande->getId()]=$this->getDoctrine()->getRepository(ProduitCommande::class)->findByCommande($commande);
-        }
         return $this->render('@Commande/back/list.html.twig', array('commandes'=>$commandes, 'pcs'=>$pcs));
     }
 
@@ -32,7 +31,19 @@ class BackController extends Controller
                 foreach ($pcs as $pc)
                 {
                     if ($pc->getProduit()->getQuantiteProd()-$pc->getQuantite()>=0)
+                    {
+                        $pcs=$em->getRepository(ProduitCommande::class)->findByCommande($commande);
+                        $message = (new \Swift_Message('Commande passée'))
+                            ->setFrom('noreplyhuntkingdom@gmail.com')
+                            ->setTo($commande->getUser()->getEmail())
+                            ->setBody(
+                                $this->renderView('@Commande/back/facture.html.twig', array('commande'=>$commande, 'pcs'=>$pcs)),
+                                'text/html'
+                            );
+
+                        $this->get('mailer')->send($message);
                         $pc->getProduit()->setQuantiteProd($pc->getProduit()->getQuantiteProd()-$pc->getQuantite());
+                    }
                     else
                         return $this->redirectToRoute('list_commande');
                 }
@@ -57,5 +68,22 @@ class BackController extends Controller
     public function statsCommandeAction()
     {
         return $this->render('@Commande/back/stats.html.twig');
+    }
+
+    public function pdfCommandeAction($id)
+    {
+        $commande=$this->getDoctrine()->getRepository(Commande::class)->find($id);
+        $pcs=$this->getDoctrine()->getRepository(ProduitCommande::class)->findByCommande($commande);
+        $snappy = $this->get('knp_snappy.pdf');
+        $html = $this->renderView('@Commande/back/facture.html.twig', array('commande'=>$commande, 'pcs'=>$pcs));
+        $filename = 'facture'.$commande->getId().'.pdf';
+        return new Response(
+            $snappy->getOutputFromHtml($html),
+            200,
+            array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
+            )
+        );
     }
 }

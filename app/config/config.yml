@@ -63,11 +63,11 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: '%mailer_transport%'
+    transport: 'gmail'
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
-    spool: { type: memory }
+    encryption: ssl
 
 sensio_framework_extra:
    router:
@@ -81,5 +81,16 @@ fos_user:
     service:
         mailer: fos_user.mailer.twig_swift
     from_email:
-        address: "badiaa.bouhdid@esprit.tn"
-        sender_name: "badi3a"
+        address: "noreplyhuntkingdom@gmail.com"
+        sender_name: "HuntKingdom"
+
+# KNP Paginator
+knp_paginator:
+    template:
+        pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig'
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:      "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        options:    []

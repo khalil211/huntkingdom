@@ -35,4 +35,14 @@ produit_cat:
 produit_details:
     path:      /{id}/details
     defaults: { _controller: "GestionProduitBundle:Produit:details" }
-    methods:  GET
+
+    methods:  [GET, POST]
+produit_listp:
+    path:     /listp
+    defaults: { _controller: "GestionProduitBundle:Produit:listp" }
+
+produit_comment:
+    path:      /comment
+    defaults: { _controller: "GestionProduitBundle:Produit:comment" }
+
+

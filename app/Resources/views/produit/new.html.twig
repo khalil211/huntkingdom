@@ -10,10 +10,7 @@
 </div>
 <div class="card-body card-block">
     {{ form_start(form) }}
-
-
         <div class="row form-group">
-
             <div class="col col-md-3"><label class=" form-control-label">Image du produit  </label></div>
             <div class="col-12 col-md-9">{{ form_widget(form.file) }}<small class="form-text text-muted"></small></div>
             <div class="col-12 col-md-9">
@@ -23,7 +20,8 @@
     <div class="row form-group">
 
         <div class="col col-md-3"><label class=" form-control-label">Nom du produit  </label></div>
-        <div class="col-12 col-md-9">{{ form_widget(form.nomProd) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">{{ form_widget(form.nomProd) }}
+            <small class="form-text text-muted"></small></div>
         <div class="col-12 col-md-9">
         </div>
     </div>
@@ -72,5 +70,4 @@
 </div>
             <button class="btn btn-link" type="button"></button>
             <a href="{{ path('produit_index') }}">Liste des produits</a>
-
 {% endblock %}

@@ -76,13 +76,16 @@
                             <div class="shop-sidebar">
                                 <div class="widget">
                                     <div class="shop-widget-content">
-                                        <form action="#" method="POST" class="sidebar-form">
+                                                <form action="{{ path('produit_shop') }}" method="get">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="search" name="search" placeholder="Search...">
+                                                <input type="text" class="form-control" id="filter" name="filter">
                                                 <i class="fa fa-search" aria-hidden="true"></i>
+                                                <button type="submit" class="filter-btn"> Rechercher</button>
                                             </div>
-                                        </form>
+                                                </form>
+
                                     </div>
+
                                     <!-- .shop-widget-content -->
                                 </div>
 

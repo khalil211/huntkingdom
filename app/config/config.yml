@@ -84,13 +84,4 @@ fos_user:
         address: "noreplyhuntkingdom@gmail.com"
         sender_name: "HuntKingdom"
 
-# KNP Paginator
-knp_paginator:
-    template:
-        pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig'
 
-knp_snappy:
-    pdf:
-        enabled:    true
-        binary:      "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
-        options:    []

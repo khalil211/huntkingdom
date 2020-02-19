@@ -3,8 +3,15 @@
 namespace BlogBundle\Controller;
 
 use BlogBundle\Entity\Blog;
+use BlogBundle\Entity\CommentaireBlog;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
+
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+
 use http\Env\Response;
 
 /**
@@ -101,11 +108,76 @@ class BlogController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $blog = $em->getRepository(Blog::class)->find($id);
+
         $em->remove($blog);
         $em->flush();
         return $this->redirectToRoute('blog_index');
 
     }
+    public function deletecommentAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $comment = $em->getRepository(CommentaireBlog::class)->find($id);
+        $blog=$comment->getBlog()->getId();
+        $em->remove($comment);
+        $em->flush();
+        return $this->redirectToRoute('blog_details', array('id' => $blog));
+
+    }
+    public function viewblogAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $blogs = $em->getRepository('BlogBundle:Blog')->findAll();
+
+        return $this->render('blog/blog.html.twig', array(
+            'blogs' => $blogs,
+
+        ));
+    }
+    
+    public function detailsAction(Request $request,Blog $blog){
+
+        $user=$this->getUser();
+        if($user==null)
+            return $this->redirectToRoute('fos_user_security_login');
+        $add_comment = new CommentaireBlog();
+        $em = $this->getDoctrine()->getManager();
+
+        $comments = $em->getRepository(CommentaireBlog::class)->findByBlog($blog);
+        $add_comment->setBlog($blog);
+        $add_comment->setUser($user);
+        $add_comment->setDate( new \DateTime());
+
+        $form = $this->createFormBuilder($add_comment)
+
+            ->add('contenu', TextareaType::class)
+
+            ->getForm();
+
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $add_comment = $form->getData();
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($add_comment);
+                $em->flush();
+
+                return $this->redirectToRoute('blog_details', array('id' => $blog->getId()));
+            }
+        }
+
+
+        return $this->render('blog/details.html.twig', array(
+            'form' => $form->createView(),
+            'comment' => $add_comment,
+            'blog' => $blog,
+            'comments'=>$comments,
+        ));
+
+    }
+
 
     /**
      * Creates a form to delete a blog entity.

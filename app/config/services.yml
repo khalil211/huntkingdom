@@ -4,6 +4,11 @@ parameters:
     #parameter_name: value
 
 services:
+    twig.extension.date:
+        class: Twig_Extensions_Extension_Date
+        tags:
+            - { name: twig.extension }
+
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services

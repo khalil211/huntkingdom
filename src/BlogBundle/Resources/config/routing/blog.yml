@@ -21,4 +21,16 @@ blog_edit:
 blog_delete:
     path:     /delete/{id}
     defaults: { _controller: "BlogBundle:Blog:delete" }
+comment_delete:
+    path:     /deletecomment/{id}
+    defaults: { _controller: "BlogBundle:Blog:deletecomment" }
+
+blog_post:
+    path:     /viewblog
+    defaults: { _controller: "BlogBundle:Blog:viewblog" }
+blog_details:
+    path:      /{id}/details
+    defaults: { _controller: "BlogBundle:Blog:details" }
+    methods:  [GET, POST]
+
 

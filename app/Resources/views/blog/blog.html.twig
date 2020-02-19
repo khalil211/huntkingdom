@@ -1,32 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'baseFront.html.twig' %}
 
-
-<!-- Mirrored from demos.codexcoder.com/labartisan/html/GreenForest/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Feb 2020 01:07:20 GMT -->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog</title>
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
-    <!-- Plugin css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="assets/fonts/flaticon.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="assets/css/animate.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="assets/css/swiper.min.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="assets/css/lightcase.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="assets/css/jquery.nstSlider.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="assets/css/flexslider.css" media="all" />
-
-    <!-- own style css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="assets/css/rtl.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="assets/css/responsive.css" media="all" />
-
-</head>
-
-<body>
+{% block content %}
 <div class="box-style">
     <div class="color-btn">
         <a href="#"><i class="fa fa-cog fa-spin" aria-hidden="true"></i></a>
@@ -367,21 +341,22 @@
         <div class="row">
             <div class="blog-section blog-page">
                 <div class="row">
+                    {% for blog in blogs %}
                     <div class="col-md-4 col-sm-6 col-xs-6">
                         <div class="blog-items">
                             <div class="blog-img">
-                                <a href="blog_single.html"><img src="assets/images/home01/blog-img-1.jpg" alt="blog-img-1" class="img-responsive" /></a>
+                                <a href="blog_single.html"><img  src="{{ asset('blog/') }}{{ blog.attachment }}" alt="blog-img-1" class="img-responsive" /></a>
                             </div>
                             <!-- .blog-img -->
                             <div class="blog-content-box">
                                 <div class="blog-content">
-                                    <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                    <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
+                                    <h4><a href="{{ path('blog_details', { 'id': blog.id }) }}">{{ blog.titre }}</a></h4>
+                                    <p>{{ blog.description }}</p>
                                 </div>
                                 <!-- .blog-content -->
                                 <div class="meta-box">
                                     <ul class="meta-post">
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>{% if blog.date %}{{ blog.date|date('Y-m-d H:i:s') }}{% endif %}</li>
                                         <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
                                         <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
                                     </ul>
@@ -392,214 +367,23 @@
                         </div>
                         <!-- .blog-items -->
                     </div>
+                    {% endfor %}
                     <!-- .col-md-4 -->
-                    <div class="col-md-4 col-sm-6 col-xs-6">
-                        <div class="blog-items">
-                            <div class="blog-img">
-                                <a href="blog_single.html"><img src="assets/images/home01/blog-img-2.jpg" alt="blog-img-2" class="img-responsive" /></a>
-                            </div>
-                            <!-- .blog-img -->
-                            <div class="blog-content-box">
-                                <div class="blog-content">
-                                    <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                    <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                </div>
-                                <!-- .blog-content -->
-                                <div class="meta-box">
-                                    <ul class="meta-post">
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                        <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                    </ul>
-                                </div>
-                                <!-- .meta-box -->
-                            </div>
-                            <!-- .blog-content-box -->
-                        </div>
-                        <!-- .blog-items -->
-                    </div>
+
                     <!-- .col-md-4 -->
-                    <div class="col-md-4 col-sm-6 col-xs-6">
-                        <div class="blog-items">
-                            <div class="blog-img">
-                                <a href="blog_single.html"><img src="assets/images/home01/blog-img-3.jpg" alt="blog-img-3" class="img-responsive" /></a>
-                            </div>
-                            <!-- .blog-img -->
-                            <div class="blog-content-box">
-                                <div class="blog-content">
-                                    <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                    <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                </div>
-                                <!-- .blog-content -->
-                                <div class="meta-box">
-                                    <ul class="meta-post">
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                        <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                    </ul>
-                                </div>
-                                <!-- .meta-box -->
-                            </div>
-                            <!-- .blog-content-box -->
-                        </div>
-                        <!-- .blog-items -->
-                    </div>
+
                     <!-- .col-md-4 -->
-                    <div class="col-md-4 col-sm-6 col-xs-6">
-                        <div class="blog-items">
-                            <div class="blog-img">
-                                <a href="blog_single.html"><img src="assets/images/blog/blog-img-4.jpg" alt="blog-img-4" class="img-responsive" /></a>
-                            </div>
-                            <!-- .blog-img -->
-                            <div class="blog-content-box">
-                                <div class="blog-content">
-                                    <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                    <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                </div>
-                                <!-- .blog-content -->
-                                <div class="meta-box">
-                                    <ul class="meta-post">
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                        <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                    </ul>
-                                </div>
-                                <!-- .meta-box -->
-                            </div>
-                            <!-- .blog-content-box -->
-                        </div>
-                        <!-- .blog-items -->
-                    </div>
+
                     <!-- .col-md-4 -->
-                    <div class="col-md-4 col-sm-6 col-xs-6">
-                        <div class="blog-items">
-                            <div class="blog-img">
-                                <a href="blog_single.html"><img src="assets/images/blog/blog-img-5.jpg" alt="blog-img-5" class="img-responsive" /></a>
-                            </div>
-                            <!-- .blog-img -->
-                            <div class="blog-content-box">
-                                <div class="blog-content">
-                                    <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                    <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                </div>
-                                <!-- .blog-content -->
-                                <div class="meta-box">
-                                    <ul class="meta-post">
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                        <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                    </ul>
-                                </div>
-                                <!-- .meta-box -->
-                            </div>
-                            <!-- .blog-content-box -->
-                        </div>
-                        <!-- .blog-items -->
-                    </div>
+
                     <!-- .col-md-4 -->
-                    <div class="col-md-4 col-sm-6 col-xs-6">
-                        <div class="blog-items">
-                            <div class="blog-img">
-                                <a href="blog_single.html"><img src="assets/images/blog/blog-img-6.jpg" alt="blog-img-6" class="img-responsive" /></a>
-                            </div>
-                            <!-- .blog-img -->
-                            <div class="blog-content-box">
-                                <div class="blog-content">
-                                    <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                    <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                </div>
-                                <!-- .blog-content -->
-                                <div class="meta-box">
-                                    <ul class="meta-post">
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                        <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                    </ul>
-                                </div>
-                                <!-- .meta-box -->
-                            </div>
-                            <!-- .blog-content-box -->
-                        </div>
-                        <!-- .blog-items -->
-                    </div>
+
                     <!-- .col-md-4 -->
-                    <div class="col-md-4 col-sm-6 col-xs-6">
-                        <div class="blog-items">
-                            <div class="blog-img">
-                                <a href="blog_single.html"><img src="assets/images/blog/blog-img-7.jpg" alt="blog-img-7" class="img-responsive" /></a>
-                            </div>
-                            <!-- .blog-img -->
-                            <div class="blog-content-box">
-                                <div class="blog-content">
-                                    <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                    <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                </div>
-                                <!-- .blog-content -->
-                                <div class="meta-box">
-                                    <ul class="meta-post">
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                        <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                    </ul>
-                                </div>
-                                <!-- .meta-box -->
-                            </div>
-                            <!-- .blog-content-box -->
-                        </div>
-                        <!-- .blog-items -->
-                    </div>
+
                     <!-- .col-md-4 -->
-                    <div class="col-md-4 col-sm-6 col-xs-6">
-                        <div class="blog-items">
-                            <div class="blog-img">
-                                <a href="blog_single.html"><img src="assets/images/blog/blog-img-8.jpg" alt="blog-img-8" class="img-responsive" /></a>
-                            </div>
-                            <!-- .blog-img -->
-                            <div class="blog-content-box">
-                                <div class="blog-content">
-                                    <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                    <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                </div>
-                                <!-- .blog-content -->
-                                <div class="meta-box">
-                                    <ul class="meta-post">
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                        <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                    </ul>
-                                </div>
-                                <!-- .meta-box -->
-                            </div>
-                            <!-- .blog-content-box -->
-                        </div>
-                        <!-- .blog-items -->
-                    </div>
+
                     <!-- .col-md-4 -->
-                    <div class="col-md-4 col-sm-6 col-xs-6">
-                        <div class="blog-items">
-                            <div class="blog-img">
-                                <a href="blog_single.html"><img src="assets/images/blog/blog-img-9.jpg" alt="blog-img-9" class="img-responsive" /></a>
-                            </div>
-                            <!-- .blog-img -->
-                            <div class="blog-content-box">
-                                <div class="blog-content">
-                                    <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                    <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                </div>
-                                <!-- .blog-content -->
-                                <div class="meta-box">
-                                    <ul class="meta-post">
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                        <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                    </ul>
-                                </div>
-                                <!-- .meta-box -->
-                            </div>
-                            <!-- .blog-content-box -->
-                        </div>
-                        <!-- .blog-items -->
-                    </div>
+
                     <!-- .col-md-4 -->
                 </div>
                 <!-- .row -->
@@ -639,188 +423,7 @@
 
 <!-- Start Footer Section -->
 
-<footer>
-    <div class="bg-footer-top">
-        <div class="container">
-            <div class="row">
-                <div class="footer-top">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                            <div class="footer-widgets">
-                                <div class="widgets-title">
-                                    <h3>About us</h3>
-                                </div>
-                                <!-- .widgets-title -->
-                                <div class="widgets-content">
-                                    <p>Distily enable team driven services through extensive is a relatonships platforms with interactive content. Enthusiastically scale effective.</p>
-                                </div>
-                                <!-- .widgets-content -->
-                                <div class="address-box">
-                                    <ul class="address">
-                                        <li>
-                                            <i class="fa fa-home" aria-hidden="true"></i>
-                                            <span>New Chokoya Road, USA.</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <span>+8801 923 970 698.</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                            <span>Contact@admin.com</span>
 
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-globe" aria-hidden="true"></i>
-                                            <span>Emai@admin.com</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- .address -->
-                            </div>
-                            <!-- .footer-widgets -->
-                        </div>
-                        <!-- .col-md-3 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="footer-widgets">
-                                <div class="widgets-title">
-                                    <h3>Latest News</h3>
-                                </div>
-                                <!-- .widgets-title -->
-                                <ul class="latest-news">
-                                    <li>
-                                                <span class="thumbnail-img">
-												<img src="assets/images/home01/small-bog-img-1.jpg" alt="small-bog-img-1" class="img-responsive" />
-											</span>
-                                        <div class="thumbnail-content">
-                                            <h5><a href="#">Corem psum dolr them amectetuer adipiscing...</a></h5>
-                                            <span class="post-date">04 February 2017</span>
-                                        </div>
-                                        <!-- .thumbnail-content -->
-                                    </li>
-                                    <li>
-                                                <span class="thumbnail-img">
-												<img src="assets/images/home01/small-bog-img-2.jpg" alt="small-bog-img-2" class="img-responsive" />
-											</span>
-                                        <div class="thumbnail-content">
-                                            <h5><a href="#">Mirum est notare quam littera gothica nunc...</a></h5>
-                                            <span class="post-date">28 January 2017</span>
-                                        </div>
-                                        <!-- .thumbnail-content -->
-                                    </li>
-                                    <li>
-                                                <span class="thumbnail-img">
-												<img src="assets/images/home01/small-bog-img-3.jpg" alt="small-bog-img-3" class="img-responsive" />
-											</span>
-                                        <div class="thumbnail-content">
-                                            <h5><a href="#">Corem psum dolr them amectetuer adipiscing...</a></h5>
-                                            <span class="post-date">03 January 2017</span>
-                                        </div>
-                                        <!-- .thumbnail-content -->
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- .footer-widgets -->
-                        </div>
-                        <!-- .col-md-3 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="footer-widgets">
-                                <div class="widgets-title">
-                                    <h3>Twitter Widget</h3>
-                                </div>
-                                <!-- .widgets-title -->
-                                <ul class="twitter-widget">
-                                    <li>
-                                        <div class="twitter-icon"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-                                        <div class="twitter-content">
-                                            <h5>Raritas etiam processus a theme dynamicus sequitur <a href="#">http://admin@gmail.com</a></h5>
-                                            <span class="post-date">03 January 2017</span>
-                                        </div>
-                                        <!-- .twitter-content -->
-                                    </li>
-                                    <li>
-                                        <div class="twitter-icon"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-                                        <div class="twitter-content">
-                                            <h5>Duis autem vel eum <a href="#">#iriure</a>dolor in hendrerit in vulputate </h5>
-                                            <span class="post-date">8 months ago</span>
-                                        </div>
-                                        <!-- .twitter-content -->
-                                    </li>
-                                    <li>
-                                        <div class="twitter-icon"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-                                        <div class="twitter-content">
-                                            <h5><a href="#">@frankdoe</a> am liber tempor cum soluta nobis eleifend</h5>
-                                            <span class="post-date">03 January 2017</span>
-                                        </div>
-                                        <!-- .twitter-content -->
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- .footer-widgets -->
-                        </div>
-                        <!-- .col-md-3 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="footer-widgets">
-                                <div class="widgets-title">
-                                    <h3>Recent Photos</h3>
-                                </div>
-                                <!-- .widgets-title -->
-                                <div class="footer-instagram">
-                                    <a href="#"><img src="assets/images/home01/footer-instagram-img-1.jpg" alt="footer-instagram-img-1" /></a>
-                                    <a href="#"><img src="assets/images/home01/footer-instagram-img-2.jpg" alt="footer-instagram-img-2" /></a>
-                                    <a href="#"><img src="assets/images/home01/footer-instagram-img-3.jpg" alt="footer-instagram-img-3" /></a>
-                                    <a href="#"><img src="assets/images/home01/footer-instagram-img-4.jpg" alt="footer-instagram-img-4" /></a>
-                                    <a href="#"><img src="assets/images/home01/footer-instagram-img-5.jpg" alt="footer-instagram-img-5" /></a>
-                                    <a href="#"><img src="assets/images/home01/footer-instagram-img-6.jpg" alt="footer-instagram-img-6" /></a>
-                                    <a href="#"><img src="assets/images/home01/footer-instagram-img-7.jpg" alt="footer-instagram-img-7" /></a>
-                                    <a href="#"><img src="assets/images/home01/footer-instagram-img-8.jpg" alt="footer-instagram-img-8" /></a>
-                                    <a href="#"><img src="assets/images/home01/footer-instagram-img-9.jpg" alt="footer-instagram-img-9" /></a>
-                                </div>
-                                <!-- .footer-instagram -->
-                            </div>
-                            <!-- .footer-widgets -->
-                        </div>
-                        <!-- .col-md-3 -->
-                    </div>
-                    <!-- .row -->
-                </div>
-                <!-- .footer-top -->
-            </div>
-            <!-- .row -->
-        </div>
-        <!-- .container -->
-    </div>
-    <!-- .bg-footer-top -->
-
-    <div class="bg-footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="footer-bottom">
-                    <div class="copyright-txt">
-                        <p>&copy; 2017. Designer By <a href="#" title="Al-Amin(Web Designer)">LabArtisan</a></p>
-                    </div>
-                    <!-- .copyright-txt -->
-                    <div class="social-box">
-                        <ul class="social-icon-rounded">
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- .social-box -->
-
-                </div>
-                <!-- .footer-bottom -->
-            </div>
-            <!-- .row -->
-        </div>
-        <!-- .container -->
-    </div>
-    <!-- .bg-footer-bottom -->
-
-</footer>
 
 <!-- End Footer Section -->
 
@@ -850,25 +453,8 @@
 
 <!-- End Pre-Loader -->
 
-<script type="text/javascript" src="assets/js/jquery-2.2.3.min.js"></script>
-<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="assets/js/jquery.waypoints.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery.counterup.min.js"></script>
-<script type="text/javascript" src="assets/js/swiper.min.js"></script>
-<script type="text/javascript" src="assets/js/plugins.isotope.js"></script>
-<script type="text/javascript" src="assets/js/isotope.pkgd.min.js"></script>
-<script type="text/javascript" src="assets/js/lightcase.js"></script>
-<script type="text/javascript" src="assets/js/jquery.nstSlider.js"></script>
-<script type="text/javascript" src="assets/js/jquery.flexslider.js"></script>
-<script type="text/javascript" src="assets/js/custom.isotope.js"></script>
-<script type="text/javascript" src="assets/js/custom.map.js"></script>
 
-<script type="text/javascript" src="assets/js/custom.js"></script>
-
-
-</body>
 
 
 <!-- Mirrored from demos.codexcoder.com/labartisan/html/GreenForest/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Feb 2020 01:07:33 GMT -->
-</html>
+{% endblock %}

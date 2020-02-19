@@ -6,16 +6,21 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class publicationType extends AbstractType
 {
-
-/**
+    /**
+     * {@inheritdoc}
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('titre')->add('text')->add('image')->add('datepublication')->add('publication');
+    }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'UserBundle\Entity\User'
+            'data_class' => 'UserBundle\Entity\publication'
         ));
     }
 
@@ -24,7 +29,7 @@ class UserType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'userbundle_user';
+        return 'userbundle_publication';
     }
 
 

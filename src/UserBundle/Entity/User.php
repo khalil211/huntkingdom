@@ -4,6 +4,8 @@ namespace UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use UserBundle\Entity\publication;
+
 
 /**
  * User
@@ -22,10 +24,35 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="about", type="string", length=255)
+     */
+    private $about;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="profilepicture", type="string", length=255)
+     */
+    private $profilepicture;
+
+    /**
+     * @ORM\OneToMany(targetEntity="publication", mappedBy="user")
+     **/
+    private $publications;
+
+    /**
+     * @ORM\OneToMany(targetEntity="commentaire", mappedBy="user")
+     **/
+    private $commentaires;
+
 
     public function __construct()
     {
         parent::__construct();
+        $this->publications = new ArrayCollection();
     }
 
     /**
@@ -36,6 +63,54 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set profilepicture
+     *
+     * @param string $profilepicture
+     *
+     * @return Produit
+     */
+    public function setProfilepicture($profilepicture)
+    {
+        $this->profilepicture = $profilepicture;
+
+        return $this;
+    }
+
+    /**
+     * Get profilepicture
+     *
+     * @return string
+     */
+    public function getProfilepicture()
+    {
+        return $this->profilepicture;
+    }
+
+    /**
+     * Set about
+     *
+     * @param string $about
+     *
+     * @return User
+     */
+    public function setAbout($about)
+    {
+        $this->about = $about;
+
+        return $this;
+    }
+
+    /**
+     * Get about
+     *
+     * @return string
+     */
+    public function getAbout()
+    {
+        return $this->about;
     }
 }
 

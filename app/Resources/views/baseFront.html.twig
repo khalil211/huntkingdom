@@ -133,6 +133,7 @@
                                     <span class="icon-bar"></span>
                                 </button>
                                 <a class="navbar-brand" href="index-2.html"><img src="assets/images/home03/logo.png" alt="logo" class="img-responsive" /></a>
+
                             </div>
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -215,19 +216,33 @@
                                             <li><a href="gallery_03.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Gallery 03</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">contacts</a></li>
+                                    <li><a href="{{ path('feed') }}">Home</a></li>
+
 
                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                    <li>
-                                        <a>{{ app.user.username }}</a>
-                                    </li>
+                                        <li>
+                                            <a href="{{ path('profile',{'username': app.user.username}) }}"> Profil</a>
+                                        </li>
+
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon compte <span class="caret"></span></a>
+                                            <ul class="dropdown-menu sub-menu">
+                                                <li><a href="gallery.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Invitations</a></li>
+                                                <li><a href="gallery_02.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Messages</a></li>
+                                                <li>
+                                                    <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                        {{ 'Se deconnecter'|trans({}, 'FOSUserBundle') }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+
                                     {% endif %}
 <li>
 
                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                            <a href="{{ path('fos_user_security_logout') }}">
-                                                {{ 'Se deconnecter'|trans({}, 'FOSUserBundle') }}
-                                            </a>
+
                                         {% else %}
                                             <a href="{{ path('fos_user_security_login') }}">{{ 'Se connecter'|trans({}, 'FOSUserBundle') }}</a>
                                         {% endif %}

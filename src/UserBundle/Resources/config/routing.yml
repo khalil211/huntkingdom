@@ -1,3 +1,23 @@
 user_homepage:
     path:     /
     defaults: { _controller: UserBundle:Default:index }
+
+profile:
+    path:     /profile/{username}
+    defaults: { _controller: UserBundle:Default:profile }
+
+publication:
+    path:     /profile/publication/{pub}
+    defaults: { _controller: UserBundle:Default:publication }
+
+utilisateurs:
+    path:     /utilisateurs
+    defaults: { _controller: UserBundle:Default:utilisateurs }
+
+publier:
+    path:     /profile/publication/{publication}
+    defaults: { _controller: UserBundle:Default:publier}
+
+feed:
+    path:     /feed
+    defaults: { _controller: UserBundle:Default:feed }

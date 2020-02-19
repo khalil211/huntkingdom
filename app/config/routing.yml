@@ -14,6 +14,10 @@ fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     prefix:   /
 
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 index:
     path:     /
     defaults: { _controller: AppBundle:Default:index }

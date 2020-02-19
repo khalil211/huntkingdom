@@ -25,3 +25,7 @@ index:
 admin:
     path:     /admin
     defaults: { _controller: AppBundle:Default:indexAdmin }
+
+notifications_admin:
+    path:     /notifs
+    defaults: { _controller: AppBundle:Default:notifiactionsAdmin }

@@ -37,3 +37,7 @@ delete_commande:
 stats_commande:
     path:     /commande/stats
     defaults: { _controller: CommandeBundle:Back:statsCommande }
+
+pdf_commande:
+    path:     /commande/pdf/{id}
+    defaults: { _controller: CommandeBundle:Back:pdfCommande }

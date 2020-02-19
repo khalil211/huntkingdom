@@ -5,8 +5,39 @@ view_cart:
 view_mini_cart:
     path:     /cart/mini
     defaults: { _controller: CommandeBundle:Front:viewMiniCart }
-    methods:  GET
 
 add_to_cart:
     path:     /cart/add/{id}
     defaults: { _controller: CommandeBundle:Front:addToCart }
+
+delete_from_cart:
+    path:     /cart/delete/{id}
+    defaults: { _controller: CommandeBundle:Front:deleteFromCart }
+
+edit_cart:
+    path:     /cart/edit/{id}/{nb}
+    defaults: { _controller: CommandeBundle:Front:editCart }
+
+passer_commande:
+    path:     /cart/order
+    defaults: { _controller: CommandeBundle:Front:passerCommande }
+
+list_commande:
+    path:     /commande
+    defaults: { _controller: CommandeBundle:Back:listCommande }
+
+edit_commande:
+    path:     /commande/edit/{id}/{etat}
+    defaults: { _controller: CommandeBundle:Back:editCommande }
+
+delete_commande:
+    path:     /commande/delete/{id}
+    defaults: { _controller: CommandeBundle:Back:deleteCommande }
+
+stats_commande:
+    path:     /commande/stats
+    defaults: { _controller: CommandeBundle:Back:statsCommande }
+
+pdf_commande:
+    path:     /commande/pdf/{id}
+    defaults: { _controller: CommandeBundle:Back:pdfCommande }

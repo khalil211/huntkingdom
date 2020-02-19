@@ -1,6 +1,6 @@
 <div class="cart-icon">
     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-    <div class="count-cart">{{ pcs|length }}</div>
+    <div class="count-cart">{{ nb }}</div>
 </div>
 <!-- .cart-icon -->
 <div class="cart-dropdown-menu"z>
@@ -13,10 +13,6 @@
             <div class="cart-content">
                 <h6><a href="{{ path('produit_details',{'id':pc.produit.id}) }}">{{ pc.produit.nomProd }}</a></h6>
                 <p>{{ pc.quantite }}*<span>{{ pc.produit.prixProd }}</span></p>
-            </div>
-            <div class="cart-btn">
-                <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
             </div>
             <div class="clr"></div>
         </div>

@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new GestionProduitBundle\GestionProduitBundle(),
             new BlogBundle\BlogBundle(),
             new CommandeBundle\CommandeBundle(),
+            new Symfony\Cmf\Bundle\MediaBundle\CmfMediaBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

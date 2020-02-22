@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Snipe\BanBuilder\CensorWords;
 
 
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -125,12 +126,16 @@ class BlogController extends Controller
         return $this->redirectToRoute('blog_details', array('id' => $blog));
 
     }
-    public function viewblogAction()
+    public function viewblogAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $blogs = $em->getRepository('BlogBundle:Blog')->findAll();
-
+        $listblog = $em->getRepository('BlogBundle:Blog')->findAll();
+        $blogs  = $this->get('knp_paginator')->paginate(
+            $listblog,
+            $request->query->get('page', 1)/*le numéro de la page à afficher*/,
+            5/*nbre d'éléments par page*/
+        );
         return $this->render('blog/blog.html.twig', array(
             'blogs' => $blogs,
 
@@ -138,6 +143,7 @@ class BlogController extends Controller
     }
 
     public function detailsAction(Request $request,Blog $blog){
+        $censor = new CensorWords;
 
         $user=$this->getUser();
         if($user==null)
@@ -155,12 +161,15 @@ class BlogController extends Controller
             ->add('contenu', TextareaType::class)
 
             ->getForm();
+        $text = $form["contenu"]->getData();
+
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
-                $add_comment = $form->getData();
+                $string = $censor->censorString($text);
+                $add_comment->setContenu($string);
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($add_comment);
                 $em->flush();

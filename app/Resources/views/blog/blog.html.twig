@@ -201,25 +201,13 @@
                     <!-- .col-md-4 -->
                 </div>
                 <!-- .row -->
+
                 <div class="pagination-option">
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
                             <li>
-                                <a href="#" aria-label="Previous">
-                                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li class="active"><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">...</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
+                                {{ knp_pagination_render(blogs) }}
+                            </li></ul>
                     </nav>
                 </div>
                 <!-- .pagination_option -->

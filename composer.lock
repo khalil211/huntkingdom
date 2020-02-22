@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "544ba94b398c902a640f3b4a8ce1f024",
+    "content-hash": "c9eacb094cb698343a2c71f954fc262d",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1381,6 +1381,52 @@
                 "snappy"
             ],
             "time": "2017-12-06T16:31:47+00:00"
+        },
+        {
+            "name": "mgilet/notification-bundle",
+            "version": "3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximilienGilet/notification-bundle.git",
+                "reference": "6b44f0f618a8f4ac0d37232ce38eb9bea62cfba0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximilienGilet/notification-bundle/zipball/6b44f0f618a8f4ac0d37232ce38eb9bea62cfba0",
+                "reference": "6b44f0f618a8f4ac0d37232ce38eb9bea62cfba0",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "*",
+                "symfony/framework-bundle": "^2.7 || ^3.0 || ^4.0",
+                "twig/twig": "*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mgilet\\NotificationBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maximilien Gilet",
+                    "email": "maximilien248@gmail.com"
+                }
+            ],
+            "description": "A simple Symfony 3 bundle for user notifications",
+            "keywords": [
+                "symfony notification bundle simple"
+            ],
+            "time": "2018-09-06T11:36:37+00:00"
         },
         {
             "name": "monolog/monolog",

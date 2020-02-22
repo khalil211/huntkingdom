@@ -50,18 +50,8 @@
 
                                             <!-- .select-box -->
                                         </div>
-                                        <!-- .select-option -->
-
-                                        <div class="product-counter-option">
-                                            <div class="product-count">
-                                                <input type="submit" name="remove" value="-">
-                                                <input type="text" name="quantity" value="2">
-                                                <input type="submit" name="add" value="+">
-                                            </div>
-                                            <!-- .product-count -->
-                                        </div>
                                         <!-- .product-counter-option -->
-                                        <a href="#" class="btn add-cart-btn">Add to Cart</a>
+                                        <a href="#" class="btn add-cart-btn" id="addToCartP">Ajouter au panier</a>
                                     </div>
                                     <!-- .about-product-datails -->
                                 </div>
@@ -386,4 +376,24 @@
     <script type="text/javascript" src="{{ asset('front/assets/js/custom.map.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('front/assets/js/custom.js') }}"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#addToCartP').click(function(e){
+                {% if app.user %}
+                $.ajax({
+                    url: '{{ path('add_to_cart', {'id': produit.id}) }}',
+                    success: function(data){
+                        $('#miniCart').html(data);
+                    },
+                    error: function(){
+                        alert('erreur ajout produit panier');
+                    }
+                });
+                {% else %}
+                window.location.replace('{{ path('fos_user_security_login') }}');
+                {% endif %}
+                e.preventDefault();
+            });
+        });
+    </script>
 {% endblock %}

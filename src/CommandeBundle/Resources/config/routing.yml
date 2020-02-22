@@ -22,6 +22,18 @@ passer_commande:
     path:     /cart/order
     defaults: { _controller: CommandeBundle:Front:passerCommande }
 
+view_commande:
+    path:     /profile/commande
+    defaults: { _controller: CommandeBundle:Front:mesCommandes }
+
+consulter_commande:
+    path:     /profile/commande/{id}
+    defaults: { _controller: CommandeBundle:Front:detailsCommande }
+
+annuler_commande:
+    path:     /commande/annuler/{id}
+    defaults: { _controller: CommandeBundle:Front:annulerCommande }
+
 list_commande:
     path:     /commande
     defaults: { _controller: CommandeBundle:Back:listCommande }

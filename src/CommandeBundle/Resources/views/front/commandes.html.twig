@@ -1,0 +1,84 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}Mes commandes{% endblock %}
+{% block content %}
+    <section class="bg-page-header">
+        <div class="page-header-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h2>Mes commandes</h2>
+                        </div>
+                        <div class="page-header-content">
+                            <ol class="breadcrumb">
+                                <li><a href="{{ path('index') }}">Accueil</a></li>
+                                <li>Panier</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-product-cart-option">
+        <div class="container">
+            <div class="row">
+                <div class="product-cart-option">
+                    <div class="table-box">
+                        <table class="cart-products-table">
+                            <thead>
+                            <tr>
+                                <th class="cart-price">#ID</th>
+                                <th class="cart-product">Date</th>
+                                <th class="cart-quantity">Etat</th>
+                                <th class="cart-total">NB Produits</th>
+                                <th class="cart-price">Total</th>
+                                <th class="cart-quantity">Détails</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for commande in commandes %}
+                                <tr>
+                                    <td class="cart-price">#{{ commande.id }}</td>
+                                    <td class="cart-product">{{ commande.date|date() }}</td>
+                                    <td class="cart-quantity">
+                                        {% if commande.etat == 1 %}
+                                            En attente
+                                        {% elseif commande.etat == 2 %}
+                                            Confirmée
+                                        {% else %}
+                                            Annulée
+                                        {% endif %}
+                                    </td>
+                                    <td class="cart-total">
+                                        {% set nb = 0 %}
+                                        {% for pc in pcs[commande.id] %}
+                                            {% set nb = nb+pc.quantite %}
+                                        {% endfor %}
+                                        {{ nb }}
+                                    </td>
+                                    <td class="cart-price">
+                                        {% set total = 0 %}
+                                        {% for pc in pcs[commande.id] %}
+                                            {% set total = total+(pc.quantite*pc.produit.prixProd) %}
+                                        {% endfor %}
+                                        {{ total }}
+                                    </td>
+                                    <td>
+                                        <div class="cart-update">
+                                            <a href="{{ path('consulter_commande', {'id': commande.id}) }}"><button type="submit">Consulter</button></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- .product-cart-option -->
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .container -->
+    </section>
+{% endblock %}

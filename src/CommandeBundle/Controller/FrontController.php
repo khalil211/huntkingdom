@@ -114,8 +114,42 @@ class FrontController extends Controller
         $pc=$em->getRepository(ProduitCommande::class)->find($id);
         if(($pc->getQuantite()+$nb)>=1)
             $pc->setQuantite($pc->getQuantite()+$nb);
-            $em->flush();
-
+        $em->flush();
         return $this->viewMiniCartAction();
+    }
+
+    public function mesCommandesAction()
+    {
+        $user=$this->getUser();
+        if ($user==null)
+            return $this->redirect('login');
+        $em=$this->getDoctrine()->getManager();
+        $commandes=$em->getRepository(Commande::class)->getUserCommandes($user);
+        $pcs=Array();
+        foreach ($commandes as $commande)
+            $pcs[$commande->getId()]=$this->getDoctrine()->getRepository(ProduitCommande::class)->findByCommande($commande);
+        return $this->render('@Commande/front/commandes.html.twig', array('commandes'=>$commandes, 'pcs'=>$pcs));
+    }
+
+    public function detailsCommandeAction($id)
+    {
+        $user=$this->getUser();
+        if ($user==null)
+            return $this->redirect('login');
+        $commande=$this->getDoctrine()->getRepository(Commande::class)->find($id);
+        $pcs=$this->getDoctrine()->getRepository(ProduitCommande::class)->findByCommande($commande);
+        return $this->render('@Commande/front/detailsCommande.html.twig', array(
+            'commande'=>$commande,
+            'pcs'=>$pcs
+        ));
+    }
+
+    public function annulerCommandeAction($id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $commande=$em->getRepository(Commande::class)->find($id);
+        $commande->setEtat(3);
+        $em->flush();
+        return $this->redirectToRoute('consulter_commande', array('id'=>$id));
     }
 }

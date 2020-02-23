@@ -225,11 +225,14 @@ class BlogController extends Controller
 
             ->getForm();
 
+
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
-                $add_comment = $form->getData();
+                $text = $form["contenu"]->getData();
+                $ftext=\BlogBundle\Helper\ConverHelper::filterwords($text);
+                $add_comment->setContenu($ftext);
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($add_comment);
                 $em->flush();

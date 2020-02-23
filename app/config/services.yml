@@ -4,6 +4,14 @@ parameters:
     #parameter_name: value
 
 services:
+    app.chart.data:
+        class: AppBundle\Chart\ChartData
+        arguments: ['@doctrine.orm.entity_manager']
+
+    app.chart:
+        class: AppBundle\Chart\Chart
+        arguments: ['@app.chart.data']
+
     twig.extension.date:
         class: Twig_Extensions_Extension_Date
         tags:

@@ -1,0 +1,40 @@
+
+{% extends 'baseAdmin.html.twig' %}
+
+{% block content %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                        </div>
+                        <div class="card-body">
+                            <div class="vue-lists">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="robust-content content container-fluid">
+                                            <div class="content-wrapper">
+                                                <div id="div_chart"></div>
+
+                                                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                                                <script type="text/javascript">
+                                                    {{ gc_draw(piechart, 'div_chart') }}
+                                                </script>
+
+                                            </div>
+                                        </div>
+                                            <a class="btn btn-info"  role="button" href="{{ path('blog_index') }}">Blog List</a>
+                                      
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div></div></div></div></div></div>
+    <div>
+
+    </div>
+{% endblock %}

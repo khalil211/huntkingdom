@@ -15,6 +15,7 @@
     },
     "require": {
         "php": ">=5.5.9",
+        "cmen/google-charts-bundle": "^3.2",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "ezsystems/share-buttons-bundle": "^1.2",
@@ -31,7 +32,6 @@
         "symfony/swiftmailer-bundle": "^2.6.4",
         "symfony/symfony": "3.4.*",
         "twig/extensions": "^1.5",
-        "snipe/banbuilder": "dev-master",
         "twig/twig": "^1.0||^2.0"
     },
     "require-dev": {

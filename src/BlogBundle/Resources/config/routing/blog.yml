@@ -36,4 +36,8 @@ comment_report:
     path:     /{id}/report
     defaults: { _controller: "BlogBundle:Blog:report" }
     methods:  [POST]
+blog_stat:
+    path:     /stat
+    defaults: { _controller: "BlogBundle:Blog:stat" }
+    methods:  GET
 

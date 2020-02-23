@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Snipe\BanBuilder\CensorWords;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 
 
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -142,8 +142,71 @@ class BlogController extends Controller
         ));
     }
 
+    public function statAction()
+    {
+        $pieChart = new PieChart();
+        $em = $this->getDoctrine()->getManager();
+
+
+        $blogs = $em->getRepository(blog::class);
+        $vid="Video";
+        $im="Image";
+
+        // 3. Query how many rows are there in the Articles table
+        $nbrvid = $blogs->createQueryBuilder('a')
+            // Filter by some parameter if you want
+
+            ->select('count(a.id)')
+            ->Where('a.type = :type')
+            ->setParameters([
+                'type' => $vid,
+
+            ])
+            ->getQuery()
+            ->getSingleScalarResult();
+        $nbrim = $blogs->createQueryBuilder('a')
+            // Filter by some parameter if you want
+
+            ->select('count(a.id)')
+            ->Where('a.type = :type')
+            ->setParameters([
+                'type' => $im,
+
+            ])
+            ->getQuery()
+            ->getSingleScalarResult();
+
+
+
+
+
+        $pieChart->getData()->setArrayToDataTable( array(
+            ['Blogs', 'Type of blogs'],
+            ['Video',     (Int)$nbrvid],
+            ['Image',     (Int)$nbrim]
+        ));
+
+        $pieChart->getOptions()->setTitle('You still in work');
+        $pieChart->getOptions()->setHeight(400);
+        $pieChart->getOptions()->setWidth(400);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#07600');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(25);
+
+
+
+
+
+        // 4. Return a number as response
+        // e.g 972
+        return $this->render('blog/stat.html.twig', array(
+            'piechart' => $pieChart,
+
+
+
+        ));
+
+    }
     public function detailsAction(Request $request,Blog $blog){
-        $censor = new CensorWords;
 
         $user=$this->getUser();
         if($user==null)
@@ -161,15 +224,12 @@ class BlogController extends Controller
             ->add('contenu', TextareaType::class)
 
             ->getForm();
-        $text = $form["contenu"]->getData();
-
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
-                $string = $censor->censorString($text);
-                $add_comment->setContenu($string);
+                $add_comment = $form->getData();
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($add_comment);
                 $em->flush();

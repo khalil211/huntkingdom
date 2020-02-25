@@ -1,48 +1,48 @@
 produit_index:
-    path:     /
+    path:     /admin/produit
     defaults: { _controller: "GestionProduitBundle:Produit:index" }
     methods:  GET
 
 produit_show:
-    path:     /{id}/show
+    path:     /admin/produit/{id}/show
     defaults: { _controller: "GestionProduitBundle:Produit:show" }
     methods:  GET
 
 produit_new:
-    path:     /new
+    path:     /admin/produit/new
     defaults: { _controller: "GestionProduitBundle:Produit:new" }
     methods:  [GET, POST]
 
 produit_edit:
-    path:     /{id}/edit
+    path:     /admin/admin/produit/{id}/edit
     defaults: { _controller: "GestionProduitBundle:Produit:edit" }
     methods:  [GET, POST]
 
 produit_delete:
-    path:     /{id}/delete
+    path:     /admin/produit/{id}/delete
     defaults: { _controller: "GestionProduitBundle:Produit:delete" }
     methods:  DELETE
 produit_shop:
-    path:     /shop
+    path:     /produit/shop
     defaults: { _controller: "GestionProduitBundle:Produit:shop" }
 
 
 produit_cat:
-    path:     /{id}/shop
+    path:     /produit/{id}/shop
     defaults: { _controller: "GestionProduitBundle:Produit:categories" }
     methods:  GET
 
 produit_details:
-    path:      /{id}/details
+    path:      /produit/{id}/details
     defaults: { _controller: "GestionProduitBundle:Produit:details" }
 
     methods:  [GET, POST]
 produit_listp:
-    path:     /listp
+    path:     /admin/listp
     defaults: { _controller: "GestionProduitBundle:Produit:listp" }
 
 produit_comment:
-    path:      /comment
+    path:      /produit/comment
     defaults: { _controller: "GestionProduitBundle:Produit:comment" }
 
 mgilet_notification:
@@ -50,11 +50,11 @@ mgilet_notification:
     prefix: /notifications
 
 produit_deleteC:
-    path:      /deleteC/{id}
+    path:      /produit/deleteC/{id}
     defaults: { _controller: "GestionProduitBundle:Produit:deleteC" }
     methods:  [GET, POST]
 
 produit_noter:
-    path:      /noter/{id}/{note}
+    path:      /produit/noter/{id}/{note}
     defaults: { _controller: "GestionProduitBundle:Produit:noter" }
 

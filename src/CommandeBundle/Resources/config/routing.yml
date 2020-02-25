@@ -35,19 +35,19 @@ annuler_commande:
     defaults: { _controller: CommandeBundle:Front:annulerCommande }
 
 list_commande:
-    path:     /commande
+    path:     /admin/commande
     defaults: { _controller: CommandeBundle:Back:listCommande }
 
 edit_commande:
-    path:     /commande/edit/{id}/{etat}
+    path:     /admin/commande/edit/{id}/{etat}
     defaults: { _controller: CommandeBundle:Back:editCommande }
 
 delete_commande:
-    path:     /commande/delete/{id}
+    path:     /admin/commande/delete/{id}
     defaults: { _controller: CommandeBundle:Back:deleteCommande }
 
 stats_commande:
-    path:     /commande/stats
+    path:     /admin/commande/stats
     defaults: { _controller: CommandeBundle:Back:statsCommande }
 
 pdf_commande:

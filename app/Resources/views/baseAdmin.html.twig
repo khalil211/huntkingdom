@@ -185,13 +185,8 @@
                     </a>
 
                     <div class="user-menu dropdown-menu">
-                        <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
-
-                        <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
-
-                        <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
-
-                        <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                        <a class="nav-link" href="{{ path('index') }}"><i class="fa fa-user"></i> Back to front</a>
+                        <a class="nav-link" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> Se deconnecter</a>
                     </div>
                 </div>
 

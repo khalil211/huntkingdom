@@ -98,6 +98,9 @@ class FrontController extends Controller
             return $this->redirect('login');
         $em=$this->getDoctrine()->getManager();
         $commande=$em->getRepository(Commande::class)->findOneBy(array('user'=>$user, 'etat'=>0));
+        $pcs=$em->getRepository(ProduitCommande::class)->findByCommande($commande);
+        if($pcs==null)
+            return $this->redirectToRoute('produit_shop');
         $commande->setEtat(1);
         $commande->setDate(new \DateTime());
         $panier=new Commande();

@@ -176,8 +176,9 @@ class ProduitController extends Controller
         $request->query->get('page', 1)/*le numéro de la page à afficher*/,
         6/*nbre d'éléments par page*/
     );
+         $produitsR=$em->getRepository(Produit::class)->findAll();
          $notes=array();
-         foreach ($produits as $p){
+         foreach ($produitsR as $p){
              $notesP=$em->getRepository(RatingProduit::class)->findByProduit($p);
              if ($notesP!=null){
                  $somme=0;
@@ -273,9 +274,43 @@ class ProduitController extends Controller
             $request->query->get('page', 1)/*le numéro de la page à afficher*/,
             5/*nbre d'éléments par page*/
         );
+        $notes=array();
+        foreach ($produits as $p){
+            $notesP=$em->getRepository(RatingProduit::class)->findByProduit($p);
+            if ($notesP!=null){
+                $somme=0;
+                foreach ($notesP as $noteP)
+                    $somme+=$noteP->getNote();
+                $notes[$p->getId()]=round($somme/count($notesP));
+            }else
+                $notes[$p->getId()]=0;
+        }
+        $notesC=$notes;
+        $meilleurs=Array();
+        $best=Array();
+        for ($i=0;$i<3;$i++)
+        {
+            $idmp=null;
+            $nmp=-1;
+            foreach($notesC as $idp => $note)
+            {
+                if ($note>$nmp)
+                {
+                    $nmp=$note;
+                    $idmp=$idp;
+                }
+            }
+            if ($idmp!=null){
+                array_push($meilleurs, $idmp);
+                array_push($best, $em->getRepository(Produit::class)->find($idmp));
+                unset($notesC[$idmp]);
+            }
+        }
         return $this->render('produit/shop.html.twig', array(
             'produits' => $produits,
             'categories'=>$categories,
+            'notes'=>$notes,
+            'meilleurs'=>$best
         ));
     }
     function deleteCAction($id)

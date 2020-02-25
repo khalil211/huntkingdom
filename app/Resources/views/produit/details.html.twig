@@ -32,7 +32,7 @@
 
                                             <ul class="slides">
                                                 <li>
-                                                    <img src="{{ asset('image_shop/') }}{{ produit.imageProd }} ">
+                                                    <img src="{{ asset('images/') }}{{ produit.imageProd }} ">
                                                 </li>
 
                                             </ul>
@@ -49,15 +49,25 @@
                                         <h4>{{ produit.prixProd }} DT</h4>
                                         <p>{{ produit.descriptionProd }}.</p>
 
-                                        <p style="color: black; font-size: 20px; font-weight: bold;" > Noter ce produit </p>
+                                        <p style="color: black; font-size: 20px; font-weight: bold;" > Partagez le produit </p>
 
-                                        <ul class="star-icon">
-                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        </ul>
+                                        <div>
+                                            {{ twitterButton() }}
+                                            {{ facebookButton() }}
+                                            {{ linkedinButton() }}
+                                            {{ googleplusButton() }}
+                                        </div>
+                                        {% if app.user %}
+                                            <p style="color: black; font-size: 20px; font-weight: bold;" > Notez le produit </p>
+                                            <ul class="star-icon" id="note">
+                                                <li><a href="#" id="s1"><i id="si1" class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#" id="s2"><i id="si2" class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#" id="s3"><i id="si3" class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#" id="s4"><i id="si4" class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                <li><a href="#" id="s5"><i id="si5" class="fa fa-star" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        {% endif %}
+
                                         <div class="select-option">
 
                                             <!-- .select-box -->
@@ -119,7 +129,7 @@
                                                 <div class="customer-content">
                                                     <div class="customer-title">
                                                         <div class="customer-name">
-                                                            <h4><a href="#">{{app.user.username}}</a> <small>Posté le {{ comments.dateC|date("F jS \\a\\t g:ia") }}</small></h4>
+                                                            <h4><a href="#">{{comments.user.username}}</a> <small>Posté le {{ comments.dateC|date("F jS \\a\\t g:ia") }}</small></h4>
                                                         </div>
                                                         <!-- .customer-name -->
 
@@ -127,8 +137,13 @@
                                                     </div>
                                                     <!-- .customer-title -->
                                                     <p>{{ comments.contenu }}</p>
-                                                </div>
+                                                    {% if app.user %}
+                                                        {% if comments.user.id== app.user.id %}
+                                                    <a class="btn btn-default" href="{{ path('produit_deleteC', { 'id': comments.id }) }}"> Supprimer</a>
 
+                                                    {% endif %}
+                                                    {% endif %}
+                                                </div>
                                                 {% endfor %}
                                                 <!-- .review-img -->
                                             </div>
@@ -136,7 +151,7 @@
                                         </div>
                                         <!-- .review-content -->
                                         <!-- test utilisateur -->
-
+                                        {% if app.user %}
                                         <div class="review-submit">
                                             <h4 class="review-submit-title">Ajouter un commentaire</h4>
                                             {{ form_start(form) }}
@@ -151,7 +166,7 @@
                                             </div>
                                             {{ form_end(form) }}
                                         </div>
-
+                                        {% endif %}
                                         <!-- .review-submit -->
                                     </div>
 
@@ -162,90 +177,7 @@
                             <!-- .product-review -->
                         </div>
                         <!-- .col-md-9 -->
-                        <div class="col-md-3 col-sm-6">
-                            <div class="shop-sidebar">
-                                <div class="shop-widget-content">
-                                    <h4 class="shop-widget-title">RATED PRODUCTS</h4>
-                                    <div class="small-product-items">
-                                        <div class="small-product-img">
-                                            <a href="#"><img src="assets/images/shop/small-product-img-5.jpg" alt="small-product-img-5" /></a>
-                                        </div>
-                                        <!-- .small-product-img -->
-                                        <div class="small-product-content">
-                                            <h5><a href="#">Product Text Here</a></h5>
-                                            <p>$ 250.00</p>
-                                            <ul class="star-icon">
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .small-product-content -->
-                                    </div>
-                                    <!-- .small-product-items -->
-                                    <div class="small-product-items">
-                                        <div class="small-product-img">
-                                            <a href="#"><img src="assets/images/shop/small-product-img-6.jpg" alt="small-product-img-6" /></a>
-                                        </div>
-                                        <!-- .small-product-img -->
-                                        <div class="small-product-content">
-                                            <h5><a href="#">Product Text Here</a></h5>
-                                            <p>$ 250.00</p>
-                                            <ul class="star-icon">
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .small-product-content -->
-                                    </div>
-                                    <!-- .small-product-items -->
-                                    <div class="small-product-items">
-                                        <div class="small-product-img">
-                                            <a href="#"><img src="assets/images/shop/small-product-img-7.jpg" alt="small-product-img-7" /></a>
-                                        </div>
-                                        <!-- .small-product-img -->
-                                        <div class="small-product-content">
-                                            <h5><a href="#">Product Text Here</a></h5>
-                                            <p>$ 250.00</p>
-                                            <ul class="star-icon">
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .small-product-content -->
-                                    </div>
-                                    <!-- .small-product-items -->
-                                    <div class="small-product-items">
-                                        <div class="small-product-img">
-                                            <a href="#"><img src="assets/images/shop/small-product-img-8.jpg" alt="small-product-img-8" /></a>
-                                        </div>
-                                        <!-- .small-product-img -->
-                                        <div class="small-product-content">
-                                            <h5><a href="#">Product Text Here</a></h5>
-                                            <p>$ 250.00</p>
-                                            <ul class="star-icon">
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .small-product-content -->
-                                    </div>
-                                    <!-- .small-product-items -->
 
-                                </div>
-                                                </div>
-                                            </div>
                                             <!--.panel-->
                                         </div>
                                         <!--panel group-->
@@ -298,4 +230,78 @@
     <script type="text/javascript" src="{{ asset('front/assets/js/custom.map.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('front/assets/js/custom.js') }}"></script>
+
+    {% if app.user %}
+        <script type="text/javascript">
+            $(function(){
+                function updateStars(note){
+                    for (let i=0;i<note;i++)
+                        $('#si'+(i+1)).attr('class','fa fa-star');
+                    for (let i=note;i<5;i++)
+                        $('#si'+(i+1)).attr('class','fa fa-star-o');
+                }
+                updateStars({{ rating.note }});
+                $('#s1').click(function(e){
+                    $.ajax({
+                        url: '{{ path('produit_noter', {'id': produit.id, 'note': 1}) }}',
+                        success: function(data){
+                            updateStars(1);
+                        },
+                        error: function(){
+                            alert('erreur rating ajax');
+                        }
+                    });
+                    e.preventDefault();
+                });
+                $('#s2').click(function(e){
+                    $.ajax({
+                        url: '{{ path('produit_noter', {'id': produit.id, 'note': 2}) }}',
+                        success: function(data){
+                            updateStars(2);
+                        },
+                        error: function(){
+                            alert('erreur rating ajax');
+                        }
+                    });
+                    e.preventDefault();
+                });
+                $('#s3').click(function(e){
+                    $.ajax({
+                        url: '{{ path('produit_noter', {'id': produit.id, 'note': 3}) }}',
+                        success: function(data){
+                            updateStars(3);
+                        },
+                        error: function(){
+                            alert('erreur rating ajax');
+                        }
+                    });
+                    e.preventDefault();
+                });
+                $('#s4').click(function(e){
+                    $.ajax({
+                        url: '{{ path('produit_noter', {'id': produit.id, 'note': 4}) }}',
+                        success: function(data){
+                            updateStars(4);
+                        },
+                        error: function(){
+                            alert('erreur rating ajax');
+                        }
+                    });
+                    e.preventDefault();
+                });
+                $('#s5').click(function(e){
+                    $.ajax({
+                        url: '{{ path('produit_noter', {'id': produit.id, 'note': 5}) }}',
+                        success: function(data){
+                            updateStars(5);
+                        },
+                        error: function(){
+                            alert('erreur rating ajax');
+                        }
+                    });
+                    e.preventDefault();
+                });
+            });
+        </script>
+    {% endif %}
 {% endblock %}

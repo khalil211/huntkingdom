@@ -45,4 +45,16 @@ produit_comment:
     path:      /comment
     defaults: { _controller: "GestionProduitBundle:Produit:comment" }
 
+mgilet_notification:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications
+
+produit_deleteC:
+    path:      /deleteC/{id}
+    defaults: { _controller: "GestionProduitBundle:Produit:deleteC" }
+    methods:  [GET, POST]
+
+produit_noter:
+    path:      /noter/{id}/{note}
+    defaults: { _controller: "GestionProduitBundle:Produit:noter" }
 

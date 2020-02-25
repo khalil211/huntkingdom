@@ -5,6 +5,7 @@ namespace GestionProduitBundle\Controller;
 use GestionProduitBundle\Entity\CategorieProduit;
 use GestionProduitBundle\Entity\CommentaireProduit;
 use GestionProduitBundle\Entity\Produit;
+use GestionProduitBundle\Entity\RatingProduit;
 use GestionProduitBundle\Form\CommentaireProduitType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -75,7 +76,7 @@ class ProduitController extends Controller
             $em->persist($produit);
             $em->flush();
 
-            return $this->redirectToRoute('produit_show', array('id' => $produit->getId()));
+           return $this->redirectToRoute('produit_show', array('id' => $produit->getId()));
         }
 
         return $this->render('produit/new.html.twig', array(
@@ -173,22 +174,54 @@ class ProduitController extends Controller
          $produits  = $this->get('knp_paginator')->paginate(
         $listeproduits,
         $request->query->get('page', 1)/*le numéro de la page à afficher*/,
-        5/*nbre d'éléments par page*/
+        6/*nbre d'éléments par page*/
     );
+         $notes=array();
+         foreach ($produits as $p){
+             $notesP=$em->getRepository(RatingProduit::class)->findByProduit($p);
+             if ($notesP!=null){
+                 $somme=0;
+                 foreach ($notesP as $noteP)
+                     $somme+=$noteP->getNote();
+                 $notes[$p->getId()]=round($somme/count($notesP));
+             }else
+                 $notes[$p->getId()]=0;
+         }
+         $notesC=$notes;
+         $meilleurs=Array();
+         $best=Array();
+         for ($i=0;$i<3;$i++)
+         {
+             $idmp=null;
+             $nmp=-1;
+             foreach($notesC as $idp => $note)
+             {
+                 if ($note>$nmp)
+                 {
+                     $nmp=$note;
+                     $idmp=$idp;
+                 }
+             }
+             if ($idmp!=null){
+                 array_push($meilleurs, $idmp);
+                 array_push($best, $em->getRepository(Produit::class)->find($idmp));
+                 unset($notesC[$idmp]);
+             }
+         }
         return $this->render('produit/shop.html.twig', array(
             'produits' => $produits,
             'categories'=>$categories,
+            'notes'=>$notes,
+            'meilleurs'=>$best
         ));
 
 
 
     }
 
-    public function detailsAction(Request $request,Produit $produit){
+    public function detailsAction(Request $request,Produit $produit, $id){
 
         $user=$this->getUser();
-        if($user==null)
-            return $this->redirectToRoute('fos_user_security_login');
         $add_comment = new CommentaireProduit();
         $em = $this->getDoctrine()->getManager();
         $comments=$em->getRepository(CommentaireProduit::class)->findByProduit($produit);
@@ -209,16 +242,24 @@ class ProduitController extends Controller
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($add_comment);
                 $em->flush();
+
                 return $this->redirectToRoute('produit_details', array('id' => $produit->getId()));
-//notification
+
+
             }
         }
-
+        $rating=$em->getRepository(RatingProduit::class)->findOneBy(array('user'=>$user, 'produit'=>$produit));
+        if ($rating == null)
+        {
+            $rating=new RatingProduit();
+            $rating->setNote(0);
+        }
         return $this->render('produit/details.html.twig', array(
             'produit' => $produit,
             'form' => $form->createView(),
             'comment' => $add_comment,
             'comments' => $comments,
+            'rating'=>$rating
             ));
     }
     public function categoriesAction(Request $request,$id)
@@ -237,5 +278,30 @@ class ProduitController extends Controller
             'categories'=>$categories,
         ));
     }
+    function deleteCAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $comment = $em->getRepository(CommentaireProduit::class)->find($id);
+        $em->remove($comment);
+        $em->flush();
+        return $this->redirectToRoute("produit_shop");
 
+    }
+
+    function noterAction($id,$note){
+        $user=$this->getUser();
+        $em=$this->getDoctrine()->getManager();
+        $produit=$em->getRepository(Produit::class)->find($id);
+        $rating=$em->getRepository(RatingProduit::class)->findOneBy(array('user'=>$user, 'produit'=>$produit));
+        if ($rating==null){
+            $rating=new RatingProduit();
+            $rating->setNote($note);
+            $rating->setUser($user);
+            $rating->setProduit($produit);
+            $em->persist($rating);
+        }else
+            $rating->setNote($note);
+        $em->flush();
+        return new Response($note);
+    }
 }

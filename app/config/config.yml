@@ -33,6 +33,7 @@ framework:
     assets: ~
     php_errors:
         log: true
+    templating: { engines: ['twig'] }
 
 # Twig Configuration
 twig:
@@ -101,3 +102,46 @@ knp_snappy:
             page-size: LETTER
             # Recommended to set UTF-8 as default encoding :)
             encoding: UTF-8
+# NotificationsBundle configuration
+notifications:
+    app_id:     your_id
+    app_key:    your_key
+    app_secret: secret
+    cluster:    cluster
+    # Optional
+    # Default false: work without ssl encryption
+    # Set it to true to work with ssl encryption
+    encrypted:  false
+#Nomaya
+nomaya_social:
+  buttons:
+    facebook:
+      url:            null
+      locale:         "fr_FR"
+      send:           false
+      width:          300
+      showFaces:      false
+      layout:         "button_count"
+    twitter:
+      url:            null
+      locale:         "fr"
+      message:        "Je veux partager ça avec vous"
+      text:           "Tweet"
+      via:            "L'Equipe cartedevisitevirtuelle.fr"
+      tag:            "ttot"
+    googleplus:
+      url:            null
+      locale :        "fr"
+      size :          "medium"
+      annotation :    "bubble"
+      width :         300
+    linkedin:
+      url:            null
+      locale:         "fr_FR"
+      counter:        "right"
+    pinterest:
+      url:            null
+  links:
+    facebook:           "http://www.facebook.com/yann.chauvel"
+    googleplus:         "https://plus.google.com/105931415830389032796"
+  theme:                  'default' # optional

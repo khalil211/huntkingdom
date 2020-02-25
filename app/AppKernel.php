@@ -23,6 +23,9 @@ class AppKernel extends Kernel
             new CommandeBundle\CommandeBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new SBC\NotificationsBundle\NotificationsBundle(),
+            new Mgilet\NotificationBundle\MgiletNotificationBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
 
         ];
 

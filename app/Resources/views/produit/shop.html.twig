@@ -39,11 +39,11 @@
                                                         <div class="collection-items">
                                                             <div class="collection-img">
                                                                 <div class="collection-overlay"></div>
-                                                                <img src="{{ asset('image_shop/') }}{{ produit.imageProd }}" alt="collection-img-5">
+                                                                <img src="{{ asset('images/') }}{{ produit.imageProd }}" alt="collection-img-5">
                                                                 <ul class="collection-icon">
                                                                     <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                                                     <li><a href="#" id="addCart{{ produit.id }}"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="assets/images/shop/collection-img-5.jpg" data-rel="lightcase:myCollection"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                                                    <li><a href="{{ asset('images/') }}{{ produit.imageProd }}" data-rel="lightcase:myCollection"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                                                                 </ul>
                                                             </div>
                                                             <!-- .collection-img -->
@@ -51,11 +51,22 @@
                                                                 <h4><a href="{{ path('produit_details', { 'id': produit.id }) }}">{{ produit.nomProd }}</a></h4>
                                                                 <h5>{{ produit.prixProd }}</h5>
                                                                 <ul class="star-icon">
-                                                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                    {% if notes[produit.id] == 0 %}
+                                                                        <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                                        <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                                        <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                                        <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                                        <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                                    {% else %}
+                                                                        {% for i in 1..notes[produit.id] %}
+                                                                            <li><i class='fa fa-star' aria-hidden='true'></i></li>
+                                                                        {% endfor %}
+                                                                        {% if notes[produit.id] != 5 %}
+                                                                            {% for i in notes[produit.id]+1..5 %}
+                                                                                <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                                            {% endfor %}
+                                                                        {% endif %}
+                                                                    {% endif %}
                                                                 </ul>
                                                             </div>
                                                             <!-- .collection-content -->
@@ -84,6 +95,7 @@
                                             </div>
                                                 </form>
 
+
                                     </div>
 
                                     <!-- .shop-widget-content -->
@@ -91,7 +103,37 @@
 
                                 <!-- .widget -->
 
-
+                                <!-- .widget -->
+                                <div class="widget">
+                                    <div class="shop-widget-content">
+                                        <h4 class="shop-widget-title">Meilleurs produits</h4>
+                                        {% for meilleur in meilleurs %}
+                                            <div class="small-product-items">
+                                                <div class="small-product-img">
+                                                    <a href="{{ path('produit_details', { 'id': meilleur.id }) }}"><img src="{{ asset('images/') }}{{ meilleur.imageProd }}" alt="small-product-img-1" height="70px" width="70px"/></a>
+                                                </div>
+                                                <!-- .small-product-img -->
+                                                <div class="small-product-content">
+                                                    <h5><a href="{{ path('produit_details', { 'id': meilleur.id }) }}">{{ meilleur.nomProd }}</a></h5>
+                                                    <p>{{ meilleur.prixProd }}</p>
+                                                    <ul class="star-icon">
+                                                        {% for i in 1..notes[meilleur.id] %}
+                                                            <li><i class='fa fa-star' aria-hidden='true'></i></li>
+                                                        {% endfor %}
+                                                        {% if notes[meilleur.id] != 5 %}
+                                                            {% for i in notes[meilleur.id]+1..5 %}
+                                                                <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                                <!-- .small-product-content -->
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <!-- .widget-content -->
+                                </div>
+                                <!-- .widget -->
                                 <div class="widget">
                                     <h4 class="shop-widget-title">Catégories</h4>
                                     <div class="shop-widget-content">
@@ -211,34 +253,7 @@
                                 </div>-->
                                 <!-- .widget -->
 
-                                <div class="widget">
-                                    <div class="shop-widget-content">
-                                        <h4 class="shop-widget-title">Filter by Price</h4>
-                                        <div class="nstSlider" data-range_min="5" data-range_max="500" data-cur_min="50" data-cur_max="350">
 
-                                            <div class="bar"></div>
-                                            <div class="leftGrip"></div>
-                                            <div class="rightGrip"></div>
-                                        </div>
-
-                                        <div class="price-rang">
-                                            <span class="price">Price:</span>
-                                            <div class="low-price">
-                                                <span class="currency">$</span>
-                                                <span class="leftLabel"></span>
-                                            </div>
-
-                                            <div class="high-price">
-                                                <span class="currency">$</span>
-                                                <span class="rightLabel"></span>
-                                            </div>
-                                            <a href="#" class="filter-btn">Filter Now</a>
-                                        </div>
-                                        <!-- .price-rang -->
-
-                                    </div>
-                                    <!-- .widget-content -->
-                                </div>
                                 <!-- .widget -->
 
 

@@ -1,0 +1,36 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block title %} Modifier catégorie{% endblock %}
+{% block content %}
+    <h1>Categorieanimal</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorieAnimal.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ categorieAnimal.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ categorieAnimal.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorieanimal_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('categorieanimal_edit', { 'id': categorieAnimal.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

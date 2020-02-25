@@ -26,8 +26,7 @@ class AppKernel extends Kernel
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
             new SBC\NotificationsBundle\NotificationsBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
-
-
+            new AnimalBundle\AnimalBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

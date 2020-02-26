@@ -1,0 +1,62 @@
+{% extends 'front.html.twig' %}
+
+{% block content %}
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title" style="font-size: 20px;"> Réclamation numéro {{ reclamation.id }} </strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="vue-lists">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul style="font-size: 16px;">
+
+    <table>
+        <tbody>
+
+            <tr>
+                <th>Datecreation</th>
+                <td>{% if reclamation.dateCreation %}{{ reclamation.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ reclamation.type }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ reclamation.description }}</td>
+            </tr>
+            <tr>
+                <th>Reponse</th>
+                <td>{{ reclamation.reponse }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if reclamation.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fichier</th>
+                <td><img src="{{ asset('images/') }}{{ reclamation.fichier }}"style="width:50px;height: 50px;"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reclamation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}"class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-danger btn-xs">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

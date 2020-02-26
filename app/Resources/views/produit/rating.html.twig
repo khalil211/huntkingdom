@@ -1,0 +1,6 @@
+{% for i in 1..note %}
+    <li><a href='#' id="s{{ i }}"><i class='fa fa-star' aria-hidden='true'></i></a></li>
+{% endfor %}
+{% for i in note+1..5 %}
+    <li><a href='#' id="s{{ i }}"><i class='fa fa-star-o' aria-hidden='true'></i></a></li>
+{% endfor %}

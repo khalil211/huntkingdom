@@ -1,0 +1,51 @@
+blog_index:
+    path:     /
+    defaults: { _controller: "BlogBundle:Blog:index" }
+    methods:  GET
+
+blog_show:
+    path:     /{id}/show
+    defaults: { _controller: "BlogBundle:Blog:show" }
+    methods:  GET
+
+blog_new:
+    path:     /new
+    defaults: { _controller: "BlogBundle:Blog:new" }
+    methods:  [GET, POST]
+
+blog_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BlogBundle:Blog:edit" }
+    methods:  [GET, POST]
+
+blog_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "BlogBundle:Blog:delete" }
+comment_delete:
+    path:     /deletecomment/{id}
+    defaults: { _controller: "BlogBundle:Blog:deletecomment" }
+
+blog_post:
+    path:     /viewblog
+    defaults: { _controller: "BlogBundle:Blog:viewblog" }
+blog_details:
+    path:      /{id}/details
+    defaults: { _controller: "BlogBundle:Blog:details" }
+    methods:  [GET, POST]
+comment_report:
+    path:     /{id}/report
+    defaults: { _controller: "BlogBundle:Blog:report" }
+    methods:  [POST]
+blog_stat:
+    path:     /stat
+    defaults: { _controller: "BlogBundle:Blog:stat" }
+    methods:  GET
+hunt:
+    path:     /hunt
+    defaults: { _controller: "BlogBundle:Blog:hunt" }
+    methods:  [GET, POST]
+hunt_reply:
+    path:     /huntreply
+    defaults: { _controller: "BlogBundle:Blog:huntreply" }
+    methods:  [GET, POST]
+

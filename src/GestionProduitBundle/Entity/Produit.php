@@ -32,6 +32,14 @@ class Produit
      * @var string
      *
      * @ORM\Column(name="nom_prod", type="string", length=255)
+     *
+     * @Assert\NotBlank(message="Le champ nom est obligatoire")
+     * @Assert\Length(
+     *     min = 5,
+     *     max = 50,
+     *     minMessage = "Le nom doit contenir aux minimum 5 carracteres",
+     *     maxMessage = "Le nom doit contenir au maximum 50 carracteres"
+     * )
      */
     private $nomProd;
 
@@ -39,6 +47,11 @@ class Produit
      * @var float
      *
      * @ORM\Column(name="prix_prod", type="float")
+     * @Assert\NotBlank(message="Le champ prix est obligatoire")
+     * @Assert\GreaterThan(
+     *     value=0,
+     *     message="Le prix doit être supérieur à 0"
+     * )
      */
     private $prixProd;
 
@@ -46,6 +59,7 @@ class Produit
      * @var string
      *
      * @ORM\Column(name="description_prod", type="text")
+     * @Assert\NotBlank(message="Le champ description est obligatoire")
      */
     private $descriptionProd;
 
@@ -53,6 +67,11 @@ class Produit
      * @var int
      *
      * @ORM\Column(name="quantite_prod", type="integer")
+     * @Assert\NotBlank(message="Le champ quantite est obligatoire")
+     * @Assert\GreaterThan(
+     *     value=0,
+     *     message="La quantite doit être supérieure à 0"
+     * )
      */
     private $quantiteProd;
     /**
@@ -210,6 +229,12 @@ class Produit
     public function getQuantiteProd()
     {
         return $this->quantiteProd;
+    }
+    public function getAbsolutePath()
+    {
+        return null === $this->imageProd
+            ? null
+            : $this->getUploadRootDir().'/'.$this->imageProd;
     }
     public function getWebPath()
     {

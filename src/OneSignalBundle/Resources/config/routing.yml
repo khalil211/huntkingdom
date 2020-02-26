@@ -1,0 +1,3 @@
+one_signal_homepage:
+    path:     /onesignal
+    defaults: { _controller: OneSignalBundle:Default:index }

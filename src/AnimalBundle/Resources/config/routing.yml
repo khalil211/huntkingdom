@@ -1,0 +1,23 @@
+animal_animal:
+    resource: "@AnimalBundle/Resources/config/routing/animal.yml"
+    prefix:   /animal
+
+animal_categorieanimal:
+    resource: "@AnimalBundle/Resources/config/routing/categorieanimal.yml"
+    prefix:   /categorieanimal
+
+animal_homepage:
+    path:     /
+    defaults: { _controller: AnimalBundle:Default:index }
+
+animal_list:
+    path:     /animaux
+    defaults: { _controller: AnimalBundle:Animal:list }
+
+animal_details:
+    path:     /animaux/{id}
+    defaults: { _controller: AnimalBundle:Animal:details }
+
+animal_like:
+    path:     /animaux/like/{id}
+    defaults: { _controller: AnimalBundle:Animal:like }

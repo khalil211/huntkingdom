@@ -60,6 +60,22 @@
                         <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Statistiques</a></li>
                     </ul>
                 </li>
+                <!-- element -->
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle menu-title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Gestion Blogs</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-fort-awesome"></i><a href="{{ path('blog_new') }}">Ajouter Blog</a></li>
+                        <li><i class="menu-icon ti-themify-logo"></i><a href="{{ path('blog_index') }}">Liste des Blogs</a></li>
+
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle menu-title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Gestion profils</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon ti-themify-logo"></i><a href="{{ path('utilisateurs') }}">Liste des profils</a></li>
+                        <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Statistiques</a></li>
+                    </ul>
+                </li>
                 <!-- fin element -->
                 <!-- element -->
                 <li class="menu-item-has-children dropdown">
@@ -84,7 +100,22 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-fort-awesome"></i><a href="{{ path('categorieproduit_new') }}">Ajouter catégorie</a></li>
                         <li><i class="menu-icon ti-themify-logo"></i><a href="{{ path('categorieproduit_index') }}">Liste des catégories</a></li>
-
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle menu-title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-shopping-cart"></i>Gestion commandes</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-list"></i><a href="{{ path('list_commande') }}">Liste des commandes</a></li>
+                        <li><i class="menu-icon fa fa-bar-chart-o"></i><a href="{{ path('stats_commande') }}">Statistiques commandes</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle menu-title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Gestion animaux</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-fort-awesome"></i><a href="{{ path('categorieanimal_new') }}">Ajouter catégorie</a></li>
+                        <li><i class="menu-icon ti-themify-logo"></i><a href="{{ path('categorieanimal_index') }}">Liste des catégories</a></li>
+                        <li><i class="menu-icon fa fa-fort-awesome"></i><a href="{{ path('animal_new') }}">Ajouter animal</a></li>
+                        <li><i class="menu-icon ti-themify-logo"></i><a href="{{ path('animal_index') }}">Liste des animaux</a></li>
                     </ul>
                 </li>
                 <!-- fin catégorie -->
@@ -105,7 +136,6 @@
         <div class="header-menu">
 
             <div class="col-sm-7">
-                <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                 <div class="header-left">
                     <button class="search-trigger"><i class="fa fa-search"></i></button>
                     <div class="form-inline">
@@ -190,13 +220,8 @@
                     </a>
 
                     <div class="user-menu dropdown-menu">
-                        <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
-
-                        <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
-
-                        <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
-
-                        <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                        <a class="nav-link" href="{{ path('index') }}"><i class="fa fa-user"></i> Back to front</a>
+                        <a class="nav-link" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> Se deconnecter</a>
                     </div>
                 </div>
 
@@ -231,15 +256,6 @@
             <div class="page-header float-left">
                 <div class="page-title">
                     <h1> {% block titre %} Dashboard {% endblock %} </h1>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-8">
-            <div class="page-header float-right">
-                <div class="page-title">
-                    <ol class="breadcrumb text-right">
-                        <li class="active">Dashboard</li>
-                    </ol>
                 </div>
             </div>
         </div>

@@ -1,0 +1,48 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block content %}
+    <h1>Animal</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ animal.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ animal.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ animal.description }}</td>
+            </tr>
+            <tr>
+                <th>Medias</th>
+                <td>{{ animal.medias }}</td>
+            </tr>
+            <tr>
+                <th>Zone</th>
+                <td>{{ animal.zone }}</td>
+            </tr>
+            <tr>
+                <th>Saison</th>
+                <td>{{ animal.saison }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('animal_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('animal_edit', { 'id': animal.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

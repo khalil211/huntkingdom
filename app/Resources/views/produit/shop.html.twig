@@ -39,11 +39,11 @@
                                                         <div class="collection-items">
                                                             <div class="collection-img">
                                                                 <div class="collection-overlay"></div>
-                                                                <img src="{{ asset('image_shop/') }}{{ produit.imageProd }}" alt="collection-img-5">
+                                                                <img src="{{ asset('images/') }}{{ produit.imageProd }}" alt="collection-img-5">
                                                                 <ul class="collection-icon">
                                                                     <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                                                     <li><a href="#" id="addCart{{ produit.id }}"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="assets/images/shop/collection-img-5.jpg" data-rel="lightcase:myCollection"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                                                    <li><a href="{{ asset('images/') }}{{ produit.imageProd }}" data-rel="lightcase:myCollection"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                                                                 </ul>
                                                             </div>
                                                             <!-- .collection-img -->
@@ -51,11 +51,24 @@
                                                                 <h4><a href="{{ path('produit_details', { 'id': produit.id }) }}">{{ produit.nomProd }}</a></h4>
                                                                 <h5>{{ produit.prixProd }}</h5>
                                                                 <ul class="star-icon">
-                                                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                                                    {% if notes[produit.id] == 0 %}
+                                                                        <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                                        <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                                        <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                                        <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                                        <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                                    {% else %}
+                                                                        {% if notes[produit.id] != 0 %}
+                                                                            {% for i in 1..notes[produit.id] %}
+                                                                                <li><i class='fa fa-star' aria-hidden='true'></i></li>
+                                                                            {% endfor %}
+                                                                        {% endif %}
+                                                                        {% if notes[produit.id] != 5 %}
+                                                                            {% for i in notes[produit.id]+1..5 %}
+                                                                                <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                                            {% endfor %}
+                                                                        {% endif %}
+                                                                    {% endif %}
                                                                 </ul>
                                                             </div>
                                                             <!-- .collection-content -->
@@ -76,19 +89,55 @@
                             <div class="shop-sidebar">
                                 <div class="widget">
                                     <div class="shop-widget-content">
-                                        <form action="#" method="POST" class="sidebar-form">
+                                                <form action="{{ path('produit_shop') }}" method="get">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="search" name="search" placeholder="Search...">
+                                                <input type="text" class="form-control" id="filter" name="filter">
                                                 <i class="fa fa-search" aria-hidden="true"></i>
+                                                <button type="submit" class="filter-btn"> Rechercher</button>
                                             </div>
-                                        </form>
+                                                </form>
+
+
                                     </div>
+
                                     <!-- .shop-widget-content -->
                                 </div>
 
                                 <!-- .widget -->
 
-
+                                <!-- .widget -->
+                                <div class="widget">
+                                    <div class="shop-widget-content">
+                                        <h4 class="shop-widget-title">Meilleurs produits</h4>
+                                        {% for meilleur in meilleurs %}
+                                            <div class="small-product-items">
+                                                <div class="small-product-img">
+                                                    <a href="{{ path('produit_details', { 'id': meilleur.id }) }}"><img src="{{ asset('images/') }}{{ meilleur.imageProd }}" alt="small-product-img-1" height="70px" width="70px"/></a>
+                                                </div>
+                                                <!-- .small-product-img -->
+                                                <div class="small-product-content">
+                                                    <h5><a href="{{ path('produit_details', { 'id': meilleur.id }) }}">{{ meilleur.nomProd }}</a></h5>
+                                                    <p>{{ meilleur.prixProd }}</p>
+                                                    <ul class="star-icon">
+                                                        {% if notes[meilleur.id] != 0 %}
+                                                            {% for i in 1..notes[meilleur.id] %}
+                                                                <li><i class='fa fa-star' aria-hidden='true'></i></li>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                        {% if notes[meilleur.id] != 5 %}
+                                                            {% for i in notes[meilleur.id]+1..5 %}
+                                                                <li><i class='fa fa-star-o' aria-hidden='true'></i></li>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                                <!-- .small-product-content -->
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <!-- .widget-content -->
+                                </div>
+                                <!-- .widget -->
                                 <div class="widget">
                                     <h4 class="shop-widget-title">Catégories</h4>
                                     <div class="shop-widget-content">
@@ -208,34 +257,7 @@
                                 </div>-->
                                 <!-- .widget -->
 
-                                <div class="widget">
-                                    <div class="shop-widget-content">
-                                        <h4 class="shop-widget-title">Filter by Price</h4>
-                                        <div class="nstSlider" data-range_min="5" data-range_max="500" data-cur_min="50" data-cur_max="350">
 
-                                            <div class="bar"></div>
-                                            <div class="leftGrip"></div>
-                                            <div class="rightGrip"></div>
-                                        </div>
-
-                                        <div class="price-rang">
-                                            <span class="price">Price:</span>
-                                            <div class="low-price">
-                                                <span class="currency">$</span>
-                                                <span class="leftLabel"></span>
-                                            </div>
-
-                                            <div class="high-price">
-                                                <span class="currency">$</span>
-                                                <span class="rightLabel"></span>
-                                            </div>
-                                            <a href="#" class="filter-btn">Filter Now</a>
-                                        </div>
-                                        <!-- .price-rang -->
-
-                                    </div>
-                                    <!-- .widget-content -->
-                                </div>
                                 <!-- .widget -->
 
 
@@ -338,21 +360,8 @@
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
                             <li>
-                                <a href="#" aria-label="Previous">
-                                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li class="active"><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">...</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        {{ knp_pagination_render(produits) }}
+                            </li></ul>
                     </nav>
                 </div>
 
@@ -403,19 +412,27 @@
     <script type="text/javascript" src="{{ asset('front/assets/js/custom.map.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('front/assets/js/custom.js') }}"></script>
+
     <script type="text/javascript">
-        {% for produit in produits %}
-            $(function(){
-                console.log('test jquery');
-                $('#addCart').click(function(){
-                    $.ajax({
-                        url: {{ path('add_to_cart', {'id': produit.id}) }},
-                        success: function(data){
-                            $('#miniCart').html(data);
-                        }
-                    });
+        $(function(){
+            {% for produit in produits %}
+            $('#addCart{{ produit.id }}').click(function(e){
+                {% if app.user %}
+                $.ajax({
+                    url: '{{ path('add_to_cart', {'id': produit.id}) }}',
+                    success: function(data){
+                        $('#miniCart').html(data);
+                    },
+                    error: function(){
+                        alert('erreur ajout produit panier');
+                    }
                 });
+                {% else %}
+                window.location.replace('{{ path('fos_user_security_login') }}');
+                {% endif %}
+                e.preventDefault();
             });
-        {% endfor %}
+            {% endfor %}
+        });
     </script>
 {% endblock %}

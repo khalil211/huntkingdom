@@ -1,0 +1,157 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}Déatails animal{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/font-awesome.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/fonts/flaticon.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/bootstrap.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/animate.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/swiper.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/lightcase.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/jquery.nstSlider.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/flexslider.css') }}" media="all" />
+
+    <!-- own style css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/style.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/rtl.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/responsive.css') }}" media="all" />
+{% endblock %}
+{% block content %}
+    <section class="bg-page-header">
+        <div class="page-header-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h2>Détails animal</h2>
+                        </div>
+                        <!-- .page-title -->
+                        <div class="page-header-content">
+                            <ol class="breadcrumb">
+                                <li><a href="{{ path('index') }}">Accueil</a></li>
+                                <li>Détails animal</li>
+                            </ol>
+                        </div>
+                        <!-- .page-header-content -->
+                    </div>
+                    <!-- .page-header -->
+                </div>
+                <!-- .row -->
+            </div>
+            <!-- .container -->
+        </div>
+        <!-- .page-header-overlay -->
+    </section>
+    <section class="bg-single-events">
+        <div class="container">
+            <div class="row">
+                <div class="single-events">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="single-event-item">
+                                <div class="single-event-img">
+                                    <img src="{{ asset('images/') }}{{ animal.medias }}" alt="single-event-img-1" class="img-responsive" />
+                                    <!-- .date-box -->
+                                </div>
+                                <!-- .single-event-img -->
+                                <div class="single-event-content">
+                                    <h3>Description</h3>
+                                    <p>{{ animal.description }}</p>
+                                    <div class="single-date-map">
+                                        <div class="single-date-option">
+                                            <ul class="single-date">
+                                                <li>
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                    <div class="h-adress-content">
+                                                        <h6>Saison</h6>
+                                                        <p>{{ animal.saison }}</p>
+                                                    </div>
+                                                    <!-- .h-adress-content -->
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                    <div class="h-adress-content">
+                                                        <h6>Zone</h6>
+                                                        <p>{{ animal.zone }}</p>
+                                                    </div>
+                                                    <!-- .h-adress-content -->
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                                                    <div class="h-adress-content">
+                                                        <h6>Categorie</h6>
+                                                        <p>{{ animal.categorie.nom }}</p>
+                                                    </div>
+                                                    <!-- .h-adress-content -->
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- .single-date-map -->
+                                </div>
+                                <!-- .single-event-content -->
+                                <div class="event-single-bottom-option">
+                                    <div class="event-share-option">
+                                        <ul class="meta-post">
+                                            <li><a id="likeLink" href="#"><i id="likeIcon" class="{% if isLike == 1 %}fa fa-heart{% else %}fa fa-heart-o{% endif %}" aria-hidden="true"></i><span id="likeCount">{{ nbLikes }}</span> J'aimes </a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- .share-option -->
+                                </div>
+                                <!-- .single-bottom-option -->
+                            </div>
+                            <!-- .single-event-item -->
+                        </div>
+                        <!-- .col-md-4 -->
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!-- .single-events -->
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .container -->
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery-2.2.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.easing.1.3.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.waypoints.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.counterup.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/swiper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/plugins.isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/lightcase.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.nstSlider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.flexslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.map.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.js') }}"></script>
+
+    <!-- Map Api -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqVIkdttPNjl5c5hKlc_Hk3bfXQQlf2Rc&amp;callback=initMap">
+
+
+    </script>
+    <script type="text/javascript">
+        $(function(){
+            $('#likeLink').click(function(e){
+                $.ajax({
+                    url: '{{ path('animal_like',{'id': animal.id}) }}',
+                    success: function (data){
+                        $('#likeCount').text(data);
+                        if($('#likeIcon').attr('class')=='fa fa-heart')
+                            $('#likeIcon').attr('class','fa fa-heart-o');
+                        else
+                            $('#likeIcon').attr('class','fa fa-heart');
+                    },
+                    error: function(){
+                        alert('erreur like ajax');
+                    }
+                });
+                e.preventDefault();
+            });
+        });
+    </script>
+{% endblock %}

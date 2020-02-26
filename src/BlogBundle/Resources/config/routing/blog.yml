@@ -40,4 +40,12 @@ blog_stat:
     path:     /stat
     defaults: { _controller: "BlogBundle:Blog:stat" }
     methods:  GET
+hunt:
+    path:     /hunt
+    defaults: { _controller: "BlogBundle:Blog:hunt" }
+    methods:  [GET, POST]
+hunt_reply:
+    path:     /huntreply
+    defaults: { _controller: "BlogBundle:Blog:huntreply" }
+    methods:  [GET, POST]
 

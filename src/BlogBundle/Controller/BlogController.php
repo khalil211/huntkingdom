@@ -9,6 +9,9 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
+use Phpml\Classification\NaiveBayes;
+
+
 
 
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -297,7 +300,52 @@ class BlogController extends Controller
 
 
     }
+    public function huntAction(Request $request)
+    {
+        $huntForm = $this->createForm('BlogBundle\Form\HuntForm');
+        $huntForm->handleRequest($request);
+        return $this->render('blog/hunt.html.twig', array(
+            'huntform' => $huntForm->createView(),
+        ));
 
+    }
+    public function huntreplyAction(Request $request)
+    {
+
+        $huntForm = $this->createForm('BlogBundle\Form\HuntForm');
+        $huntForm->handleRequest($request);
+        $huntdata = $huntForm->getData();
+        dump($huntdata);
+        $outlook = $huntForm["outlook"]->getData();
+        $temperature = $huntForm["temperature"]->getData();
+        $humidity = $huntForm["humidity"]->getData();
+        $windy = $huntForm["windy"]->getData();
+        dump($outlook);
+        dump($temperature);
+        dump($humidity);
+        dump($windy);
+
+        $samples = [[1, 1, 1, 0], [1, 1, 1, 1], [2, 1, 1, 0], [3, 3, 1, 0], [3, 2, 0, 0], [3, 2, 0, 1], [2, 2, 0, 1], [1, 3, 1, 0], [1, 2, 0, 0], [3, 3, 0, 0], [1, 3, 0, 1], [2, 3, 1, 1], [2, 1, 0, 0], [3, 3, 1, 1]];
+        $labels = ['b', 'b', 'a', 'a', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'b'];
+
+        $classifier = new NaiveBayes();
+        $classifier->train($samples, $labels);
+        $test=$classifier->predict([dump($outlook), dump($temperature), dump($humidity), dump($windy)]);
+
+
+
+
+        return $this->render('blog/huntreply.html.twig', array(
+            'outlook' => $outlook,
+            'temperature' => $temperature,
+            'humidity' => $humidity,
+            'windy' => $windy,
+            'test'=>$test,
+
+        ));
+
+
+    }
 
     /**
      * Creates a form to delete a blog entity.

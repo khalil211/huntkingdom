@@ -1,48 +1,36 @@
 {% extends 'baseAdmin.html.twig' %}
-
+{% block title %}Afficher un animal{% endblock %}
+{% block titre %}Afficher un animal{% endblock %}
 {% block content %}
-    <h1>Animal</h1>
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ animal.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ animal.nom }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ animal.description }}</td>
-            </tr>
-            <tr>
-                <th>Medias</th>
-                <td>{{ animal.medias }}</td>
-            </tr>
-            <tr>
-                <th>Zone</th>
-                <td>{{ animal.zone }}</td>
-            </tr>
-            <tr>
-                <th>Saison</th>
-                <td>{{ animal.saison }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title" style="font-size: 20px;"> Animal {{ animal.id }} </strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="vue-lists">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul style="font-size: 16px;">
+                                            <li>
+                                                <strong> Nom de l'animal : </strong> {{ animal.nom }}
+                                            </li>
+                                            <li>  <strong> Description: </strong> {{ animal.description }}</li>
+                                            <li>  <strong> Image : </strong> <img src="{{ asset('images/') }}{{ animal.medias }} "style="width:150px;height: 150px;"></li>
+                                            <li>  <strong> Zone : </strong> {{ animal.zone }}</li>
+                                            <li>  <strong> Saison : </strong> {{ animal.saison }}</li>
+                                            <a class="btn btn-info"  role="button" href="{{ path('animal_index') }}">Liste des animaux</a>
+                                        </ul>
+                                    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('animal_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('animal_edit', { 'id': animal.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                                </div>
+                            </div>
+
+
+                        </div></div></div></div></div></div>
 {% endblock %}
+

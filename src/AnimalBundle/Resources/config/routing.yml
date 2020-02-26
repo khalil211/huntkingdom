@@ -21,3 +21,7 @@ animal_details:
 animal_like:
     path:     /animaux/like/{id}
     defaults: { _controller: AnimalBundle:Animal:like }
+
+animal_stats:
+    path:     /admin/animaux/stats
+    defaults: { _controller: AnimalBundle:Animal:stats }

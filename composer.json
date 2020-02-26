@@ -33,7 +33,6 @@
         "symfony/swiftmailer-bundle": "^3.0",
         "symfony/symfony": "3.4.*",
         "twig/extensions": "^1.5",
-        "twig/twig": "^1.0||^2.0"
         "twig/twig": "^1.0||^2.0",
         "nomaya/social-bundle": "dev-master"
     },

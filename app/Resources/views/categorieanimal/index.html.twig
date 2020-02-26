@@ -1,18 +1,8 @@
 {% extends 'baseAdmin.html.twig' %}
 {% block title %}Liste des catégories{% endblock %}
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('back/vendors/bootstrap/dist/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('back/vendors/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('back/vendors/themify-icons/css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('back/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('back/vendors/selectFX/css/cs-skin-elastic.css') }}">
-    <link rel="stylesheet" href="{{ asset('back/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('back/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
+{% block titre %}Ajouter categorie {% endblock %}
 
-    <link rel="stylesheet" href="{{ asset('back/assets/css/style.css') }}">
-{% endblock %}
 {% block content %}
-
     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -31,10 +21,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('categorieanimal_show', { 'id': categorieAnimal.id }) }}">show</a>
+                            <a href="{{ path('categorieanimal_show', { 'id': categorieAnimal.id }) }}"class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> show</a>
                         </li>
                         <li>
-                            <a href="{{ path('categorieanimal_edit', { 'id': categorieAnimal.id }) }}">edit</a>
+                            <a href="{{ path('categorieanimal_edit', { 'id': categorieAnimal.id }) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> edit</a>
                         </li>
                     </ul>
                 </td>
@@ -43,28 +33,5 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('categorieanimal_new') }}">Create a new categorieAnimal</a>
-        </li>
-    </ul>
 {% endblock %}
-{% block javascripts %}
-    <script src="{{ asset('back/vendors/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('back/vendors/popper.js/dist/umd/popper.min.js') }}"></script>
-    <script src="{{ asset('back/vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('back/assets/js/main.js') }}"></script>
 
-
-    <script src="{{ asset('back/vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('back/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('back/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('back/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('back/vendors/jszip/dist/jszip.min.js') }}"></script>
-    <script src="{{ asset('back/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('back/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('back/vendors/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('back/vendors/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('back/vendors/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset('back/assets/js/init-scripts/data-table/datatables-init.js') }}"></script>
-{% endblock %}

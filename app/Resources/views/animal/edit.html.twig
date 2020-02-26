@@ -1,21 +1,64 @@
 {% extends 'baseAdmin.html.twig' %}
+
 {% block title %}Modifier animal{% endblock %}
+{% block titre %}Modifier animal {% endblock %}
+
 {% block content %}
-    <h1>Animal edit</h1>
-
+<div class="card-body card-block">
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    <div class="row form-group">
 
-    <ul>
-        <li>
-            <a href="{{ path('animal_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <div class="col col-md-3"><label class=" form-control-label">Nom  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(edit_form.nom) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Description  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(edit_form.description) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Media  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(edit_form.file) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Zone </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(edit_form.zone) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Saison </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(edit_form.saison) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+
+    {{ form_end(edit_form) }}
+    <div class="card-footer">
+        <lu>
+        <button type="submit" class="btn btn-primary btn-sm" >
+            <i class="fa fa-dot-circle-o"></i> Envoyer
+        </button>
+        </lu>
+        <lu class="card-footer">
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete" class="btn btn-danger btn-xs" >
+        {{ form_end(delete_form) }}
+        </lu>
+    </div>
+
 {% endblock %}

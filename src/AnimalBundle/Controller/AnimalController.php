@@ -8,6 +8,7 @@ use AnimalBundle\Entity\LikeAimal;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 
 /**
  * Animal controller.
@@ -179,5 +180,36 @@ class AnimalController extends Controller
         if ($likes==null)
             return new Response(0);
         return new Response(count($likes));
+    }
+
+    public function statsAction()
+    {
+        $em=$this->getDoctrine()->getManager();
+        $data=Array();
+        array_push($data,['Catégorie','Nombre']);
+        $categories=$em->getRepository(CategorieAnimal::class)->findAll();
+        foreach ($categories as $categorie)
+        {
+            $animaux=$em->getRepository(Animal::class)->findByCategorie($categorie);
+            if ($animaux==null)
+                array_push($data,[$categorie->getNom(),0]);
+            else
+                array_push($data,[$categorie->getNom(),count($animaux)]);
+        }
+        $pieChart = new PieChart();
+        $pieChart->getData()->setArrayToDataTable($data);
+
+        $pieChart->getOptions()->setTitle('Nombre animaux par catégorie');
+        $pieChart->getOptions()->setHeight(800);
+        $pieChart->getOptions()->setWidth(800);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#07600');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(25);
+
+
+        return $this->render('animal/stats.html.twig', array(
+                'piechart' => $pieChart,
+            )
+
+        );
     }
 }

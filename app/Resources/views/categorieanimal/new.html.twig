@@ -1,15 +1,32 @@
 {% extends 'baseAdmin.html.twig' %}
+
 {% block title %} Ajouter catégorie{% endblock %}
+{% block titre %} Ajouter Catégorie {% endblock %}
+
 {% block content %}
 
+<div class="card-body card-block">
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+  <div class="row form-group">
+        <div class="col col-md-3"><label class=" form-control-label">Nom  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(form.nom) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+  </div>
+
+  <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Description  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(form.description) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+  </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm" >
+            <i class="fa fa-dot-circle-o"></i> Ajouter Catégorie
+        </button>
+    </div>
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('categorieanimal_index') }}">Back to the list</a>
-        </li>
-    </ul>
+</div>
 {% endblock %}

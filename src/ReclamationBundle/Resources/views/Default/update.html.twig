@@ -1,0 +1,64 @@
+{% extends 'baseFront.html.twig' %}
+{% block content %}
+
+                                    <h3>Modifier votre réclamation</h3>
+                                    {{ form_start(form) }}
+                                    <div class="cp-field">
+                                        <h5>Type</h5>
+                                        <div class="form-group">
+                                            {{ form_widget(form.type,{'attr':{'class':'form-control','id':'exampleFormControlSelect1','style':'-webkit-appearance: menulist-button;'}}) }}
+                                            <!--<select class="form-control" id="exampleFormControlSelect1" style="-webkit-appearance: menulist-button;" name="type">
+                                                <option>type1</option>
+                                                <option>type2</option>
+                                                <option>type3</option>
+                                            </select>-->
+                                        </div>
+                                    </div>
+                                    <div class="cp-field">
+                                        <h5>Description</h5>
+                                        {{ form_widget(form.description) }}
+
+                                        <!--<textarea name="decription"> </textarea>-->
+                                    </div>
+                                    <div class="cp-field">
+                                        <div class="fgt-sec">
+                                            <!--<input type="checkbox" name="fichier" id="c4">-->
+                                            <label for="c4">
+                                                <span></span>
+
+                                            </label>
+                                            <!--<small>Si vous voulez ajouter un fichier ou une capture ecran</small>-->
+                                        </div>
+                                        <p></p>
+                                    </div>-
+                                    <div class="dropdown privacydropd">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Si vous voulez ajouter un fichier ou une capture ecran</a>
+                                        <div class="dropdown-menu">
+                                            <p>Importer un fichier</p>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <!--<form class="radio-form">-->
+                                                    <div class="save-stngs pd3">
+                                                        <ul>
+                                                            <li>
+                                                                {{ form_widget(form.fichier) }}
+                                                                <!--<input type="file"  >-->
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <!--</form>-->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="save-stngs pd3">
+                                        <ul>
+                                            <!--<li><button type="submit">Envoyer</button></li>-->
+                                            <li> {{ form_widget(form.Envoyer) }}</li>
+                                        </ul>
+                                    </div><!--save-stngs end-->
+                                    {{ form_end(form) }}
+
+
+{% endblock %}

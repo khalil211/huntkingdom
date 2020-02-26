@@ -1,3 +1,14 @@
+reclamation:
+    resource: "@ReclamationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+one_signal:
+    resource: "@OneSignalBundle/Resources/config/routing.yml"
+    prefix:   /
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
@@ -21,3 +32,11 @@ index:
 admin:
     path:     /admin
     defaults: { _controller: AppBundle:Default:indexAdmin }
+
+# Create route for scheduler in your app
+app_scheduler:
+    resource: "@EventBundle/Resources/config/routing/scheduler.yml"
+    prefix:   /scheduler
+frame:
+    path:     /frame
+    defaults: { _controller: EventBundle:Scheduler:iframe }

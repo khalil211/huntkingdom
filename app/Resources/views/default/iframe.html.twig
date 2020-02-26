@@ -5,7 +5,15 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
 <!--<![endif]-->
-
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+        OneSignal.init({
+            appId: "b8f3f614-4701-407c-b1e9-5e35d5775757",
+        });
+    });
+</script>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,15 +77,6 @@
                     </ul>
                 </li>
                 <!-- fin element -->
-                <!-- Catégorie-->
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle menu-title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Gestion des réclamations</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon ti-themify-logo"></i><a>Liste des réclamations</a></li>
-
-                    </ul>
-                </li>
-                <!-- fin catégorie -->
                 <!-- Catégorie-->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle menu-title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Gestion catégories</a>
@@ -239,24 +238,18 @@
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
                         <li class="active">Dashboard</li>
+
                     </ol>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="content mt-3">
-        {% block content %}
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="http://localhost/huntkingdom/web/app_dev.php/scheduler/" allowfullscreen></iframe>
+    </div>
 
 
-
-
-
-
-
-
-        {% endblock %}
-    </div> <!-- .content -->
 </div><!-- /#right-panel -->
 
 <!-- Right Panel -->

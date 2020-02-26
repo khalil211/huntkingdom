@@ -1,0 +1,20 @@
+{% extends 'baseFront.html.twig' %}
+{% block content %}
+{{ form_start(form) }}
+<div class="row form-group">
+
+                 <div class="col col-md-3"><label class=" form-control-label">Votre Réclamation  </label></div>
+    <br>
+                        <h5>Type de réclamation</h5>
+                            <div class="col-12 col-md-9"> {{ form_widget(form.type, { 'attr': {'class': 'form-control'} }) }}<small class="form-text text-muted"></small></div>
+<br>
+    <br>
+                        <h5>Description</h5>
+                            <div class="col-12 col-md-9"> {{ form_widget(form.description, { 'attr': {'class': 'form-control'} }) }}<small class="form-text text-muted"></small></div>
+    <br>
+
+    <div class="col-12 col-md-9">
+    </div>
+</div>
+{{ form_end(form) }}
+{% endblock %}

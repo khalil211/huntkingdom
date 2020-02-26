@@ -1,0 +1,54 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block content %}
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="body table-responsive members_profiles">
+                            {% for r in reclamation %}
+                                <div class="cp-field">
+                                    <h5>Type</h5>
+                                    <div class="form-group">
+                                        {{ r.type }}
+                                    </div>
+                                </div>
+                                {% if r.status==0 %}
+                                    <div class="cp-field">
+                                        <h5>Status</h5>
+                                        <div class="form-group">
+                                            En cours
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="cp-field">
+                                        <h5>Status</h5>
+                                        <div class="form-group">
+                                            traite
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="cp-field">
+                                    <h5>Description</h5>
+                                    {{ r.description }}
+                                </div>
+                                {% if r.status==1 %}
+                                    <div class="cp-field">
+                                        <h5>Reponse</h5>
+                                        {{ r.reponse }}
+                                    </div>
+                                {% else %}
+                                    <div class="cp-field">
+                                        <textarea></textarea>
+                                    </div>
+                                    <div class="cp-field">
+                                        <input type="submit" value="Repondre">
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+{% endblock %}

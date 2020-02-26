@@ -71,15 +71,6 @@
                 <!-- fin element -->
                 <!-- Catégorie-->
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle menu-title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Gestion des réclamations</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon ti-themify-logo"></i><a>Liste des réclamations</a></li>
-
-                    </ul>
-                </li>
-                <!-- fin catégorie -->
-                <!-- Catégorie-->
-                <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle menu-title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Gestion catégories</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-fort-awesome"></i><a href="{{ path('categorieproduit_new') }}">Ajouter catégorie</a></li>
@@ -244,19 +235,11 @@
             </div>
         </div>
     </div>
-
-    <div class="content mt-3">
-        {% block content %}
-
-
-
-
-
-
-
-
-        {% endblock %}
-    </div> <!-- .content -->
+    {% block content %}
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="http://localhost/huntkingdom/web/app_dev.php/reclamation/reclamationf" allowfullscreen></iframe>
+    </div>
+    {% endblock %}
 </div><!-- /#right-panel -->
 
 <!-- Right Panel -->

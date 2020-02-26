@@ -1,0 +1,48 @@
+
+{% extends 'baseAdmin.html.twig' %}
+
+{% block content %}
+
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="body table-responsive members_profiles">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th style="width:60px;">Utilisateur</th>
+                                    <th>Type</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Repondre</th>
+                                    <th>Supprimer</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for r in reclamations %}
+                                    <tr>
+                                        <td>{{ r.user.username }}</td>
+                                        <td>{{ r.type }}</td>
+                                        <td>{{ r.dateCreation | date }}</td>
+                                        {% if r.status==0 %}
+                                            <td>non traité</td>
+                                            <td><a href="{{ path('traiter',{'id':r.id}) }}">Répondre</a></td>
+                                        {% else %}
+                                            <td>traité</td>
+                                            <td></td>
+                                        {% endif %}
+                                        <td><a href="{{ path('delete',{'id':r.id}) }}">Supprimer</a></td>
+
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+{% endblock %}

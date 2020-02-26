@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Liste des produit</title>
+   <link rel="stylesheet" href="http://localhost/huntkingdom/web/back/style.css">
+</head>
+<body>
+<main>
+    <h1  class="clearfix"><small><span></span><br />Logo</small> Liste des produits en PDF<small><span>DUE DATE</span><br /></small></h1>
+    <table>
+        <thead>
+        <tr>
+            <th class="service">Id</th>
+            <th class="service">Nom </th>
+            <th class="service">Prix </th>
+            <th class="service">Description</th>
+            <th class="service">Quantite</th>
+            <th class="service">Catégorie</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td class="service">{{produit.id}}</td>
+                <td class="desc">{{produit.nomProd}}</td>
+                <td class="unit">{{produit.prixProd}}</td>
+                <td class="qty">{{produit.descriptionProd}}</td>
+                <td class="total">{{produit.quantiteProd}}</td>
+                <td class="desc">{{produit.categorie.nomCat}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+</main>
+<footer>
+
+</footer>
+</body>
+</html>

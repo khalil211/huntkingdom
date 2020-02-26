@@ -28,4 +28,14 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function getUserCommandes($user)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.etat != 0')
+            ->andWhere('c.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
 }

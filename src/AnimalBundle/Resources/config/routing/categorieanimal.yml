@@ -1,0 +1,24 @@
+categorieanimal_index:
+    path:     /
+    defaults: { _controller: "AnimalBundle:CategorieAnimal:index" }
+    methods:  GET
+
+categorieanimal_show:
+    path:     /{id}/show
+    defaults: { _controller: "AnimalBundle:CategorieAnimal:show" }
+    methods:  GET
+
+categorieanimal_new:
+    path:     /new
+    defaults: { _controller: "AnimalBundle:CategorieAnimal:new" }
+    methods:  [GET, POST]
+
+categorieanimal_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AnimalBundle:CategorieAnimal:edit" }
+    methods:  [GET, POST]
+
+categorieanimal_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AnimalBundle:CategorieAnimal:delete" }
+    methods:  DELETE

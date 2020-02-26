@@ -24,6 +24,11 @@ class AppKernel extends Kernel
             new CommandeBundle\CommandeBundle(),
             new Symfony\Cmf\Bundle\MediaBundle\CmfMediaBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new Mgilet\NotificationBundle\MgiletNotificationBundle(),
+            new SBC\NotificationsBundle\NotificationsBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
+            new AnimalBundle\AnimalBundle(),
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
         ];
 

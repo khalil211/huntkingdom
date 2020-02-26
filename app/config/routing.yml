@@ -3,6 +3,13 @@ app:
     type: annotation
 blog:
     resource: "@BlogBundle/Resources/config/routing.yml"
+
+animal:
+    resource: "@AnimalBundle/Resources/config/routing.yml"
+    prefix:   /
+
+commande:
+    resource: "@CommandeBundle/Resources/config/routing.yml"
     prefix:   /
 
 gestion_produit:
@@ -14,8 +21,17 @@ commande:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     prefix:   /
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+index:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+
 admin:
-    path:     /admin
+    path:     /admin/index
     defaults: { _controller: AppBundle:Default:indexAdmin }
 
 notifications_admin:

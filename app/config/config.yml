@@ -4,6 +4,8 @@ imports:
     - { resource: services.yml }
     - { resource: "@UserBundle/Resources/config/services.yml" }
     - { resource: "@GestionProduitBundle/Resources/config/services.yml" }
+    - { resource: "@CommandeBundle/Resources/config/services.yml" }
+    - { resource: "@AnimalBundle/Resources/config/services.yml" }
     - { resource: "@BlogBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -33,6 +35,7 @@ framework:
     assets: ~
     php_errors:
         log: true
+    templating: { engines: ['twig'] }
 
 # Twig Configuration
 twig:
@@ -63,11 +66,11 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: 'gmail'
+    transport: '%mailer_transport%'
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
-    encryption: ssl
+    spool: { type: memory }
 
 sensio_framework_extra:
    router:
@@ -84,7 +87,7 @@ fos_user:
         address: "noreplyhuntkingdom@gmail.com"
         sender_name: "HuntKingdom"
 
-
+# KNP Paginator
 knp_paginator:
     page_range: 5                       # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)
     default_options:
@@ -99,5 +102,51 @@ knp_paginator:
         sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # sort link template
         filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # filters template
 
+#Snappy
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:      "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        options:    []
+    image:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltoimage #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
+        options:
+            no-outline: true
+            page-size: LETTER
+            # Recommended to set UTF-8 as default encoding 🙂
+#Nomaya
+nomaya_social:
+    buttons:
+        facebook:
+            url:            null
+            locale:         "fr_FR"
+            send:           false
+            width:          300
+            showFaces:      false
+            layout:         "button_count"
+        twitter:
+            url:            null
+            locale:         "fr"
+            message:        "Je veux partager ça avec vous"
+            text:           "Tweet"
+            via:            "L'Equipe cartedevisitevirtuelle.fr"
+            tag:            "ttot"
+        googleplus:
+            url:            null
+            locale :        "fr"
+            size :          "medium"
+            annotation :    "bubble"
+            width :         300
+        linkedin:
+            url:            null
+            locale:         "fr_FR"
+            counter:        "right"
+        pinterest:
+            url:            null
+    links:
+        facebook:           "http://www.facebook.com/yann.chauvel"
+        googleplus:         "https://plus.google.com/105931415830389032796"
+    theme:                  'default' # optional
 cmen_google_charts:
     version: "current"

@@ -22,20 +22,32 @@ passer_commande:
     path:     /cart/order
     defaults: { _controller: CommandeBundle:Front:passerCommande }
 
+view_commande:
+    path:     /profile/commande
+    defaults: { _controller: CommandeBundle:Front:mesCommandes }
+
+consulter_commande:
+    path:     /profile/commande/{id}
+    defaults: { _controller: CommandeBundle:Front:detailsCommande }
+
+annuler_commande:
+    path:     /commande/annuler/{id}
+    defaults: { _controller: CommandeBundle:Front:annulerCommande }
+
 list_commande:
-    path:     /commande
+    path:     /admin/commande
     defaults: { _controller: CommandeBundle:Back:listCommande }
 
 edit_commande:
-    path:     /commande/edit/{id}/{etat}
+    path:     /admin/commande/edit/{id}/{etat}
     defaults: { _controller: CommandeBundle:Back:editCommande }
 
 delete_commande:
-    path:     /commande/delete/{id}
+    path:     /admin/commande/delete/{id}
     defaults: { _controller: CommandeBundle:Back:deleteCommande }
 
 stats_commande:
-    path:     /commande/stats
+    path:     /admin/commande/stats
     defaults: { _controller: CommandeBundle:Back:statsCommande }
 
 pdf_commande:

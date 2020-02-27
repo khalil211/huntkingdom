@@ -1,0 +1,177 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}Détails commande{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/font-awesome.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/fonts/flaticon.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/bootstrap.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/animate.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/swiper.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/lightcase.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/jquery.nstSlider.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/flexslider.css') }}" media="all" />
+
+    <!-- own style css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/style.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/rtl.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/responsive.css') }}" media="all" />
+{% endblock %}
+{% block content %}
+    <section class="bg-page-header">
+        <div class="page-header-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h2>Commande #{{ commande.id }}</h2>
+                        </div>
+                        <div class="page-header-content">
+                            <ol class="breadcrumb">
+                                <li><a href="{{ path('index') }}">Accueil</a></li>
+                                <li>Panier</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-single-project">
+        <div class="container">
+            <div class="row">
+                <div class="single-project">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="single-pro-main-content">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <ul class="single-left-content">
+                                            <li>
+                                                <h4>ID:</h4>
+                                                <p>{{ commande.id }}</p>
+                                            </li>
+                                            <li>
+                                                <h4>Date:</h4>
+                                                <p>{{ commande.date|date() }}</p>
+                                            </li>
+                                            <li>
+                                                <h4>Etat:</h4>
+                                                <p>
+                                                    {% if commande.etat == 1 %}
+                                                        En attente
+                                                    {% elseif commande.etat == 2 %}
+                                                        Confirmée
+                                                    {% else %}
+                                                        Annulée
+                                                    {% endif %}
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <h4>Nombre de produits:</h4>
+                                                <p>
+                                                    {% set nb = 0 %}
+                                                    {% for pc in pcs %}
+                                                        {% set nb = nb + pc.quantite %}
+                                                    {% endfor %}
+                                                    {{ nb }}
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <h4>Total:</h4>
+                                                <p>
+                                                    {% set total = 0 %}
+                                                    {% for pc in pcs %}
+                                                        {% set total = total + (pc.quantite * pc.produit.prixProd) %}
+                                                    {% endfor %}
+                                                    {{ total }}
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- .col-md-4 -->
+                                    <div class="col-md-8">
+                                        <div class="single-project-content">
+                                            <h3>Liste des produits commandés</h3>
+                                            <!-- list -->
+                                            <div class="row">
+                                                <div class="product-cart-option">
+                                                    <div class="table-box">
+                                                        <table class="cart-products-table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="cart-product">Produit</th>
+                                                                <th class="cart-price">Prix</th>
+                                                                <th class="cart-price">Quantite</th>
+                                                                <th class="cart-total">Total</th>
+                                                            </tr>
+                                                            </thead>
+
+                                                            <tbody>
+                                                            {% for pc in pcs %}
+                                                                <tr>
+                                                                    <td class="cart-product">
+                                                                        <div class="product-cart-img">
+                                                                            <h4><a href="{{ path('produit_details', {'id': pc.produit.id}) }}">{{ pc.produit.nomProd }}</a></h4>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="cart-price">{{ pc.produit.prixProd }}</td>
+                                                                    <td class="cart-price">{{ pc.quantite }}</td>
+                                                                    <td class="cart-total">{{ pc.quantite * pc.produit.prixProd }}</td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!-- .table-box -->
+                                                </div>
+                                                <!-- .product-cart-option -->
+                                            </div>
+                                            <!-- end list -->
+                                        </div>
+                                        <!-- .single-left-content -->
+                                    </div>
+                                    <!-- .col-md-8 -->
+                                </div>
+                            </div>
+                            <!-- .single-proj-main-content -->
+                        </div>
+                        <!-- .col-md-9 -->
+                        <div class="col-md-3">
+                            <div class="single-right-content">
+                                <div class="download-option">
+                                    <h4>Actions</h4>
+                                    <a href="{{ path('pdf_commande', {'id': commande.id}) }}" target="_blank" class="download-btn"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> FACTURE </a>
+                                    {% if commande.etat == 1 %}
+                                        <a href="{{ path('annuler_commande', {'id': commande.id}) }}" class="download-btn"> <i class="fa fa-times" aria-hidden="true"></i>ANNULER </a>
+                                    {% endif %}
+                                </div>
+                                <!-- .download-option -->
+                            </div>
+                            <!-- .single-right-content -->
+                        </div>
+                        <!-- .col-md-3 -->
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!-- .single-project -->
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .container -->
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery-2.2.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.easing.1.3.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.waypoints.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.counterup.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/swiper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/plugins.isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/lightcase.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.nstSlider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.flexslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.map.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.js') }}"></script>
+{% endblock %}

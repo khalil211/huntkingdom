@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from demos.codexcoder.com/labartisan/html/GreenForest/home03.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Feb 2020 21:02:57 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> {% block title %} Accueil {% endblock %} </title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/assets/images/favicon.ico') }}" />
+    <!-- Plugin css -->
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/font-awesome.min.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/fonts/flaticon.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/bootstrap.min.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/animate.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/swiper.min.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/lightcase.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/jquery.nstSlider.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/flexslider.css') }}" media="all" />
+
+        <!-- own style css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/style.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/rtl.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/responsive.css') }}" media="all" />
+    {% endblock %}
+</head>
+
+<body>
+<div class="box-layout">
+    <div class="box-style">
+        <div class="color-btn">
+            <a href="#"><i class="fa fa-cog fa-spin" aria-hidden="true"></i></a>
+        </div>
+        <div class="box-style-inner">
+            <h3>Box Layout</h3>
+            <div class="box-element">
+                <div class="box-heading">
+                    <h5>HTML Layout</h5>
+                </div>
+                <div class="box-content">
+                    <ul class="box-customize">
+                        <li><a class="boxed-btn" href="#">Boxed</a></li>
+                        <li><a class="wide-btn" href="#">Wide</a></li>
+                        <li><a class="rtl-btn" href="#">Rtl</a></li>
+                        <li><a class="ltl-btn" href="#">Ltl</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box-element">
+                <div class="box-heading">
+                    <h5>Backgroud Images</h5>
+                </div>
+                <div class="box-content">
+                    <ul class="box-bg-img">
+                        <li>
+                            <a class="bg-1" href="#"><img src="{{ asset('front/assets/images/box-style/01.jpg') }}" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="bg-2" href="#"><img src="{{ asset('front/assets/images/box-style/02.jpg') }}" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="bg-3" href="#"><img src="{{ asset('front/assets/images/box-style/03.jpg') }}" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="bg-4" href="#"><img src="{{ asset('front/assets/images/box-style/04.jpg') }}" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="bg-5" href="#"><img src="{{ asset('front/assets/images/box-style/05.jpg') }}" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="bg-6" href="#"><img src="{{ asset('front/assets/images/box-style/06.jpg') }}" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="bg-7" href="#"><img src="{{ asset('front/assets/images/box-style/07.jpg') }}" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="bg-8" href="#"><img src="{{ asset('front/assets/images/box-style/08.jpg') }}" alt=""></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box-element">
+                <div class="box-heading">
+                    <h5>Backgroud Pattern</h5>
+                </div>
+                <div class="box-content">
+                    <ul class="box-pattern-img">
+                        <li>
+                            <a class="pt-1" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/01.png"" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="pt-2" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/02.png"" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="pt-3" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/03.png"" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="pt-4" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/04.png"" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="pt-5" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/05.png"" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="pt-6" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/06.png"" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="pt-7" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/07.png"" alt=""></a>
+                        </li>
+                        <li>
+                            <a class="pt-8" href="#"><img src="../../../../www.codexcoder.com/images/auror/pt-image/08.png"" alt=""></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-style-3">
+        <!-- Start Menu -->
+        <div class="bg-main-menu menu-scroll">
+            <div class="container">
+                <div class="row">
+                    <div class="main-menu">
+                        <a class="show-res-logo" href="index-2.html"><img src="assets/images/home01/logo.png" alt="logo" class="img-responsive" /></a>
+                        <nav class="navbar">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="index-2.html"><img src="assets/images/home03/logo.png" alt="logo" class="img-responsive" /></a>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">HOME <span class="caret"></span></a>
+                                        <ul class="dropdown-menu sub-menu">
+                                            <li><a href="index-2.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home Page one</a></li>
+                                            <li><a href="home02.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home Page two</a></li>
+                                            <li class="sub-active"><a href="home03.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home Page three</a></li>
+                                            <li><a href="home_box.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home Box style</a></li>
+                                            <li><a href="home_onepage.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home One Page</a></li>
+                                            <li><a href="index-rtl.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> الصفحة الرئيسية رتل</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a>Réclamer</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+                                        <ul class="dropdown-menu sub-menu">
+                                            <li><a href="services.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Services</a></li>
+                                            <li><a href="service_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Service</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pages<span class="caret"></span></a>
+                                        <ul class="dropdown-menu sub-menu">
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Our Team<span class="caret"></span></a>
+                                                <ul class="dropdown-menu sub-sub-menu">
+                                                    <li><a href="team.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Team</a></li>
+                                                    <li><a href="team_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Team</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Our project<span class="caret"></span></a>
+                                                <ul class="dropdown-menu sub-sub-menu">
+                                                    <li><a href="project.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Projects</a></li>
+                                                    <li><a href="project_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Project</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Shop<span class="caret"></span></a>
+                                                <ul class="dropdown-menu sub-sub-menu">
+                                                    <li><a href="shop.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Shop</a></li>
+                                                    <li><a href="shop_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Shop</a></li>
+                                                    <li><a href="shop_cart.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Shop Cart</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Campaign<span class="caret"></span></a>
+                                                <ul class="dropdown-menu sub-sub-menu">
+                                                    <li><a href="campaign.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Campaign</a></li>
+                                                    <li><a href="campaign_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Campaign</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="donate.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Donate Page</a></li>
+                                            <li><a href="404_page.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> 404 Page</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events <span class="caret"></span></a>
+                                        <ul class="dropdown-menu sub-menu">
+                                            <li><a href="event.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Events</a></li>
+                                            <li><a href="event_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Event</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog <span class="caret"></span></a>
+                                        <ul class="dropdown-menu sub-menu">
+                                            <li><a href="blog.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Blog</a></li>
+                                            <li><a href="blog_02.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Blog style 02</a></li>
+                                            <li><a href="blog_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Blog</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Réclamer <span class="caret"></span></a>
+
+                                    </li>
+                                    <li><a href="contact.html">contacts</a></li>
+                                </ul>
+                                <div class="menu-right-option pull-right">
+                                    <div class="cart-option" id="miniCart">
+                                        <div class="cart-icon">
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                            <div class="count-cart">0</div>
+                                        </div>
+                                    </div>
+                                    <!-- .cart-option -->
+
+                                    <div class="search-box">
+                                        <i class="fa fa-search first_click" aria-hidden="true" style="display: block;"></i>
+                                        <i class="fa fa-times second_click" aria-hidden="true" style="display: none;"></i>
+                                    </div>
+                                    <div class="search-box-text">
+                                        <form action="http://demos.codexcoder.com/labartisan/html/GreenForest/search">
+                                            <input type="text" name="search" id="all-search" placeholder="Search Here">
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- .header-search-box -->
+                            </div>
+                            <!-- .navbar-collapse -->
+                        </nav>
+                    </div>
+                    <!-- .main-menu -->
+                </div>
+                <!-- .row -->
+            </div>
+            <!-- .container -->
+        </div>
+        <!-- .bg-main-menu -->
+    </header>
+
+
+        <!-- Start Slider Section -->
+
+
+        <section class="bg-slider-option">
+            <div class="slider-option slider-three">
+                <div id="slider" class="carousel slide wow fadeInDown" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider" data-slide-to="1"></li>
+                        <li data-target="#slider" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <div class="slider-item">
+                                <img src="{{ asset('front/assets/images/home03/slider-img-1.jpg') }}" alt="bg-slider-2">
+                                <div class="slider-content-area">
+                                    <div class="container">
+                                        <div class="slider-content">
+                                            <h3>Welcome to Greenforest</h3>
+                                            <h2>Save the Animal Theme</h2>
+                                            <p>By Planting Tree Tomorrow!</p>
+                                            <div class="slider-btn">
+                                                <a href="#" class="btn btn-default">join now</a>
+                                                <a href="donate.html" class="btn btn-default">donate now</a>
+                                            </div>
+                                            <!-- .slider-btn -->
+                                        </div>
+                                        <!-- .carousel-caption -->
+                                    </div>
+                                    <!-- .container -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .items -->
+
+                        <div class="item">
+                            <div class="slider-item">
+                                <img src="{{ asset('front/assets/images/home03/slider-img-2.jpg') }}" alt="bg-slider-2">
+                                <div class="slider-content-area">
+                                    <div class="container">
+                                        <div class="slider-content">
+                                            <h3>Donate & help</h3>
+                                            <h2>For the Animal</h2>
+                                            <p>By Planting Tree Tomorrow!</p>
+                                            <div class="slider-btn">
+                                                <a href="#" class="btn btn-default">join now</a>
+                                                <a href="donate.html" class="btn btn-default">donate now</a>
+                                            </div>
+                                            <!-- .slider-btn -->
+                                        </div>
+                                        <!-- .carousel-caption -->
+                                    </div>
+                                    <!-- .container -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .items -->
+                        <form  action="{{ path('one_signal_homepage') }}">
+                            <button type="submit">notifier</button>
+                        </form>
+
+                        <div class="item">
+                            <div class="slider-item">
+                                <img src="{{ asset('front/assets/images/home03/slider-img-3.jpg') }}" alt="bg-slider-2">
+                                <div class="slider-content-area">
+                                    <div class="container">
+                                        <div class="slider-content">
+                                            <h3>help us</h3>
+                                            <h2>to save the animals</h2>
+                                            <p>By Planting Tree Tomorrow!</p>
+                                            <div class="slider-btn">
+                                                <a href="#" class="btn btn-default">join now</a>
+                                                <a href="donate.html" class="btn btn-default">donate now</a>
+                                            </div>
+                                            <!-- .slider-btn -->
+                                        </div>
+                                        <!-- .carousel-caption -->
+                                    </div>
+                                    <!-- .container -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .items -->
+                    </div>
+                    <!-- .carosoul-inner -->
+                    <a class="left carousel-control" href="#slider" role="button" data-slide="prev">
+                        <span class="fa fa-angle-left" aria-hidden="true"></span>
+                    </a>
+                    <a class="right carousel-control" href="#slider" role="button" data-slide="next">
+                        <span class="fa fa-angle-right" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+            <!-- .slider-option -->
+        </section>
+
+        <!-- End Slider Section -->
+
+{% block content %}
+    {% endblock %}
+
+
+
+    <!-- Start Scrolling -->
+
+    <div class="scroll-img"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+
+
+    <!-- End Scrolling -->
+
+
+</div>
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery-2.2.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.easing.1.3.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.waypoints.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.counterup.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/swiper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/plugins.isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/lightcase.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.nstSlider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/jquery.flexslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.map.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('front/assets/js/custom.js') }}"></script>
+
+{% endblock %}
+
+<script type="text/javascript">
+    $.ajax({
+        url: '{{ path('view_mini_cart') }}',
+        success: function(data){
+            $('#miniCart').html(data);
+        },
+        error: function(){
+            alert('erreur affichage mini cart');
+        }
+    });
+</script>
+
+</body>
+
+
+<!-- Mirrored from demos.codexcoder.com/labartisan/html/GreenForest/home03.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Feb 2020 21:06:20 GMT -->
+</html>

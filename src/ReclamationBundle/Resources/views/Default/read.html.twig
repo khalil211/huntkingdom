@@ -1,0 +1,44 @@
+{% extends 'baseFront.html.twig' %}
+{% block content %}
+    <div class="helpforum">
+    <div class="row">
+    <div class="col-12">
+    <h4>Mes réclamations</h4>
+    <p>Vous avez n réclamations</p>
+    <div class="bloktext">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Status</th>
+            <th scope="col">Modifier</th>
+            <th scope="col">Consulter</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+        </thead>
+                                                        <tbody>
+                                                        {% for r in reclamations %}
+                                                            {% if r.user.id==app.user.id %}
+                                                            <tr>
+                                                                <th scope="row">{{ r.dateCreation | date }}</th>
+                                                                <td>{{ r.type }}</td>
+                                                                {% if r.status==0 %}
+                                                                    <td>En cours</td>
+                                                                    <td><a href="{{ path('updatereclamation',{'id':r.id}) }}">Modifier</a></td>
+                                                                {% else %}
+                                                                    <td>traité</td>
+                                                                    <td>Modifier</td>
+                                                                {% endif %}
+                                                                <td><a href="{{ path('consultereclamation',{'id':r.id}) }}">Consulter</a></td>
+                                                                <td><a href="{{ path('deletereclamation',{'id':r.id}) }}">Supprimer</a></td>
+
+                                                            </tr>
+                                                            {% endif %}
+
+                                                        {% endfor %}
+
+                                                        </tbody>
+
+</table>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'baseFront.html.twig' %}
+{% block content %}
+
+                                    <h3>Votre réclamation</h3>
+
+                                    {% for r in reclamation %}
+                                    <div class="cp-field">
+                                        <h5>Type</h5>
+                                        <div class="form-group">
+                                            {{ r.type }}
+                                        </div>
+                                    </div>
+                                    {% if r.status==0 %}
+                                        <div class="cp-field">
+                                            <h5>Status</h5>
+                                            <div class="form-group">
+                                                En cours
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="cp-field">
+                                            <h5>Status</h5>
+                                            <div class="form-group">
+                                                traite
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    <div class="cp-field">
+                                        <h5>Description</h5>
+                                        {{ r.description }}
+                                    </div>
+                                        {% if r.status==1 %}
+                                            <div class="cp-field">
+                                                <h5>Reponse</h5>
+                                                {{ r.reponse }}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+
+
+
+{% endblock %}

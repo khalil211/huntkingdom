@@ -31,22 +31,18 @@ class BackController extends Controller
                 foreach ($pcs as $pc)
                 {
                     if ($pc->getProduit()->getQuantiteProd()-$pc->getQuantite()>=0)
-                    {
-                        $pcs=$em->getRepository(ProduitCommande::class)->findByCommande($commande);
-                        $message = (new \Swift_Message('Commande passée'))
-                            ->setFrom('noreplyhuntkingdom@gmail.com')
-                            ->setTo($commande->getUser()->getEmail())
-                            ->setBody(
-                                $this->renderView('@Commande/back/facture.html.twig', array('commande'=>$commande, 'pcs'=>$pcs)),
-                                'text/html'
-                            );
-
-                        $this->get('mailer')->send($message);
                         $pc->getProduit()->setQuantiteProd($pc->getProduit()->getQuantiteProd()-$pc->getQuantite());
-                    }
                     else
                         return $this->redirectToRoute('list_commande');
                 }
+                $message = (new \Swift_Message('Commande passée'))
+                    ->setFrom('noreplyhuntkingdom@gmail.com')
+                    ->setTo($commande->getUser()->getEmail())
+                    ->setBody(
+                        $this->renderView('@Commande/back/facture.html.twig', array('commande'=>$commande, 'pcs'=>$pcs)),
+                        'text/html'
+                    );
+                $this->get('mailer')->send($message);
             }
             $em->flush();
         }

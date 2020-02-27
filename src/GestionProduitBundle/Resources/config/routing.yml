@@ -1,10 +1,10 @@
 gestion_produit_categorieproduit:
     resource: "@GestionProduitBundle/Resources/config/routing/categorieproduit.yml"
-    prefix:   /categorieproduit
+    prefix:   /admin/categorieproduit
 
 gestion_produit_produit:
     resource: "@GestionProduitBundle/Resources/config/routing/produit.yml"
-    prefix:   /produit
+    prefix:   /
 
 gestion_produit_homepage:
     path:     /

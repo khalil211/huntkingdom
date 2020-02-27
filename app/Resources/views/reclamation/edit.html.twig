@@ -1,0 +1,59 @@
+{% extends 'front.html.twig' %}
+
+{% block content %}
+<div class="card-header">
+
+</div>
+<div class="card-header">
+    <strong> Editer une réclamation</strong> Détails
+</div>
+<div class="card-body card-block">
+
+    {{ form_start(edit_form) }}
+    <div class="row form-group">
+        <div class="col col-md-3"><label class=" form-control-label">date du création  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(edit_form.dateCreation) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+        <div class="row form-group">
+
+            <div class="col col-md-3"><label class=" form-control-label">Type du réclamation  </label></div>
+            <div class="col-12 col-md-9">{{ form_widget(edit_form.type) }}<small class="form-text text-muted"></small></div>
+            <div class="col-12 col-md-9">
+            </div>
+        </div>
+        <div class="row form-group">
+
+            <div class="col col-md-3"><label class=" form-control-label">Description  </label></div>
+            <div class="col-12 col-md-9">{{ form_widget(edit_form.description) }}<small class="form-text text-muted"></small></div>
+            <div class="col-12 col-md-9">
+            </div>
+        </div>
+        <div class="row form-group">
+
+            <div class="col col-md-3"><label class=" form-control-label">Image  </label></div>
+            <div class="col-12 col-md-9">{{ form_widget(edit_form.file) }}<small class="form-text text-muted"></small></div>
+            <div class="col-12 col-md-9">
+            </div>
+        </div>
+
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary btn-sm" >
+                <i class="fa fa-dot-circle-o"></i> Envoyer
+            </button>
+        </div>
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('reclamation_index') }}">Back to the list</a>
+        </li>
+        <div class="card-footer">
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete" class="btn btn-danger btn-xs" >
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

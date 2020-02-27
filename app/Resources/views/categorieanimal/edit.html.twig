@@ -1,0 +1,32 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block title %}Modifier catégorie{% endblock %}
+{% block titre %}Modifier Catégorie {% endblock %}
+{% block content %}
+    {{ form_start(edit_form) }}
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Nom  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(edit_form.nom) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+    <div class="row form-group">
+
+        <div class="col col-md-3"><label class=" form-control-label">Description  </label></div>
+        <div class="col-12 col-md-9">{{ form_widget(edit_form.description) }}<small class="form-text text-muted"></small></div>
+        <div class="col-12 col-md-9">
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm" >
+            <i class="fa fa-dot-circle-o"></i> Envoyer
+        </button>
+    </div>
+    {{ form_end(edit_form) }}
+    <div class="card-footer">
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete" class="btn btn-danger btn-xs" >
+        {{ form_end(delete_form) }}
+    </div>
+{% endblock %}

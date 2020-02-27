@@ -1,0 +1,34 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Afficher une catégorie{% endblock %}
+{% block titre %}Afficher une catégorie{% endblock %}
+
+{% block content %}
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title" style="font-size: 20px;"> Categorie Animal {{ categorieAnimal.id }} </strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="vue-lists">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul style="font-size: 16px;">
+                                            <li>
+                                                <strong> Nom : </strong> {{ categorieAnimal.nom }}
+                                            </li>
+                                            <li>  <strong> Description: </strong> {{ categorieAnimal.description }}</li>
+                                            <a class="btn btn-info"  role="button" href="{{ path('categorieanimal_index') }}">Liste des catégories</a>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div></div></div></div></div></div>
+{% endblock %}

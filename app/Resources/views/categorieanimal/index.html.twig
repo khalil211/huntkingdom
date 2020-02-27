@@ -1,0 +1,37 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block title %}Liste des catégories{% endblock %}
+{% block titre %}Ajouter categorie {% endblock %}
+
+{% block content %}
+    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorieAnimal in categorieAnimals %}
+            <tr>
+                <td><a href="{{ path('categorieanimal_show', { 'id': categorieAnimal.id }) }}">{{ categorieAnimal.id }}</a></td>
+                <td>{{ categorieAnimal.nom }}</td>
+                <td>{{ categorieAnimal.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('categorieanimal_show', { 'id': categorieAnimal.id }) }}"class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categorieanimal_edit', { 'id': categorieAnimal.id }) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+

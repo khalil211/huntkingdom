@@ -7,8 +7,26 @@ user_commentaire:
     type:     annotation
 
 app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+  resource: '@AppBundle/Controller/'
+  type: annotation
+
+reclamation:
+    resource: "@ReclamationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+one_signal:
+    resource: "@OneSignalBundle/Resources/config/routing.yml"
+    prefix:   /
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /
+
+blog:
+    resource: "@BlogBundle/Resources/config/routing.yml"
+
+animal:
+    resource: "@AnimalBundle/Resources/config/routing.yml"
+    prefix:   /
 
 commande:
     resource: "@CommandeBundle/Resources/config/routing.yml"
@@ -35,9 +53,24 @@ index:
     defaults: { _controller: AppBundle:Default:index }
 
 admin:
-    path:     /admin
+    path:     /admin/index
     defaults: { _controller: AppBundle:Default:indexAdmin }
 
 notifications_admin:
     path:     /notifs
     defaults: { _controller: AppBundle:Default:notifiactionsAdmin }
+mf_media_file:
+    resource: "@CmfMediaBundle/Resources/config/routing/file.xml"
+
+cmf_media_image:
+    resource: "@CmfMediaBundle/Resources/config/routing/image.xml"
+
+
+
+# Create route for scheduler in your app
+app_scheduler:
+    resource: "@EventBundle/Resources/config/routing/scheduler.yml"
+    prefix:   /scheduler
+frame:
+    path:     /frame
+    defaults: { _controller: EventBundle:Scheduler:iframe }

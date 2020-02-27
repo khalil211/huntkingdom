@@ -1,0 +1,41 @@
+readreclamation:
+    path:     /readreclamation
+    defaults: { _controller: ReclamationBundle:reclamation:read }
+createreclamation:
+    path:     /createreclamation
+    defaults: { _controller: ReclamationBundle:reclamation:create }
+deletereclamation:
+    path:     /deletereclamation/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:delete }
+updatereclamation:
+    path:     /updatereclamation/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:update }
+consultereclamation:
+    path:     /consultereclamation/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:consulte }
+
+
+rating:
+    path:     /rating
+    defaults: { _controller: ReclamationBundle:avis:create }
+
+
+
+consulte:
+    path:     /consulte/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:consulterec }
+read:
+    path:     /read
+    defaults: { _controller: ReclamationBundle:reclamation:afficherrec }
+delete:
+    path:     /delete/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:deleterec }
+traiter:
+    path:     /traiter/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:traiter }
+avis:
+    path:     /avis
+    defaults: { _controller: ReclamationBundle:avis:afficher }
+deleteavis:
+    path:     /deleteavis/{id}
+    defaults: { _controller: ReclamationBundle:avis:delete }

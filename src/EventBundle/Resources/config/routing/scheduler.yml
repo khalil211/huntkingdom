@@ -1,0 +1,30 @@
+# app/config/routing.yml
+scheduler_index:
+  path:      /
+  defaults:  { _controller: EventBundle:Scheduler:index }
+  methods:  [GET]
+
+scheduler_create:
+  path:      /appointment-create
+  defaults:  { _controller: EventBundle:Scheduler:create }
+  methods:  [POST]
+
+scheduler_update:
+  path:      /appointment-update
+  defaults:  { _controller: EventBundle:Scheduler:update }
+  methods:  [POST]
+
+scheduler_delete:
+  path:      /appointment-delete
+  defaults:  { _controller: EventBundle:Scheduler:delete }
+  methods:  [DELETE]
+
+
+
+scheduler_front:
+  path:      /appointment-affciher
+  defaults:  { _controller: EventBundle:Scheduler:front }
+scheduler_form:
+  path:      /form
+  defaults:  { _controller: EventBundle:Scheduler:form }
+

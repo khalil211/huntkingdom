@@ -10,6 +10,10 @@ publication:
     path:     /profile/publication/{pub}
     defaults: { _controller: UserBundle:Default:publication }
 
+publication:
+    path:     /
+    defaults: { _controller: UserBundle:Default:publication }
+
 utilisateurs:
     path:     /utilisateurs
     defaults: { _controller: UserBundle:Default:utilisateurs }
@@ -21,3 +25,23 @@ publier:
 feed:
     path:     /feed
     defaults: { _controller: UserBundle:Default:feed }
+
+amis:
+    path:     /new/{idfriend}
+    defaults: { _controller: UserBundle:amis:new }
+
+invitations:
+    path:     /invitations
+    defaults: { _controller: UserBundle:amis:invitations }
+
+accept:
+    path:     /accept/{amiid}
+    defaults: { _controller: UserBundle:amis:accept }
+
+decline:
+    path:     /decline/{amiid}
+    defaults: { _controller: UserBundle:amis:decline }
+
+searchfor:
+    path:     /searchfor/{searchid}
+    defaults: { _controller: UserBundle:Default:searchfor }

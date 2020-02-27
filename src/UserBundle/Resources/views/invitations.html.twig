@@ -1,0 +1,65 @@
+{% extends 'baseFront.html.twig' %}
+
+    {% block content %}
+        <section class="bg-page-header">
+            <div class="page-header-overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h2>Hunt Kingdom</h2>
+                            </div>
+                            <!-- .page-title -->
+
+                            <!-- .page-header-content -->
+                        </div>
+                        <!-- .page-header -->
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!-- .container -->
+            </div>
+            <!-- .page-header-overlay -->
+        </section>
+
+        <section class="bg-blog-style-2">
+            <div class="container">
+                <div class="row">
+
+                    <div class="blog-style-2">
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                {% for ami in amis %}
+                                    <div class="blog-items">
+                                        <div class="blog-img">
+                                        </div>
+                                        <!-- .blog-img -->
+                                        <div class="blog-content-box">
+                                            <div class="blog-content">
+                                                <h4><a href="{{ path('profile', { 'username': ami.seconduser }) }}">{{ friends[ami.seconduser] }}</a></h4>
+                                                <a href="{{ path('accept', { 'amiid': ami.id }) }}">Accept <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                                <a href="{{ path('decline', { 'amiid': ami.id }) }}">Decline <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                            </div>
+                                            <!-- .blog-content -->
+                                        </div>
+                                        <!-- .blog-content-box -->
+                                    </div>
+                                {% endfor %}
+                                <!-- .pagination_option -->
+                            </div>
+                            <!-- .col-md-8 -->
+                            <div class="col-md-4">
+
+                                <!-- .col-md-4 -->
+                            </div>
+                            <!-- .row -->
+                        </div>
+                        <!-- .blog-style-2 -->
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!-- .container -->
+        </section>
+    {% endblock content %}

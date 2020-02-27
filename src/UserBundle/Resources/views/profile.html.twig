@@ -7,105 +7,61 @@
                     <div class="row">
                         <div class="page-header">
                             <div class="page-title">
-                                <h2>{{ app.user.email }}</h2>
+                                <h2>{{ user.email }}</h2>
                             </div>
-                            <!-- .page-title -->
-
-                            <!-- .page-header-content -->
                         </div>
-                        <!-- .page-header -->
                     </div>
-                    <!-- .row -->
                 </div>
-                <!-- .container -->
-            </div>
-            <!-- .page-header-overlay -->
         </section>
-
         <section class="bg-blog-style-2">
             <div class="container">
                 <div class="row">
-
                     <div class="blog-style-2">
                         <div class="row">
-
                             <div class="col-md-8">
                                 <div class="comments-form">
-                                    <h4 class="comments-title">Ajoutez une publication !</h4>
-                                    <form action="#" method="POST">
-                                        <textarea class="form-control comments-textarea" placeholder="Comments*"></textarea>
+                                    {% if user.username == app.user.username %}
+                                        <h4 class="comments-title"> Profile de  {{ user.username }} <a href="">/ Modifier Profil</a></h4>
 
-                                        <button type="submit" >publier</button>
-                                    </form>
+                                    {% else %}
+                                        <h4 class="comments-title"> Profile de  {{ user.username }}  <a href="{{ path('amis', { 'idfriend': user.id }) }}">/ Ajouter ami</a></h4>
+
+                                    {% endif %}
                                 </div>
-
                                 <br>
                                 {% for publication in publications %}
                                 <div class="blog-items">
                                     <div class="blog-img">
                                         {{ publication.image }}
-
                                     </div>
-                                    <!-- .blog-img -->
-
 
                                     <div class="blog-content-box">
                                         <div class="blog-content">
-                                            <h4><a href="blog_single.html">{{ publication.user }}</a></h4>
+                                            <h4><a href="{{ path('profile', { 'username': publication.user }) }}">{{ publication.user }}</a></h4>
                                             <ul class="meta-post">
                                                 <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ publication.Datepublication|date('d-m-Y H:i:s') }}</li>
-                                                <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                                <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> {{ publication.user }}</a></li>
-                                                <li><a href="#"><i class="fa flaticon-message-o" aria-hidden="true"></i> supprimer la publication </a></li>
+
+                                                <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> supprimer la publication</a></li>
                                             </ul>
                                             <p>{{ publication.text}}</p>
                                             <a href="{{ path('publication', { 'pub': publication.id }) }}">read more <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                         </div>
-                                        <!-- .blog-content -->
                                     </div>
-                                    <!-- .blog-content-box -->
                                 </div>
                                 {% endfor %}
-                                <!-- .blog-items -->
-
-                                <!-- .blog-items -->
-
-
-                                <div class="pagination-option">
-                                    <nav aria-label="Page navigation">
-                                        <ul class="pagination">
-                                            <li>
-                                                <a href="#" aria-label="Previous">
-                                                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li><a href="#">1</a></li>
-                                            <li class="active"><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">...</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li>
-                                                <a href="#" aria-label="Next">
-                                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                                <!-- .pagination_option -->
                             </div>
-                            <!-- .col-md-8 -->
+
                             <div class="col-md-4">
                                 <div class="sidebar">
                                     <br>
-                                    <!-- .widget -->
-
-
                                     <div class="widget">
+
                                         <h4 class="sidebar-widget-title"> à propos de moi </h4>
                                         <div class="widget-content">
                                             <ul class="catagories">
-                                                <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{ app.user.about }}</li>
+                                                <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{ user.about }}</li>
+                                                <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{ nb }} publications </li>
+                                                <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> Dernière connexion : {{ user.lastLogin|date('Y-m-d H:i:s') }}</li>
                                             </ul>
                                         </div>
                                         <!-- .widget-content -->
@@ -123,20 +79,24 @@
                                                 <a href="#"><img src="assets/images/event/photo-gallery-small-img-4.jpg" alt="footer-instagram-img-4"></a>
                                                 <a href="#"><img src="assets/images/event/photo-gallery-small-img-5.jpg" alt="footer-instagram-img-5"></a>
                                                 <a href="#"><img src="assets/images/event/photo-gallery-small-img-6.jpg" alt="footer-instagram-img-6"></a>
-                                                <a href="#"><img src="assets/images/event/photo-gallery-small-img-7.jpg" alt="footer-instagram-img-7"></a>
-                                                <a href="#"><img src="assets/images/event/photo-gallery-small-img-8.jpg" alt="footer-instagram-img-8"></a>
-                                                <a href="#"><img src="assets/images/event/photo-gallery-small-img-9.jpg" alt="footer-instagram-img-9"></a>
 
                                             </div>
                                             <!-- .gallery-instagram -->
                                         </div>
                                         <!-- .widget-content -->
                                     </div>
-                                    <!-- .widget -->
+                                    <div class="widget">
+                                        <h4 class="sidebar-widget-title">Mes Amis({{ friendsnumber }})</h4>
+                                        <div class="widget-content">
 
-                                    <!-- .widget -->
-                                </div>
-                                <!-- .sidebar -->
+                                                <ul class="catagories">
+                                                {% for ami in amis %}
+
+                                               <li> <a href="{{ path('profile', { 'username': friends[ami.seconduser]  }) }}">{{ friends[ami.seconduser] }}</a> </li>
+
+                                                {% endfor%}
+                                                </ul>
+                                        </div>
                             </div>
                             <!-- .col-md-4 -->
                         </div>

@@ -47,6 +47,7 @@ class commentaire
      **/
     private $user;
 
+
     /**
      * Get id
      *
@@ -110,7 +111,7 @@ class commentaire
      *
      * @param User $user
      *
-     * @return publication
+     * @return commentaire
      */
     public function setUser(User $user = null)
     {
@@ -127,6 +128,30 @@ class commentaire
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set publication
+     *
+     * @param publication $publication
+     *
+     * @return commentaire
+     */
+    public function setPublication(publication $publication = null)
+    {
+        $this->publication = $publication;
+
+        return $this;
+    }
+
+    /**
+     * Get publication
+     *
+     * @return publication
+     */
+    public function getPublication()
+    {
+        return $this->publication;
     }
 }
 

@@ -51,7 +51,7 @@
 
                                         <div class="blog-content-box">
                                             <div class="blog-content">
-                                                <h4><a href="blog_single.html">{{ publication.user }}</a></h4>
+                                                <h4><a href="{{ path('profile', { 'username': publication.user }) }}">{{ publication.user }}</a></h4>
                                                 <ul class="meta-post">
                                                     <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ publication.Datepublication|date('d-m-Y H:i:s') }}</li>
                                                     <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>

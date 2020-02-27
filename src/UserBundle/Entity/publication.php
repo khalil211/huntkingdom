@@ -3,6 +3,7 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * publication
@@ -62,6 +63,9 @@ class publication
 
     public function __construct() {
         $this->commentaires = new ArrayCollection();
+    }
+    public function __toString() {
+        return $this->titre;
     }
 
     /**
@@ -156,7 +160,7 @@ class publication
      * @return publication
      */
 
-    public function settText($text)
+    public function setText($text)
     {
         $this->text = $text;
 

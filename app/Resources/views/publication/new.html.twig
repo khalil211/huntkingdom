@@ -1,0 +1,68 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block body %}
+    {% block content %}
+
+        <section class="bg-page-header">
+            <div class="page-header-overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="page-header">
+                            <div class="page-title">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+<div class="container">
+    <div class="row">
+
+        <div class="blog-style-2">
+            <div class="row">
+<div class="col-md-12">
+    <br>
+
+<div class="comments-form">
+
+    <h4 class="comments-title">Exprimez vous!</h4>
+    {{ form_start(form) }}
+    {{ form_widget(form.text) }}
+
+    <button type="submit" >publier</button>
+    {{ form_end(form) }}
+
+
+
+</div>
+</div>
+                {% for publication in publications %}
+                    <div class="blog-items">
+                        <div class="blog-img">
+                            {{ publication.image }}
+
+                        </div>
+                        <!-- .blog-img -->
+
+
+                        <div class="blog-content-box">
+                            <div class="blog-content">
+                                <h4><a href="{{ path('profile', { 'username': publication.user }) }}">{{ publication.user }}</a></h4>
+                                <ul class="meta-post">
+                                    <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ publication.Datepublication|date('d-m-Y H:i:s') }}</li>
+                                </ul>
+                                <p>{{ publication.text}}</p>
+                                <a href="{{ path('publication', { 'pub': publication.id }) }}">read more <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                            </div>
+                            <!-- .blog-content -->
+                        </div>
+                        <!-- .blog-content-box -->
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% endblock %}

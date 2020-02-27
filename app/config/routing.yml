@@ -1,3 +1,11 @@
+user_amis:
+    resource: "@UserBundle/Controller/amisController.php"
+    type:     annotation
+
+user_commentaire:
+    resource: "@UserBundle/Controller/commentaireController.php"
+    type:     annotation
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
@@ -16,6 +24,10 @@ fos_user:
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+publication:
+    resource: "@UserBundle/controller"
     prefix:   /
 
 index:

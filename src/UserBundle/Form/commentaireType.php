@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class publicationType extends AbstractType
+class commentaireType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -20,7 +20,7 @@ class publicationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'UserBundle\Entity\publication'
+            'data_class' => 'UserBundle\Entity\commentaire'
         ));
     }
 
@@ -29,7 +29,7 @@ class publicationType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'userbundle_publication';
+        return 'userbundle_commentaire';
     }
 
 

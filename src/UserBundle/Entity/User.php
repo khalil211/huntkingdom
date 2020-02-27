@@ -27,16 +27,16 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="about", type="string", length=255)
+     * @ORM\Column(name="about", type="string", length=255, nullable=true)
      */
-    private $about;
+    private $about=null;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="profilepicture", type="string", length=255)
+     * @ORM\Column(name="profilepicture", type="string", length=255, nullable=true)
      */
-    private $profilepicture;
+    private $profilepicture=null;
 
     /**
      * @ORM\OneToMany(targetEntity="publication", mappedBy="user")
@@ -52,7 +52,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->publications = new ArrayCollection();
+        //$this->publications = new ArrayCollection();
     }
 
     /**

@@ -6,21 +6,21 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class publicationType extends AbstractType
+class amisType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('text');
+        $builder->add('firstuser')->add('seconduser')->add('etat')->add('actionuser');
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'UserBundle\Entity\publication'
+            'data_class' => 'UserBundle\Entity\amis'
         ));
     }
 
@@ -29,7 +29,7 @@ class publicationType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'userbundle_publication';
+        return 'userbundle_amis';
     }
 
 

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ami</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ami.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstuser</th>
+                <td>{{ ami.firstuser }}</td>
+            </tr>
+            <tr>
+                <th>Seconduser</th>
+                <td>{{ ami.seconduser }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ ami.etat }}</td>
+            </tr>
+            <tr>
+                <th>Actionuser</th>
+                <td>{{ ami.actionuser }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('amis_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('amis_edit', { 'id': ami.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

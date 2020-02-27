@@ -55,7 +55,6 @@
                                             <!-- .author-option -->
                                             <ul class="meta-post">
                                                 <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ publication.Datepublication|date('d-m-Y H:i:s') }}</li>
-                                                <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
                                                 <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> {{ nb }} Commentaire(s)</a></li>
                                             </ul>
                                         </div>
@@ -110,7 +109,7 @@
                                         <div class="comments-content">
                                             <div class="comments-author-title">
                                                 <div class="comments-author-name">
-                                                    <h4><a href="#">{{ commentaire.user}}</a> - <small>{{ commentaire.datecommentaire|date('d-m-Y H:i:s')}}</small></h4>
+                                                    <h4><a href="{{ path('profile', { 'username': commentaire.user }) }}">{{ commentaire.user}}</a> - <small>{{ commentaire.datecommentaire|date('d-m-Y H:i:s')}}</small></h4>
                                                 </div>
 
                                             </div>
@@ -127,11 +126,12 @@
 
                                 <div class="comments-form">
                                     <h4 class="comments-title">Leave A Reply</h4>
-                                    <form action="#" method="POST">
-                                        <textarea class="form-control comments-textarea" placeholder="Comments*"></textarea>
 
-                                        <button type="submit" class="btn btn-default">submit Comment</button>
-                                    </form>
+                                    {{ form_start(form) }}
+                                    {{ form_widget(form) }}
+                                    <input type="submit" value="Create" />
+                                    {{ form_end(form) }}
+
                                 </div>
                                 <!-- .comments-form -->
 

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Amis list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstuser</th>
+                <th>Seconduser</th>
+                <th>Etat</th>
+                <th>Actionuser</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ami in amis %}
+            <tr>
+                <td><a href="{{ path('amis_show', { 'id': ami.id }) }}">{{ ami.id }}</a></td>
+                <td>{{ ami.firstuser }}</td>
+                <td>{{ ami.seconduser }}</td>
+                <td>{{ ami.etat }}</td>
+                <td>{{ ami.actionuser }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('amis_show', { 'id': ami.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('amis_edit', { 'id': ami.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('amis_new') }}">Create a new ami</a>
+        </li>
+    </ul>
+{% endblock %}

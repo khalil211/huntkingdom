@@ -11,7 +11,15 @@
 {% endblock %}
 {% block titre %}Statistiques commandes{% endblock %}
 {% block content %}
-
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div id="etatCommande"></div>
+                </div>
+            </div>
+        </div><!-- /# column -->
+    </div>
 {% endblock %}
 {% block javascripts %}
     <script src=" {{ asset('back/vendors/jquery/dist/jquery.min.js') }} "></script>
@@ -24,4 +32,22 @@
     <script src=" {{ asset('back/vendors/jqvmap/dist/jquery.vmap.min.js') }} "></script>
     <script src=" {{ asset('back/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js') }} "></script>
     <script src=" {{ asset('back/vendors/jqvmap/dist/maps/jquery.vmap.world.js') }} "></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            let data = google.visualization.arrayToDataTable([
+                ['Etat', 'Nombre'],
+                ['En attente',{{ etats[0] }}],
+                ['Confirmée', {{ etats[1] }}],
+                ['Annulée', {{ etats[2] }}]
+            ]);
+            let options = {
+                title: 'Etats commandes'
+            };
+            let chart = new google.visualization.PieChart(document.getElementById('etatCommande'));
+            chart.draw(data, options);
+        }
+    </script>
 {% endblock %}

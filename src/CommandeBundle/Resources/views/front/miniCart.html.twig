@@ -8,7 +8,7 @@
     {% for pc in pcs %}
         <div class="cart-items">
             <div class="cart-img">
-                <a href="{{ path('produit_details',{'id':pc.produit.id}) }}"><img src="{{ asset('image_shop/') }}{{ pc.produit.imageProd }}" alt="cart-img-1"></a>
+                <a href="{{ path('produit_details',{'id':pc.produit.id}) }}"><img src="{{ asset('images/') }}{{ pc.produit.imageProd }}" alt="cart-img-1"></a>
             </div>
             <div class="cart-content">
                 <h6><a href="{{ path('produit_details',{'id':pc.produit.id}) }}">{{ pc.produit.nomProd }}</a></h6>

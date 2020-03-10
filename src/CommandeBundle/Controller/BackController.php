@@ -63,7 +63,25 @@ class BackController extends Controller
 
     public function statsCommandeAction()
     {
-        return $this->render('@Commande/back/stats.html.twig');
+        $em=$this->getDoctrine()->getManager();
+        // pie chart etat commande
+        $commandes=$em->getRepository(Commande::class)->findByEtat(1);
+        if ($commandes==null)
+            $etats[0]=0;
+        else
+            $etats[0]=count($commandes);
+        $commandes=$em->getRepository(Commande::class)->findByEtat(2);
+        if ($commandes==null)
+            $etats[1]=0;
+        else
+            $etats[1]=count($commandes);
+        $commandes=$em->getRepository(Commande::class)->findByEtat(3);
+        if ($commandes==null)
+            $etats[2]=0;
+        else
+            $etats[2]=count($commandes);
+        // pie chart etat commande fin
+        return $this->render('@Commande/back/stats.html.twig', array('etats'=>$etats));
     }
 
     public function pdfCommandeAction($id)

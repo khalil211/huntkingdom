@@ -92,6 +92,8 @@ class BlogController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $blog->UploadProfilePicture();
+            $blog->setDate( new \DateTime());
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('blog_edit', array('id' => $blog->getId()));
@@ -283,7 +285,7 @@ class BlogController extends Controller
 
                 $message = (new \Swift_Message('Comment Report'))
                 ->setFrom('noreplyhuntkingdom@gmail.com')
-                ->setTo($comment->getUser()->getEmail())
+                ->setTo('louay.gourrida@esprit.tn')
                 ->setBody(
                     $this->renderView('blog/email.html.twig', array(
                         'commande'=>$comment,

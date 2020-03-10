@@ -57,6 +57,17 @@ class reclamationController extends Controller
             'form' => $form->createView(),
         ));
     }
+    function replyAction(){
+        $user=$this->getUser();
+        $email=$user->getEmail();
+        $message = (new \Swift_Message('Réclamation'))
+            ->setFrom('noreplyhuntkingdom@gmail.com')
+            ->setTo($email)
+            ->setBody('Votre réclamation a été bien traité' );
+
+        $this->get('mailer')->send($message);
+        return $this->redirectToRoute('readreclamation');
+    }
     function deleteAction($id){
         $em=$this->getDoctrine()->getManager();
         $reclamation=$this->getDoctrine()->getRepository(reclamation::class)

@@ -13,7 +13,9 @@ updatereclamation:
 consultereclamation:
     path:     /consultereclamation/{id}
     defaults: { _controller: ReclamationBundle:reclamation:consulte }
-
+reply:
+    path:     /reply
+    defaults: { _controller: ReclamationBundle:reclamation:reply }
 
 rating:
     path:     /rating

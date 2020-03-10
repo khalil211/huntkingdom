@@ -141,7 +141,10 @@
                                     <li><a href="{{ path('index') }}">Accueil</a></li>
                                     <li><a href="{{ path('produit_shop') }}">Boutique</a></li>
                                     <li><a href="{{ path('animal_list') }}">Animaux</a></li>
-                                    <li><a href="{{ path('feed') }}">Home</a></li>
+                                    <li><a href="{{ path('blog_post') }}"> Blog</a></li>
+                                    <li><a href="{{ path('hunt') }}"> Can i hunt ?</a></li>
+                                    <li><a href="{{ path('scheduler_front') }}"> Events</a></li>
+                                    <li><a href="{{ path('createreclamation') }}"> Réclamer</a></li>
                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                         <li>
                                             <a href="{{ path('profile',{'username': app.user.username}) }}"> Profil</a>
@@ -153,8 +156,7 @@
                                                 {% if is_granted('ROLE_ADMIN') %}
                                                     <li><a href="{{ path('admin') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Admin</a></li>
                                                 {% endif %}
-                                                <li><a href="gallery.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Invitations</a></li>
-                                                <li><a href="gallery_02.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Messages</a></li>
+                                                <li><a href="{{ path('invitations') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Invitations</a></li>
                                                 <li><a href="{{ path('view_commande') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Mes commandes</a></li>
                                                 <li>
                                                     <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
@@ -186,108 +188,9 @@
                                             {% endfor %}
                                         {% endfor %}
                                     {% endif %}
-</li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">HOME <span class="caret"></span></a>
-                                        <ul class="dropdown-menu sub-menu">
-                                            <li><a href="index-2.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home Page one</a></li>
-                                            <li><a href="home02.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home Page two</a></li>
-                                            <li class="sub-active"><a href="home03.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home Page three</a></li>
-                                            <li><a href="home_box.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home Box style</a></li>
-                                            <li><a href="home_onepage.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home One Page</a></li>
-                                            <li><a href="index-rtl.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> الصفحة الرئيسية رتل</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
-                                        <ul class="dropdown-menu sub-menu">
-                                            <li><a href="services.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Services</a></li>
-                                            <li><a href="service_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Service</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pages<span class="caret"></span></a>
-                                        <ul class="dropdown-menu sub-menu">
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Our Team<span class="caret"></span></a>
-                                                <ul class="dropdown-menu sub-sub-menu">
-                                                    <li><a href="team.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Team</a></li>
-                                                    <li><a href="team_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Team</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Our project<span class="caret"></span></a>
-                                                <ul class="dropdown-menu sub-sub-menu">
-                                                    <li><a href="project.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Projects</a></li>
-                                                    <li><a href="project_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Project</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Shop<span class="caret"></span></a>
-                                                <ul class="dropdown-menu sub-sub-menu">
-                                                    <li><a href="shop.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Shop</a></li>
-                                                    <li><a href="shop_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Shop</a></li>
-                                                    <li><a href="shop_cart.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Shop Cart</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Campaign<span class="caret"></span></a>
-                                                <ul class="dropdown-menu sub-sub-menu">
-                                                    <li><a href="campaign.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Campaign</a></li>
-                                                    <li><a href="campaign_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Campaign</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="donate.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Donate Page</a></li>
-                                            <li><a href="404_page.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> 404 Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events <span class="caret"></span></a>
-                                        <ul class="dropdown-menu sub-menu">
-                                            <li><a href="event.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Events</a></li>
-                                            <li><a href="event_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Event</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog <span class="caret"></span></a>
-                                        <ul class="dropdown-menu sub-menu">
-                                            <li><a href="blog.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Blog</a></li>
-                                            <li><a href="blog_02.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Blog style 02</a></li>
-                                            <li><a href="blog_single.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Single Blog</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery <span class="caret"></span></a>
-                                        <ul class="dropdown-menu sub-menu">
-                                            <li><a href="gallery.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Gallery</a></li>
-                                            <li><a href="gallery_02.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Gallery 02</a></li>
-                                            <li><a href="gallery_03.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Gallery 03</a></li>
-                                        </ul>
                                     </li>
                                     <li><a href="{{ path('publication_new') }}">Home</a></li>
 
-
-                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                        <li>
-                                            <a href="{{ path('profile',{'username': app.user.username}) }}"> Profil</a>
-                                        </li>
-
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon compte <span class="caret"></span></a>
-                                            <ul class="dropdown-menu sub-menu">
-                                                <li><a href="{{ path('invitations') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Invitations</a></li>
-                                                <li><a href="gallery_02.html"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Messages</a></li>
-                                                <li>
-                                                    <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                                        {{ 'Se deconnecter'|trans({}, 'FOSUserBundle') }}
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-
-
-                                    {% endif %}
 <li>
 
                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -454,53 +357,7 @@
                             <h2>People Working With Us</h2>
                             <p>Professionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills.</p>
                         </div>
-                        <!-- .section-header -->
-                        <div class="row">
-                            <div class="col-md-4 col-sm-6 col-xs-6">
-                                <div class="working-items">
-                                    <div class="working-icon"><i class="flaticon-technology"></i></div>
-                                    <!-- .working-icon -->
-                                    <div class="working-content">
-                                        <h4><a href="service_single.html">Use Solar Power</a></h4>
-                                        <p>Credibly utcost efective an expertise and web enabled proces that improvements Completely seamless channels </p>
-                                        <a href="service_single.html">read more<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                                    </div>
-                                    <!-- .working-content -->
-                                </div>
-                                <!-- .working-items -->
-                            </div>
-                            <!-- .col-md-4 -->
-                            <div class="col-md-4 col-sm-6 col-xs-6">
-                                <div class="working-items">
-                                    <div class="working-icon"><i class="flaticon-animals"></i></div>
-                                    <!-- .working-icon -->
-                                    <div class="working-content">
-                                        <h4><a href="service_single.html">Animal Care</a></h4>
-                                        <p>Credibly utcost efective an expertise and web enabled proces that improvements Completely seamless channels </p>
-                                        <a href="service_single.html">read more<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                                    </div>
-                                    <!-- .working-content -->
-                                </div>
-                                <!-- .working-items -->
-                            </div>
-                            <!-- .col-md-4 -->
-                            <div class="col-md-4 col-sm-6 col-xs-6">
-                                <div class="working-items">
-                                    <div class="working-icon"><i class="flaticon-forest"></i></div>
-                                    <!-- .working-icon -->
-                                    <div class="working-content">
-                                        <h4><a href="service_single.html">Save The Forest</a></h4>
-                                        <p>Credibly utcost efective an expertise and web enabled proces that improvements Completely seamless channels </p>
-                                        <a href="service_single.html">read more<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                                    </div>
-                                    <!-- .working-content -->
-                                </div>
-                                <!-- .working-items -->
-                            </div>
-                            <!-- .col-md-4 -->
-                        </div>
-                        <!-- .row -->
-                    </div>
+
                     <!-- .working-section -->
                 </div>
                 <!-- .row -->

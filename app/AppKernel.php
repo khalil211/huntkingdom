@@ -27,7 +27,6 @@ class AppKernel extends Kernel
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
             new SBC\NotificationsBundle\NotificationsBundle(),
-            new Nomaya\SocialBundle\NomayaSocialBundle(),
             new AnimalBundle\AnimalBundle(),
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
             new EventBundle\EventBundle(),

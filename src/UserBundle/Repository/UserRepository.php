@@ -20,4 +20,115 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('username', '%' . $username . '%')
             ->getResult();
     }
+
+    public function findbyusers($firstuser, $seconduser)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM UserBundle:amis p WHERE p.firstuser LIKE :firstuser AND p.seconduser LIKE :seconduser'
+            )
+            ->setParameter('firstuser', '' . $firstuser . '')
+            ->setParameter('seconduser','' . $seconduser . '')
+            ->getResult();
+    }
+
+    public function findbyfirstuser($firstuser)
+    {
+        $etat=1;
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM UserBundle:amis p WHERE p.firstuser LIKE :firstuser AND p.etat=1'
+            )
+            ->setParameter('firstuser', '' . $firstuser . '')
+            //->setParameter('etat', '%' . $etat . '%')
+            ->getResult();
+    }
+
+    public function findinvitations($firstuser)
+    {
+        $etat=0;
+        //$actionuser=$firstuser;
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM UserBundle:amis p WHERE ( p.firstuser LIKE :firstuser AND p.etat=0 AND p.actionuser NOT LIKE :firstuser) '
+            )
+            ->setParameter('firstuser', '' . $firstuser . '')
+           // ->setParameter('actionuser', '%' . $actionuser . '%')
+            ->getResult();
+    }
+
+    public function findmyinterests($firstuser)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM UserBundle:myinterests p WHERE p.userId LIKE :firstuser '
+            )
+            ->setParameter('firstuser', '%' . $firstuser . '%')
+            //->setParameter('seconduser','%' . $seconduser . '%')
+            ->getResult();
+    }
+
+    public function findmygroupes($userid)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM UserBundle:Membership p WHERE p.userId LIKE :userid '
+            )
+            ->setParameter('userid', '' . $userid . '')
+            //->setParameter('seconduser','%' . $seconduser . '%')
+            ->getResult();
+    }
+
+    public function findgroupepub($userid)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM UserBundle:Publication p WHERE p.groupeId LIKE :userid '
+            )
+            ->setParameter('userid', '' . $userid . '')
+            //->setParameter('seconduser','%' . $seconduser . '%')
+            ->getResult();
+    }
+
+    public function findmembers($userid)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM UserBundle:Membership p WHERE p.groupId LIKE :userid '
+            )
+            ->setParameter('userid', '' . $userid . '')
+            //->setParameter('seconduser','%' . $seconduser . '%')
+            ->getResult();
+    }
+
+    public function ismember($id, $gid)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM UserBundle:Membership p WHERE p.groupId LIKE :gid  AND p.userId LIKE :id'
+            )
+            ->setParameter('id', '' . $id . '')
+            ->setParameter('gid','' . $gid . '')
+            ->getResult();
+    }
+
+    public function findgroup($username)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM UserBundle:Groupe p WHERE p.name LIKE :username'
+            )
+            ->setParameter('username', '%' . $username . '%')
+            ->getResult();
+    }
+
+    public function findinterest($text)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM UserBundle:myinterests p WHERE p.interest LIKE :text'
+            )
+            ->setParameter('text', '%' . $text . '%')
+            ->getResult();
+    }
 }

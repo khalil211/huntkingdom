@@ -33,5 +33,16 @@ class amisRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
+// AND p.seconduser LIKE :seconduser
+    public function findbyfirstuser($firstuser)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM UserBundle:amis p WHERE p.firstuser LIKE :firstuser'
+            )
+            ->setParameter('firstuser', '%' . $firstuser . '%')
+            //->setParameter('seconduser','%' . $seconduser . '%')
+            ->getResult();
+    }
 
 }

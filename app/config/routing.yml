@@ -1,3 +1,7 @@
+dog:
+    resource: "@DogBundle/Resources/config/routing.yml"
+    prefix:   /
+
 user_amis:
     resource: "@UserBundle/Controller/amisController.php"
     type:     annotation
@@ -41,8 +45,8 @@ fos_user:
     prefix:   /
 
 user:
-    resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   /
+  resource: "@UserBundle/Resources/config/routing.yml"
+  prefix:   /api
 
 publication:
     resource: "@UserBundle/controller"

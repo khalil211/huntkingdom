@@ -32,6 +32,7 @@ class AppKernel extends Kernel
             new EventBundle\EventBundle(),
             new OneSignalBundle\OneSignalBundle(),
             new ReclamationBundle\ReclamationBundle(),
+            new DogBundle\DogBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

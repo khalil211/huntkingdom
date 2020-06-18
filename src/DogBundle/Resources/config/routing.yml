@@ -1,0 +1,28 @@
+dog_homepage:
+    path:     /
+    defaults: { _controller: DogBundle:Default:index }
+MoblieGetChiens:
+    path:     /api/chien/all
+    defaults: { _controller: DogBundle:Default:getAll }
+MoblieGetChien:
+    path:     /api/chiens/monchien/{userId}
+    defaults: { _controller: DogBundle:Default:getChien }
+MoblieGetChienCoach:
+    path:     /api/chiens/meschien/{coachId}
+    defaults: { _controller: DogBundle:Default:getChienCoach }
+MobileNoteDoge:
+    path:     /api/chiens/notechien/{id}/{note}
+    defaults: { _controller: DogBundle:Default:NoteChien }
+    methods:  [GET, POST]
+Mobilehigherage:
+    path:     /api/chiens/higher/{coachId}
+    defaults: { _controller: DogBundle:Default:Higher }
+    methods:  [GET, POST]
+Mobilelowerage:
+    path:     /api/chiens/lower/{coachId}
+    defaults: { _controller: DogBundle:Default:Lower }
+    methods:  [GET, POST]
+Mobilebetweenage:
+    path:     /api/chiens/between/{coachId}
+    defaults: { _controller: DogBundle:Default:Between}
+    methods:  [GET, POST]

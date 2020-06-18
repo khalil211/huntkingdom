@@ -35,6 +35,7 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
             ->where('c.etat != 0')
             ->andWhere('c.user = :user')
             ->setParameter('user', $user)
+            ->orderBy('c.date', 'DESC')
             ->getQuery()
             ->getResult();
     }

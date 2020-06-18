@@ -9,11 +9,14 @@ use GestionProduitBundle\Entity\RatingProduit;
 use GestionProduitBundle\Form\CommentaireProduitType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Produit controller.
@@ -338,5 +341,13 @@ class ProduitController extends Controller
             $rating->setNote($note);
         $em->flush();
         return new Response($note);
+    }
+
+    public function getAllAction()
+    {
+        $produits=$this->getDoctrine()->getRepository(Produit::class)->findAll();
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($produits);
+        return new JsonResponse($formatted);
     }
 }

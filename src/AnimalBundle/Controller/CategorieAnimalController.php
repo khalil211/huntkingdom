@@ -4,7 +4,10 @@ namespace AnimalBundle\Controller;
 
 use AnimalBundle\Entity\CategorieAnimal;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Categorieanimal controller.
@@ -120,5 +123,13 @@ class CategorieAnimalController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function allAction()
+    {
+        $categories=$this->getDoctrine()->getManager()->getRepository(CategorieAnimal::class)->findAll();
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($categories);
+        return new JsonResponse($formatted);
     }
 }

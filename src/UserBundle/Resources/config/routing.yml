@@ -10,10 +10,6 @@ publication:
     path:     /profile/publication/{pub}
     defaults: { _controller: UserBundle:Default:publication }
 
-publication:
-    path:     /
-    defaults: { _controller: UserBundle:Default:publication }
-
 utilisateurs:
     path:     /utilisateurs
     defaults: { _controller: UserBundle:Default:utilisateurs }
@@ -45,3 +41,132 @@ decline:
 searchfor:
     path:     /searchfor/{searchid}
     defaults: { _controller: UserBundle:Default:searchfor }
+
+all:
+    path:     /user/all
+    defaults: { _controller: UserBundle:Default:all }
+
+find:
+    path:     /user/find/{id}
+    defaults: { _controller: UserBundle:Default:find }
+
+create:
+    path:     /user/create
+    defaults: { _controller: UserBundle:Default:create}
+
+connect:
+    path:     /user/connect/{username}
+    defaults: { _controller: UserBundle:Default:connect }
+
+pubs:
+    path:     /user/pubs
+    defaults: { _controller: UserBundle:Default:pubs }
+
+mypubs:
+    path:     /user/mypubs/{id}
+    defaults: { _controller: UserBundle:Default:mypubs }
+
+pubcomments:
+  path:     /user/pubcomments/{id}
+  defaults: { _controller: UserBundle:Default:pubcomments }
+
+pubcomment:
+    path:     /user/pubcomment/{id}
+    defaults: { _controller: UserBundle:Default:pubcomment }
+
+createpub:
+  path:     /user/createpub
+  defaults: { _controller: UserBundle:Default:createpub}
+
+createcomment:
+    path:     /user/createcomment/{id}/{pubid}
+    defaults: { _controller: UserBundle:Default:createcomment}
+
+updatepassword:
+    path:     /user/updatepassword/{id}/{password}
+    defaults: { _controller: UserBundle:Default:updatepassword}
+
+searchuser:
+  path:     /user/searchuser/{searchid}
+  defaults: { _controller: UserBundle:Default:searchuser }
+
+friend:
+  path:     /user/friend/{first}/{second}
+  defaults: { _controller: UserBundle:Default:friend}
+
+searchfriend:
+  path:     /user/searchfriend/{first}/{second}
+  defaults: { _controller: UserBundle:Default:searchfriend }
+
+myfriends:
+  path:     /user/myfriends/{first}
+  defaults: { _controller: UserBundle:Default:myfriends}
+
+myinvitations:
+  path:     /user/myinvitations/{first}
+  defaults: { _controller: UserBundle:Default:myinvitations}
+
+acceptinvitations:
+  path:     /user/acceptinvitations/{id1}/{id2}/{des}
+  defaults: { _controller: UserBundle:Default:acceptinvitations}
+
+addinterest:
+  path:     /user/addinterest/{text}
+  defaults: { _controller: UserBundle:Default:addinterest}
+
+addmyinterest:
+  path:     /user/addmyinterest/{id}/{text}
+  defaults: { _controller: UserBundle:Default:addmyinterest}
+
+myinterestslist:
+  path:     /user/myinterestslist/{id}
+  defaults: { _controller: UserBundle:Default:myinterestslist}
+
+allinterests:
+  path:     /user/allinterests
+  defaults: { _controller: UserBundle:Default:allinterests}
+
+creategroupe:
+  path:     /user/creategroupe/{name}/{desc}
+  defaults: { _controller: UserBundle:Default:creategroupe}
+
+addmember:
+  path:     /user/addmember/{id}/{gid}/{role}
+  defaults: { _controller: UserBundle:Default:addmember}
+
+mygroupeslist:
+  path:     /user/mygroupeslist/{id}
+  defaults: { _controller: UserBundle:Default:mygroupeslist}
+
+allgroupes:
+  path:     /user/allgroupes
+  defaults: { _controller: UserBundle:Default:allgroupes}
+
+findgroupe:
+  path:     /user/findgroupe/{id}
+  defaults: { _controller: UserBundle:Default:findgroupe}
+
+findgroupepub:
+  path:     /user/findgroupepub/{id}
+  defaults: { _controller: UserBundle:Default:findgroupepub}
+
+getmembers:
+  path:     /user/getmembers/{id}
+  defaults: { _controller: UserBundle:Default:getmembers}
+
+member:
+  path:     /user/member/{id}/{gid}
+  defaults: { _controller: UserBundle:Default:member}
+
+grppub:
+  path:     /user/grppub/{id}/{gid}/{text}
+  defaults: { _controller: UserBundle:Default:grppub}
+
+searchgroup:
+  path:     /user/searchgroup/{searchid}
+  defaults: { _controller: UserBundle:Default:searchgroup }
+
+sameinterest:
+  path:     /user/sameinterest/{text}
+  defaults: { _controller: UserBundle:Default:sameinterest }
+

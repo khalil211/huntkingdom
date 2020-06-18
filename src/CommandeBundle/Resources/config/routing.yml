@@ -53,3 +53,39 @@ stats_commande:
 pdf_commande:
     path:     /commande/pdf/{id}
     defaults: { _controller: CommandeBundle:Back:pdfCommande }
+
+mobile_add_cart:
+    path:     /mobile/commande/add/{idProduit}/{idUser}
+    defaults: { _controller: CommandeBundle:Mobile:addToCart }
+
+mobile_get_panier:
+    path:     /mobile/commande/panier/{idUser}
+    defaults: { _controller: CommandeBundle:Mobile:getPanier }
+
+mobile_get_produits_commande:
+    path:     /mobile/commande/{idCommande}/produits
+    defaults: { _controller: CommandeBundle:Mobile:getProduitsCommande }
+
+mobile_modifier_produit:
+    path:     /mobile/commande/produit/edit/{idProduit}/{quantite}
+    defaults: { _controller: CommandeBundle:Mobile:modifierProduit }
+
+mobile_supprimer_produit:
+    path:     /mobile/commande/produit/delete/{idProduit}
+    defaults: { _controller: CommandeBundle:Mobile:supprimerProduit }
+
+mobile_modifier_commmande:
+    path:     /mobile/commande/edit/{idCommande}/{etat}
+    defaults: { _controller: CommandeBundle:Mobile:modifierCommande }
+
+mobile_get_commandes:
+    path:     /mobile/commande/user/{idUser}
+    defaults: { _controller: CommandeBundle:Mobile:getCommandes }
+
+mobile_pdf:
+    path:     /mobile/commande/pdf/{idCommande}
+    defaults: { _controller: CommandeBundle:Mobile:pdf }
+
+mobile_verifier_panier:
+    path:     /mobile/panier/verifier/{idUser}
+    defaults: { _controller: CommandeBundle:Mobile:verifierPanier }

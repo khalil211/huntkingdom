@@ -6,9 +6,12 @@ use AnimalBundle\Entity\Animal;
 use AnimalBundle\Entity\CategorieAnimal;
 use AnimalBundle\Entity\LikeAimal;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Animal controller.
@@ -211,5 +214,13 @@ class AnimalController extends Controller
             )
 
         );
+    }
+
+    public function AllAction()
+    {
+        $animals=$this->getDoctrine()->getManager()->getRepository('AnimalBundle:Animal')->findAll();
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($animals);
+        return new JsonResponse($formatted);
     }
 }

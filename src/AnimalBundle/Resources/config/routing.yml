@@ -25,3 +25,11 @@ animal_like:
 animal_stats:
     path:     /admin/animaux/stats
     defaults: { _controller: AnimalBundle:Animal:stats }
+
+animal_all:
+    path:     /api/animaux
+    defaults: { _controller: AnimalBundle:Animal:all }
+
+categorie_all:
+    path:     /api/animaux/categories
+    defaults: { _controller: AnimalBundle:CategorieAnimal:all }

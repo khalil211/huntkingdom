@@ -9,3 +9,11 @@ gestion_produit_produit:
 gestion_produit_homepage:
     path:     /
     defaults: { _controller: GestionProduitBundle:Default:index }
+
+api_get_produits:
+    path:     /api/produits
+    defaults: { _controller: GestionProduitBundle:Produit:getAll }
+
+api_get_categorie_produit:
+    path:     /api/produit/categories
+    defaults: { _controller: GestionProduitBundle:CategorieProduit:getAll }

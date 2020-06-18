@@ -4,7 +4,10 @@ namespace GestionProduitBundle\Controller;
 
 use GestionProduitBundle\Entity\CategorieProduit;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Categorieproduit controller.
@@ -120,5 +123,13 @@ class CategorieProduitController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function getAllAction()
+    {
+        $categories=$this->getDoctrine()->getRepository(CategorieProduit::class)->findAll();
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($categories);
+        return new JsonResponse($formatted);
     }
 }
